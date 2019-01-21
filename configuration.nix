@@ -1,6 +1,9 @@
 { config, lib, pkgs, ... }:
 {
-  imports = [ ./cfg/base-minimal.nix ];
+  imports = [ 
+    ./hardware-configuration.nix 
+    ./cfg/base-minimal.nix 
+  ];
 
   users.extraUsers.henri = {
     isNormalUser = true;
