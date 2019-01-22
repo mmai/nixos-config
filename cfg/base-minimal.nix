@@ -17,6 +17,7 @@ environment.systemPackages = with pkgs; [
   htop
   iotop
   neovim
+  ncdu
   tree
   unzip
   ];
