@@ -10,4 +10,14 @@
     supportedLocales = [ "fr_FR.UTF-8/UTF-8" "en_US.UTF-8/UTF-8" ];
   };
 
+environment.systemPackages = with pkgs; [
+  curl
+  gitFull tig
+  gnumake
+  htop
+  iotop
+  neovim
+  tree
+  unzip
+  ];
 }
