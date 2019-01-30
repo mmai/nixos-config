@@ -23,5 +23,6 @@
     ncdu
     tree
     unzip
+    vifm
   ];
 }
