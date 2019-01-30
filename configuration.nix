@@ -5,6 +5,8 @@
     ./cfg/base-minimal.nix 
   ];
 
+  networking.hostName = "henri-desktop";
+
   users.extraUsers.henri = {
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" ];
