@@ -6,6 +6,9 @@
 
   environment.systemPackages = with pkgs; [
     gnome3.gnome-tweaks
+    gnomeExtensions.dash-to-panel
+    gnomeExtensions.no-title-bar
+    gnomeExtensions.system-monitor
     nerdfonts
 
     libsForQt5.vlc # video viewer
@@ -32,7 +35,15 @@
   ];
 
   services.xserver.enable = true;
-  services.xserver.desktopManager.gnome3.enable = true;
   # services.xserver.displayManager.lightdm.enable = true;
+  services.xserver.desktopManager.gnome3 = {
+    enable = true;
+    extraGSettingsOverrides = ''
+      [org.gnome.shell.app-switcher]
+      current-workspace-only=true
 
+      [org.gnome.desktop.background]
+      show-desktop-icons=true
+    '';
+  };
 }

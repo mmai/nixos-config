@@ -14,13 +14,17 @@
 
   programs.zsh.enable = true;
   environment.systemPackages = with pkgs; [
+    ag
+    bat # better cat
     curl
+    fzf
     gitFull tig gitAndTools.gitflow
     gnumake
     htop
     iotop
     neovim
     ncdu
+    nodejs
     super-user-spark # dotfiles manager
     tree
     universal-ctags
