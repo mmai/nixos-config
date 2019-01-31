@@ -11,6 +11,8 @@
     gnomeExtensions.system-monitor
     nerdfonts
 
+    appimage-run # enable execution of .AppImage packages
+
     libsForQt5.vlc # video viewer
     zathura # pdf viewer (okular, evince ?)
     libreoffice

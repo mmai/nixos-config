@@ -9,6 +9,7 @@
   users.extraUsers.henri = {
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" ];
+    shell = pkgs.zsh;
   };
 
   system.stateVersion = "18.09";
