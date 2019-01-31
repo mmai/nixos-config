@@ -15,13 +15,15 @@
   programs.zsh.enable = true;
   environment.systemPackages = with pkgs; [
     curl
-    gitFull tig
+    gitFull tig gitAndTools.gitflow
     gnumake
     htop
     iotop
     neovim
     ncdu
+    super-user-spark # dotfiles manager
     tree
+    universal-ctags
     unzip
     vifm
   ];

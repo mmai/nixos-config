@@ -6,6 +6,7 @@
 
   environment.systemPackages = with pkgs; [
     gnome3.gnome-tweaks
+    nerdfonts
 
     libsForQt5.vlc # video viewer
     zathura # pdf viewer (okular, evince ?)
@@ -19,6 +20,7 @@
 
     gimp
 
+    gitg
     gnome3.meld
     keepassx # keepasx2 keepassxc
     filezilla
@@ -31,6 +33,6 @@
 
   services.xserver.enable = true;
   services.xserver.desktopManager.gnome3.enable = true;
-  services.xserver.displayManager.lightdm.enable = true;
+  # services.xserver.displayManager.lightdm.enable = true;
 
 }
