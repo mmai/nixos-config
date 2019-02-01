@@ -18,16 +18,15 @@
     bat # better cat
     curl
     fzf
-    gitFull tig gitAndTools.gitflow
+    gitFull tig
     gnumake
     htop
     iotop
-    neovim
     ncdu
-    nodejs
+    neovim
+    nixops
     super-user-spark # dotfiles manager
     tree
-    universal-ctags
     unzip
     vifm
   ];
