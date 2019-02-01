@@ -1,11 +1,15 @@
 { config, lib, pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
+    # Node
     nodejs
     yarn
 
+    # PHP
     php
+    php72Packages.composer
 
+    # Haskell
     cabal-install
     cabal2nix
     
@@ -15,6 +19,7 @@
       pypkgs.pygments 
     ]))
 
+    # Dev tools
     gitAndTools.gitflow
     gitAndTools.diff-so-fancy
     universal-ctags
