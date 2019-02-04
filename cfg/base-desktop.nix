@@ -1,4 +1,7 @@
 { config, lib, pkgs, ... }:
+let
+  unstable = import <unstable> {}; # XXX the "unstable" channel needs to be available : sudo nix-channel --add https://nixos.org/channels/nixos-unstable unstable && sudo nix-channel update
+in
 {
   imports = [ 
     ./base-minimal.nix 
@@ -44,7 +47,8 @@
     gnomeExtensions.system-monitor
     nerdfonts
 
-    appimage-run # enable execution of .AppImage packages
+    # appimage-run # enable execution of .AppImage packages
+    unstable.appimage-run
 
     libsForQt5.vlc # video viewer
     zathura # pdf viewer (okular, evince ?)
