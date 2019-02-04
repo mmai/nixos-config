@@ -12,7 +12,9 @@
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
+  # Added by me
   services.xserver.videoDrivers = [ "nvidia" ];
+  environment.systemPackages = with pkgs; [ microcodeIntel ];
 
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/a732d634-4874-401b-8533-0dfa92791be4";

@@ -9,6 +9,11 @@
     defaultLocale = "fr_FR.UTF-8";
     supportedLocales = [ "fr_FR.UTF-8/UTF-8" "en_US.UTF-8/UTF-8" ];
   };
+  # Pinyin characters keys :
+  #   ¯ = <shift><AltGr>$
+  #   ˇ = <shift><AltGr>ù
+  #   í = <AltGr>,i
+  
 
   networking.networkmanager.enable = true;
 

@@ -21,7 +21,6 @@
   #FONTS
   fonts = {
     fonts = with pkgs; [
-      # inconsolata
       dejavu_fonts
       powerline-fonts
       nerdfonts
@@ -29,8 +28,13 @@
 
     fontconfig.defaultFonts = {
       monospace = [ "DejaVuSansMono Nerd Font" ];
-      # monospace = [ "Inconsolata Nerd Font" ];
     };
+  };
+
+  # Chinese input
+  i18n.inputMethod = {
+    enabled = "ibus";
+    ibus.engines = with pkgs.ibus-engines; [ libpinyin ];
   };
 
   environment.systemPackages = with pkgs; [
@@ -49,8 +53,9 @@
     chromium
     transmission-gtk # transmission
 
-    thunderbird
     virtualbox
+
+    # mail : evolution included in gnome3
 
     gimp
 
@@ -61,6 +66,7 @@
 
     anki # 2.0.52
     calibre
+    mcomix # comics viewer
 
     # missing : rocketchat, teamviewer, gpick
   ];
