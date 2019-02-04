@@ -64,10 +64,6 @@
     keepassx # keepasx2 keepassxc
     filezilla
 
-    anki # 2.0.52
-    calibre
-    mcomix # comics viewer
-
     # missing : rocketchat, teamviewer, gpick
   ];
 

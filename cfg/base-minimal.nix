@@ -34,5 +34,15 @@
     tree
     unzip
     vifm
+    # optional packages that could be deported to another file
+    oraclejre8
   ];
+
+  nixpkgs.config = {
+    allowUnfree = true;
+    oraclejdk.accept_license = true;
+    packageOverrides = pkgs: {
+      jre = pkgs.oraclejre8;
+    };
+  };
 }
