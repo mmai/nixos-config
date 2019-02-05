@@ -25,11 +25,17 @@ in
   services.gnome3.chrome-gnome-shell.enable = true;
 
   #FONTS
+  #  nerdfonts for dev symbols in text editors
+  #  noto-fonts-cjk for chinese characters
   fonts = {
     fonts = with pkgs; [
       dejavu_fonts
       powerline-fonts
       nerdfonts
+      noto-fonts
+      noto-fonts-extra
+      noto-fonts-cjk
+      noto-fonts-emoji
     ];
 
     fontconfig.defaultFonts = {
