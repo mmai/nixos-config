@@ -20,6 +20,9 @@ in
     '';
   };
 
+  # Gnome shell extensions with browsers
+  nixpkgs.config.firefox.enableGnomeExtensions = true;
+  services.gnome3.chrome-gnome-shell.enable = true;
 
   #FONTS
   fonts = {
