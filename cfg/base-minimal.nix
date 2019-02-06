@@ -35,6 +35,7 @@
     tree
     unzip
     vifm
+    wget
     # optional packages that could be deported to another file
     oraclejre8
   ];

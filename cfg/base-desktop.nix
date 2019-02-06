@@ -60,7 +60,6 @@ in
     unstable.appimage-run
 
     libsForQt5.vlc # video viewer
-    zathura # pdf viewer (okular, evince ?)
     libreoffice
     firefox
     chromium
@@ -68,7 +67,9 @@ in
 
     virtualbox
 
-    # mail : evolution included in gnome3
+    # Included in gnome3
+    #   mail       : evolution
+    #   pdf viewer : evince (alternatives : zathura, okular)
 
     gimp
 
