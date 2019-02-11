@@ -9,7 +9,7 @@
 
   users.extraUsers.henri = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" ];
+    extraGroups = [ "wheel" "networkmanager" "docker" "virtualbox" ];
     shell = pkgs.zsh;
   };
 

@@ -55,6 +55,7 @@ in
     gnomeExtensions.no-title-bar
     gnomeExtensions.system-monitor
     nerdfonts
+    xorg.xkill
 
     # appimage-run # enable execution of .AppImage packages
     unstable.appimage-run
@@ -65,8 +66,6 @@ in
     chromium
     transmission-gtk # transmission
 
-    virtualbox
-
     # Included in gnome3
     #   mail       : evolution
     #   pdf viewer : evince (alternatives : zathura, okular)
@@ -75,6 +74,7 @@ in
 
     gitg
     gnome3.meld
+    gparted
     keepassx # keepasx2 keepassxc
     filezilla
 
