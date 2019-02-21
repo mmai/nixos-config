@@ -20,6 +20,9 @@ in
     '';
   };
 
+  services.printing.enable = true;
+  services.printing.drivers = [ pkgs.gutenprint ];
+
   # Gnome shell extensions with browsers
   nixpkgs.config.firefox.enableGnomeExtensions = true;
   services.gnome3.chrome-gnome-shell.enable = true;
@@ -75,7 +78,7 @@ in
     gitg
     gnome3.meld
     gparted
-    keepassx # keepasx2 keepassxc
+    keepassx2 # or keepassxc ?
     filezilla
 
     # missing : rocketchat, teamviewer, gpick

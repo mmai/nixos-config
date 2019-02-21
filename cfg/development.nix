@@ -1,4 +1,7 @@
 { config, lib, pkgs, ... }:
+let
+  unstable = import <unstable> {}; # XXX the "unstable" channel needs to be available : sudo nix-channel --add https://nixos.org/channels/nixos-unstable unstable && sudo nix-channel update
+in
 {
   virtualisation.docker.enable = true;
   virtualisation.virtualbox.host.enable = true;
@@ -13,16 +16,28 @@
     # PHP
     php
     php72Packages.composer
+    php72Packages.psysh # 
+    # php72Packages.phpcs  # CodeSniffer (detect)
+    php72Packages.phpcbf # CodeSniffer (beautify)
+    # Drupal coding standards installation :
+    #   composer global require drupal/coder # installs phpcs as well
+    #   composer global require dealerdirect/phpcodesniffer-composer-installer
 
     # Haskell
     cabal-install
     cabal2nix
-    
+    # haskellPackages.intero # doesn't compile (bad ghc dependency)
+
     # Python & co.
     (python3.withPackages (pypkgs: [ 
-      # pypkgs.neovim # pynvim in next release 19.03 (needed for deoplete)
       pypkgs.pygments 
     ]))
+
+    # Python & co.
+    # (unstable.python3.withPackages (pypkgs: [ 
+    #   unstable.pythonPackages.pynvim # pynvim in next release 19.03 (needed for deoplete)
+    #   unstable.pythonPackages.pygments 
+    # ]))
 
     # Dev tools
     gitAndTools.gitflow

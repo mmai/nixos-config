@@ -1,4 +1,7 @@
 { config, lib, pkgs, ... }:
+let
+  unstable = import <unstable> {}; # XXX the "unstable" channel needs to be available : sudo nix-channel --add https://nixos.org/channels/nixos-unstable unstable && sudo nix-channel update
+in 
 {
 
   # Locale settings
@@ -23,16 +26,19 @@
     ag
     bat # better cat
     curl
+    entr # run arbitrary commands when files change (example: ls *.hs | entr make build)
+    expect # A tool for automating interactive applications
     fzf
     gitFull tig
     gnumake
     htop
     iotop
     ncdu
-    neovim
+    unstable.neovim # unstable version to get correct dependencies for latests viersions of nvim plugins (ie pynvim)
     nixops
     super-user-spark # dotfiles manager
     tree
+    tldr # Simplified and community-driven man pages  
     unzip
     vifm
     wget
