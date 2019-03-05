@@ -8,7 +8,7 @@ in
   ];
 
   services.xserver.enable = true;
-  services.xserver.displayManager.lightdm.enable = true;
+  services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome3 = {
     enable = true;
     extraGSettingsOverrides = ''
@@ -76,9 +76,10 @@ in
     gimp
 
     gitg
-    gnome3.meld
     gparted
     keepassx2 # or keepassxc ?
+    gnome3.meld
+    gnome3.seahorse # to get rid of the "gnome default keyring locked" prompt at startup
     filezilla
 
     # missing : rocketchat, teamviewer, gpick
