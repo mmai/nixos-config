@@ -28,6 +28,11 @@ in
     cabal2nix
     # haskellPackages.intero # doesn't compile (bad ghc dependency)
 
+    # Rust
+    #   more options on https://github.com/NixOS/nixpkgs/blob/master/doc/languages-frameworks/rust.section.md
+    rustc
+    cargo
+
     # Python & co.
     (python3.withPackages (pypkgs: [ 
       pypkgs.pygments 
@@ -41,7 +46,7 @@ in
 
     # Databases related
     mariadb # to get the client
-    mysql-workbench # can export mcds
+    mysql-workbench # can export mcds ; very long to compile
     dbeaver # mysql & posgresql, can do ssh tunneling
 
     # Dev tools
