@@ -39,6 +39,11 @@ in
     #   unstable.pythonPackages.pygments 
     # ]))
 
+    # Databases related
+    mariadb # to get the client
+    mysql-workbench # can export mcds
+    dbeaver # mysql & posgresql, can do ssh tunneling
+
     # Dev tools
     gitAndTools.gitflow
     gitAndTools.diff-so-fancy
