@@ -30,8 +30,9 @@ in
 
     # Rust
     #   more options on https://github.com/NixOS/nixpkgs/blob/master/doc/languages-frameworks/rust.section.md
-    rustc
-    cargo
+    # rustc cargo
+    rustup # then `rustup toolchain install stable; rustup default stable `
+    binutils gcc gnumake openssl pkgconfig # rustup dependencies (cf. https://github.com/NixOS/nixpkgs/blob/master/doc/languages-frameworks/rust.section.md)
 
     # Python & co.
     (python3.withPackages (pypkgs: [ 
@@ -46,7 +47,7 @@ in
 
     # Databases related
     mariadb # to get the client
-    mysql-workbench # can export mcds ; very long to compile
+    # mysql-workbench # can export mcds ; very long to compile
     dbeaver # mysql & posgresql, can do ssh tunneling
 
     # Dev tools
