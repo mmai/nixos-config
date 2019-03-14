@@ -34,6 +34,9 @@ in
     rustup # then `rustup toolchain install stable; rustup default stable `
     binutils gcc gnumake openssl pkgconfig # rustup dependencies (cf. https://github.com/NixOS/nixpkgs/blob/master/doc/languages-frameworks/rust.section.md)
 
+    # dev libs
+    automake autoconf zlib
+
     # Python & co.
     (python3.withPackages (pypkgs: [ 
       pypkgs.pygments 
