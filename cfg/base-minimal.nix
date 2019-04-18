@@ -28,6 +28,7 @@ in
     curl
     entr # run arbitrary commands when files change (example: ls *.hs | entr make build)
     expect # A tool for automating interactive applications
+    fd # better find (and used by fzf in vim)
     fzf
     gitFull tig
     gnumake

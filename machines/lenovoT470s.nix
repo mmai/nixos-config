@@ -2,6 +2,10 @@
 # Additionnal config for Lenovo t470s
 # (Add this file to /etc/nixos/configuration.nix imports)
 
+# TODO
+# * gdm freeze after login (current workaround : use lightdm)
+# * modelines (cf. below)
+
 { config, lib, pkgs, ... }:
 {
 
