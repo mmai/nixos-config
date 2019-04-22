@@ -43,7 +43,7 @@ in
     unzip
     vifm
     wget
-    zola # static website generator
+    # zola # static website generator
     # optional packages that could be deported to another file
     oraclejre8
   ];
