@@ -4,7 +4,7 @@ let
 in
 {
   virtualisation.docker.enable = true;
-  virtualisation.virtualbox.host.enable = true;
+  # virtualisation.virtualbox.host.enable = true; # XXX error on last 18.09 release => error: The option value `warnings` in `/nix/var/nix/profiles/per-user/root/channels/nixos/nixos/modules/virtualisation/virtualbox-host.nix` is not a list
   virtualisation.virtualbox.guest.enable = true;
   nixpkgs.config.virtualbox.enableExtensionPack = true;
 
@@ -50,6 +50,7 @@ in
 
     # Databases related
     mariadb # to get the client
+    postgresql # to get the client
     # mysql-workbench # can export mcds ; very long to compile
     dbeaver # mysql & posgresql, can do ssh tunneling
 

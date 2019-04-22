@@ -35,7 +35,7 @@ in
     htop
     iotop
     ncdu
-    unstable.neovim # unstable version to get correct dependencies for latests viersions of nvim plugins (ie pynvim)
+    unstable.neovim # unstable version to get correct dependencies for latests versions of nvim plugins (ie pynvim)
     nixops
     super-user-spark # dotfiles manager
     tree
@@ -43,6 +43,7 @@ in
     unzip
     vifm
     wget
+    zola # static website generator
     # optional packages that could be deported to another file
     oraclejre8
   ];
