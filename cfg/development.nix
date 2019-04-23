@@ -50,11 +50,13 @@ in
 
     # Databases related
     mariadb # to get the client
-    postgresql # to get the client
+    sqlite
+    postgresql
     # mysql-workbench # can export mcds ; very long to compile
     dbeaver # mysql & posgresql, can do ssh tunneling
 
     # Dev tools
+    docker_compose
     gitAndTools.gitflow
     gitAndTools.diff-so-fancy
     universal-ctags
