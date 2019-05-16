@@ -4,9 +4,9 @@ let
 in
 {
   virtualisation.docker.enable = true;
-  # virtualisation.virtualbox.host.enable = true; # XXX error on last 18.09 release => error: The option value `warnings` in `/nix/var/nix/profiles/per-user/root/channels/nixos/nixos/modules/virtualisation/virtualbox-host.nix` is not a list
-  virtualisation.virtualbox.guest.enable = true;
-  nixpkgs.config.virtualbox.enableExtensionPack = true;
+  virtualisation.virtualbox.host.enable = true; # XXX error on last 18.09 release => error: The option value `warnings` in `/nix/var/nix/profiles/per-user/root/channels/nixos/nixos/modules/virtualisation/virtualbox-host.nix` is not a list
+  # virtualisation.virtualbox.guest.enable = true;
+  virtualisation.virtualbox.host.enableExtensionPack = true;
 
   environment.systemPackages = with pkgs; [
     # Node

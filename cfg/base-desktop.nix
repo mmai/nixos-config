@@ -8,7 +8,8 @@ in
   ];
 
   services.xserver.enable = true;
-  services.xserver.displayManager.gdm.enable = true;
+  # services.xserver.displayManager.gdm.enable = true; # -> prettier, but freeze after login on Lenovo 470s
+  services.xserver.displayManager.lightdm.enable = true;
   services.xserver.desktopManager.gnome3 = {
     enable = true;
     extraGSettingsOverrides = ''
@@ -74,6 +75,7 @@ in
     #   pdf viewer : evince (alternatives : zathura, okular)
 
     gimp
+    inkscape
 
     gitg
     gparted

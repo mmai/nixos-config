@@ -3,6 +3,7 @@ let
   unstable = import <unstable> {}; # XXX the "unstable" channel needs to be available : sudo nix-channel --add https://nixos.org/channels/nixos-unstable unstable && sudo nix-channel update
 in 
 {
+  nixpkgs.config.allowUnfree = true;
 
   # Locale settings
   time.timeZone = "Europe/Paris";
@@ -18,6 +19,15 @@ in
   #   ` = <AltGr>*
   #   í = <AltGr>,i
   #  => see $(nix-build --no-out-link '<nixpkgs>' -A xorg.xkeyboardconfig)/etc/X11/xkb/symbols/fr
+
+  networking.defaultMailServer = {
+    directDelivery = true;
+    useSTARTTLS = true;
+    hostName = "smtp.mailtrap.io:2525";
+    authUser = "7d0baad1433da6";
+    authPass = "c59e56e197f524";
+    # authPassFile = "/home/henri/ssmtp-authpass-mailtrap";
+  };
 
   networking.networkmanager.enable = true;
 
@@ -37,6 +47,7 @@ in
     ncdu
     unstable.neovim # unstable version to get correct dependencies for latests versions of nvim plugins (ie pynvim)
     nixops
+    mailutils
     super-user-spark # dotfiles manager
     tree
     tldr # Simplified and community-driven man pages  
@@ -45,14 +56,14 @@ in
     wget
     # zola # static website generator
     # optional packages that could be deported to another file
-    oraclejre8
+    # oraclejre8
   ];
 
-  nixpkgs.config = {
-    allowUnfree = true;
-    oraclejdk.accept_license = true;
-    packageOverrides = pkgs: {
-      jre = pkgs.oraclejre8;
-    };
-  };
+  # nixpkgs.config = {
+  #   allowUnfree = true;
+  #   oraclejdk.accept_license = true;
+  #   packageOverrides = pkgs: {
+  #     jre = pkgs.oraclejre8;
+  #   };
+  # };
 }
