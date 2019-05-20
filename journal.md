@@ -1,9 +1,12 @@
 ## Low space on /boot
 
-- `nixos-garbage -d`
-- Remove old entries from /boot/entries
-- Remove old kernels from /boot/EFI/nixos/ (those not listed in the /boot/entries/nixos-generation-xx.conf files)
-- `nixos-rebuild switch` => should 
+- `nix-collect-garbage -d`
+- Remove old entries from /boot/loader/entries
+- Remove old kernels from /boot/EFI/nixos/ (those not listed in the /boot/loader/entries/nixos-generation-xx.conf files)
+```
+nix-env -p /nix/var/nix/profiles/system --delete-generations +2
+nixos-rebuild switch
+```
 
 
 ## Unlock the 'default' keyring at startup
