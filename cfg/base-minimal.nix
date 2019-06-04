@@ -54,6 +54,7 @@ in
     unzip
     vifm
     wget
+    zip
     # zola # static website generator
     # optional packages that could be deported to another file
     # oraclejre8

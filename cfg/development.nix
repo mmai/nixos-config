@@ -1,6 +1,7 @@
 { config, lib, pkgs, ... }:
 let
   unstable = import <unstable> {}; # XXX the "unstable" channel needs to be available : sudo nix-channel --add https://nixos.org/channels/nixos-unstable unstable && sudo nix-channel update
+  php-env-cli = (import ./php/php-env-cli.nix) {inherit pkgs; };
 in
 {
   virtualisation.docker.enable = true;
@@ -22,6 +23,7 @@ in
     # Drupal coding standards installation :
     #   composer global require drupal/coder # installs phpcs as well
     #   composer global require dealerdirect/phpcodesniffer-composer-installer
+    php-env-cli
 
     # Haskell
     cabal-install
