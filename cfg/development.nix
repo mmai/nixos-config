@@ -15,7 +15,7 @@ in
     yarn
 
     # PHP
-    php
+    php-env-cli
     php72Packages.composer
     php72Packages.psysh # 
     # php72Packages.phpcs  # CodeSniffer (detect)
@@ -23,7 +23,6 @@ in
     # Drupal coding standards installation :
     #   composer global require drupal/coder # installs phpcs as well
     #   composer global require dealerdirect/phpcodesniffer-composer-installer
-    php-env-cli
 
     # Haskell
     cabal-install
