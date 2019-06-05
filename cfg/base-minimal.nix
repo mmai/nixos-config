@@ -31,7 +31,10 @@ in
 
   networking.networkmanager.enable = true;
 
-  programs.zsh.enable = true;
+  programs.zsh = {
+    enable = true;
+    promptInit = ""; # disable default (use zplug system with pure prompt instead)
+  };
   environment.systemPackages = with pkgs; [
     ag
     bat # better cat
