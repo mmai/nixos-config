@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, stdenv, ... }:
 {
   imports = [ 
     ./cfg/base-desktop.nix 

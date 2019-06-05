@@ -1,6 +1,7 @@
 { config, lib, pkgs, ... }:
 let
   unstable = import <unstable> {}; # XXX the "unstable" channel needs to be available : sudo nix-channel --add https://nixos.org/channels/nixos-unstable unstable && sudo nix-channel update
+  php-env-cli = (import ./php/php-env-cli.nix) {inherit pkgs; };
 in
 {
   virtualisation.docker.enable = true;
@@ -14,7 +15,7 @@ in
     yarn
 
     # PHP
-    php
+    php-env-cli
     php72Packages.composer
     php72Packages.psysh # 
     # php72Packages.phpcs  # CodeSniffer (detect)
