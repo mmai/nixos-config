@@ -1,6 +1,14 @@
 { config, lib, pkgs, ... }:
 let
-  unstable = import <unstable> {}; # XXX the "unstable" channel needs to be available : sudo nix-channel --add https://nixos.org/channels/nixos-unstable unstable && sudo nix-channel update
+  unstable = import <unstable> {
+    config = {
+      allowUnfree = true; 
+      oraclejdk.accept_license = true;
+      packageOverrides = pkgs: {
+        jre = pkgs.oraclejre8;
+      };
+    };
+  }; # XXX the "unstable" channel needs to be available : sudo nix-channel --add https://nixos.org/channels/nixos-unstable unstable && sudo nix-channel update
   php-env-cli = (import ./php/php-env-cli.nix) {inherit pkgs; };
 in
 {
@@ -35,6 +43,11 @@ in
     rustup # then `rustup toolchain install stable; rustup default stable `
     binutils gcc gnumake openssl pkgconfig # rustup dependencies (cf. https://github.com/NixOS/nixpkgs/blob/master/doc/languages-frameworks/rust.section.md)
 
+    # Java / Android dev
+    unstable.android-studio # launch with `unset GDK_PIXBUF_MODULE_FILE ; android-studio` (cf. https://github.com/NixOS/nixpkgs/issues/52302#issuecomment-477818365)
+    jetbrains.jdk
+    # unstable.oraclejdk
+
     # dev libs
     automake autoconf zlib
 
@@ -60,6 +73,7 @@ in
     docker_compose
     gitAndTools.gitflow
     gitAndTools.diff-so-fancy
+    jq # command line json parser
     universal-ctags
 
     # Trying to make snx work (sitepoint network extender)

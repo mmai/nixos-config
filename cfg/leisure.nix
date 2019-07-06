@@ -1,6 +1,6 @@
 { config, lib, pkgs, ... }:
 let
-  unstable = import <unstable> {}; # XXX the "unstable" channel needs to be available : sudo nix-channel --add https://nixos.org/channels/nixos-unstable unstable && sudo nix-channel update
+  unstable = import <unstable> { config.allowUnfree = true; };# XXX the "unstable" channel needs to be available : sudo nix-channel --add https://nixos.org/channels/nixos-unstable unstable && sudo nix-channel update
 in
   {
   environment.systemPackages = with pkgs; [
@@ -8,7 +8,7 @@ in
 
     calibre
     mcomix # comics viewer
-    steam 
+    unstable.steam 
     unstable.leela-zero # go game engine (cmd = leelaz)=> additional steps : curl -O https://zero.sjeng.org/best-network && mv best-network ~/.local/share/leela-zero/
     google-musicmanager # upload on Google Music
   ];
