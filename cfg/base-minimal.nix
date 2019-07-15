@@ -42,6 +42,7 @@ in
     entr # run arbitrary commands when files change (example: ls *.hs | entr make build)
     expect # A tool for automating interactive applications
     fd # better find (and used by fzf in vim)
+    file # Show file information. Usefull to debug 'zsh: no such file or directory' errors on binaries
     fzf
     gitFull tig
     gnumake
