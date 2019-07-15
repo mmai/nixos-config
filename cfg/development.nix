@@ -10,7 +10,8 @@ let
     };
   }; # XXX the "unstable" channel needs to be available : sudo nix-channel --add https://nixos.org/channels/nixos-unstable unstable && sudo nix-channel update
   php-env-cli = (import ./php/php-env-cli.nix) {inherit pkgs; };
-  # umlDesigner = (import ./umlDesigner.nix) {inherit pkgs; };
+  # umlDesigner = (import ./umlDesigner.nix) { inherit pkgs; };
+  # umlDesigner = with pkgs; (import ./umlDesigner.nix) { inherit stdenv; inherit fetchurl; inherit unzip; inherit patchelf; };
 in
 {
   virtualisation.docker.enable = true;
@@ -75,7 +76,7 @@ in
     gitAndTools.gitflow
     gitAndTools.diff-so-fancy
     jq # command line json parser
-    # umlDesigner
+    # umlDesigner # trop usine à gaz
     universal-ctags
 
     # Trying to make snx work (sitepoint network extender)
