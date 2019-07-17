@@ -77,6 +77,7 @@ in
     gitAndTools.diff-so-fancy
     jq # command line json parser
     # umlDesigner # trop usine à gaz
+    plantuml
     universal-ctags
 
     # Trying to make snx work (sitepoint network extender)
