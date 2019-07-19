@@ -46,7 +46,7 @@ in
     binutils gcc gnumake openssl pkgconfig # rustup dependencies (cf. https://github.com/NixOS/nixpkgs/blob/master/doc/languages-frameworks/rust.section.md)
 
     # Java / Android dev
-    unstable.android-studio # launch with `unset GDK_PIXBUF_MODULE_FILE ; android-studio` (cf. https://github.com/NixOS/nixpkgs/issues/52302#issuecomment-477818365)
+    unstable.android-studio # launch with `unset GDK_PIXBUF_MODULE_FILE ; android-studio` (cf. https://github.com/NixOS/nixpkgs/issues/52302#issuecomment-477818365) -> done in .zsh/aliases.sh
     jetbrains.jdk
     # unstable.oraclejdk
 
@@ -79,6 +79,7 @@ in
     # umlDesigner # trop usine à gaz
     plantuml
     universal-ctags
+    plantuml # draw UML diagrams from text
 
     # Trying to make snx work (sitepoint network extender)
     #    archlinux : lib32-pam  lib32-libx11  lib32-libstdc++5
