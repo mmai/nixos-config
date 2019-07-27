@@ -28,6 +28,9 @@ in
   nixpkgs.config.firefox.enableGnomeExtensions = true;
   services.gnome3.chrome-gnome-shell.enable = true;
 
+  # Enable widevine on chromium: needed by spotify & netflix
+  # nixpkgs.config.chromium.enableWideVine = true; # broken on 19.03
+
   #FONTS
   #  nerdfonts for dev symbols in text editors
   #  noto-fonts-cjk for chinese characters

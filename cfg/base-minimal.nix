@@ -20,6 +20,9 @@ in
   #   í = <AltGr>,i
   #  => see $(nix-build --no-out-link '<nixpkgs>' -A xorg.xkeyboardconfig)/etc/X11/xkb/symbols/fr
 
+  # A weekly health check for the SSD drive (executes `fstrim -a -v`)
+  services.fstrim.enable = true;
+
   networking.defaultMailServer = {
     directDelivery = true;
     useSTARTTLS = true;
