@@ -7,6 +7,8 @@ in
     ./base-minimal.nix 
   ];
 
+  services.keybase.enable = true;
+
   services.xserver.enable = true;
   # services.xserver.displayManager.gdm.enable = true; # -> prettier, but freeze after login on Lenovo 470s
   services.xserver.displayManager.lightdm.enable = true;
@@ -56,13 +58,16 @@ in
     ibus.engines = with pkgs.ibus-engines; [ libpinyin ];
   };
 
+  environment.gnome3.excludePackages = with pkgs; [ gnome3.geary ];
   environment.systemPackages = with pkgs; [
+    gnome3.evolution # since 19.09 default mail client in gnome is geary 
     gnome3.gnome-tweaks
     gnomeExtensions.dash-to-panel
-    gnomeExtensions.no-title-bar
+    # gnomeExtensions.no-title-bar # marked as broken in 19.09
     gnomeExtensions.system-monitor
     nerdfonts
     xorg.xkill
+    xdotools # manipulate windows ; used to remove gnome-terminal header bar
 
     # appimage-run # enable execution of .AppImage packages
     unstable.appimage-run
@@ -74,7 +79,6 @@ in
     transmission-gtk # transmission
 
     # Included in gnome3
-    #   mail       : evolution
     #   pdf viewer : evince (alternatives : zathura, okular)
 
     gimp
@@ -83,9 +87,11 @@ in
     gitg
     gparted
     keepassx2 # or keepassxc ?
+    kbfs keybase-gui
     gnome3.meld
     gnome3.seahorse # to get rid of the "gnome default keyring locked" prompt at startup
     filezilla
+    unetbootin # live linux usb creator
 
     # missing : rocketchat, teamviewer, gpick
   ];

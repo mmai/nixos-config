@@ -14,5 +14,5 @@
     shell = pkgs.zsh;
   };
 
-  system.stateVersion = "19.09";
+  system.stateVersion = "18.09";
 }
