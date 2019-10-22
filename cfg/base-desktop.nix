@@ -63,11 +63,11 @@ in
     gnome3.evolution # since 19.09 default mail client in gnome is geary 
     gnome3.gnome-tweaks
     gnomeExtensions.dash-to-panel
-    # gnomeExtensions.no-title-bar # marked as broken in 19.09
+    # gnomeExtensions.gtk-title-bar # not yet packaged in nixos
     gnomeExtensions.system-monitor
     nerdfonts
     xorg.xkill
-    xdotools # manipulate windows ; used to remove gnome-terminal header bar
+    xdotool # manipulate windows ; used to remove gnome-terminal header bar
 
     # appimage-run # enable execution of .AppImage packages
     unstable.appimage-run
