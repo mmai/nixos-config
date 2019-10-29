@@ -39,6 +39,8 @@ in
     cabal2nix
     # haskellPackages.intero # doesn't compile (bad ghc dependency)
 
+    unstable.vlang # v language (experiment)
+
     # Rust
     #   more options on https://github.com/NixOS/nixpkgs/blob/master/doc/languages-frameworks/rust.section.md
     # rustc cargo

@@ -38,6 +38,7 @@ in
   #  noto-fonts-cjk for chinese characters
   fonts = {
     fonts = with pkgs; [
+      victor-mono
       dejavu_fonts
       powerline-fonts
       nerdfonts
@@ -77,6 +78,7 @@ in
     firefox
     chromium
     transmission-gtk # transmission
+    hexchat # desktop chat client
 
     # Included in gnome3
     #   pdf viewer : evince (alternatives : zathura, okular)

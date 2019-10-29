@@ -60,6 +60,7 @@ in
     tldr # Simplified and community-driven man pages  
     unzip
     vifm
+    weechat # irc,.. client
     wget
     zip
     # zola # static website generator
