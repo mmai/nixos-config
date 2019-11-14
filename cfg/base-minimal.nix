@@ -43,6 +43,7 @@ in
     bat # better cat
     curl
     entr # run arbitrary commands when files change (example: ls *.hs | entr make build)
+    exa # replacement for ls with sensible defaults
     expect # A tool for automating interactive applications
     fd # better find (and used by fzf in vim)
     file # Show file information. Usefull to debug 'zsh: no such file or directory' errors on binaries

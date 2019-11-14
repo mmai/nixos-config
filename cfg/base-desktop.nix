@@ -68,7 +68,9 @@ in
     gnomeExtensions.system-monitor
     nerdfonts
     xorg.xkill
-    xdotool # manipulate windows ; used to remove gnome-terminal header bar
+    # xdotool # manipulate windows ; used to remove gnome-terminal header bar
+
+    alacritty # faster terminal with sane default (and zoomable)
 
     # appimage-run # enable execution of .AppImage packages
     unstable.appimage-run
@@ -99,9 +101,9 @@ in
   ];
 
   # Use current path in new terminals
-  environment.interactiveShellInit = ''
-    if [[ "$VTE_VERSION" > 3405 ]];
-      then source "${pkgs.gnome3.vte}/etc/profile.d/vte.sh" 
-    fi '';
+  # environment.interactiveShellInit = ''
+  #   if [[ "$VTE_VERSION" > 3405 ]];
+  #     then source "${pkgs.gnome3.vte}/etc/profile.d/vte.sh" 
+  #   fi '';
 
 }
