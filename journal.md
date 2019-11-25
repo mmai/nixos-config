@@ -16,6 +16,12 @@ nixos-rebuild switch
 - open Seahorse (graphical keyring manager)
 - change password for default keyring : enter empty password
 
+## list installed packages
+
+* Local : `nix-env --query`
+* Local with sudo : `sudo nix-env --query`
+* In configuration.nix : `nixos-option environment.systemPackages | head -2 | tail -1 | \
+    sed -e 's/ /\n/g' | cut -d- -f2- | sort | uniq`
 
 ## Lenovo thinkpad 470s
 
