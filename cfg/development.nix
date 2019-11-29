@@ -63,7 +63,6 @@ in
     # Python & co.
     # (unstable.python3.withPackages (pypkgs: [ 
     #   unstable.pythonPackages.pynvim # pynvim in next release 19.03 (needed for deoplete)
-    #   unstable.pythonPackages.pygments 
     # ]))
 
     # Databases related
@@ -79,9 +78,9 @@ in
     gitAndTools.diff-so-fancy
     jq # command line json parser
     # umlDesigner # trop usine à gaz
-    plantuml
-    universal-ctags
     plantuml # draw UML diagrams from text
+    radare2 # reverse engineering framework
+    universal-ctags
 
     # Trying to make snx work (sitepoint network extender)
     #    archlinux : lib32-pam  lib32-libx11  lib32-libstdc++5
