@@ -4,6 +4,7 @@
     ./cfg/base-desktop.nix 
     ./cfg/development.nix 
     ./cfg/leisure.nix 
+    ./cfg/sync-notes.nix 
   ];
 
   networking.hostName = "henri-desktop";

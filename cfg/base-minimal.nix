@@ -59,7 +59,6 @@ in
     super-user-spark # dotfiles manager
     tree
     tldr # Simplified and community-driven man pages  
-    taskwarrior tasksh timewarrior
     unzip
     vifm
     weechat # irc,.. client
