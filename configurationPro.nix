@@ -3,6 +3,7 @@
   imports = [ 
     ./cfg/base-desktop.nix 
     ./cfg/development.nix 
+    ./cfg/sync-notes.nix 
   ];
 
   networking.hostName = "henri-desktop";
