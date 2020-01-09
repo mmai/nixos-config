@@ -57,7 +57,7 @@ in
     nixops
     mailutils
     super-user-spark # dotfiles manager
-    tree
+    broot # better tree
     tldr # Simplified and community-driven man pages  
     unzip
     vifm
