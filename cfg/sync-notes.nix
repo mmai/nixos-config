@@ -5,7 +5,7 @@
    wantedBy = [ "timers.target" ]; # enable it & auto start it
   
    timerConfig = {
-     OnBootSec = "5m"; # first run 5min after boot up
+     OnBootSec = "1m"; # first run 1min after boot up
      OnUnitInactiveSec = "15m"; # run 15min after sync-notes has finished
    };
  };
