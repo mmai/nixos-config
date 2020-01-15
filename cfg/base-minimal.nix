@@ -40,6 +40,7 @@ in
   };
   environment.systemPackages = with pkgs; [
     ag
+    ansifilter # can remove ANSI terminal escape codes (colors, formatting..)
     bat # better cat
     curl
     entr # run arbitrary commands when files change (example: ls *.hs | entr make build)

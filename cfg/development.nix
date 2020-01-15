@@ -20,9 +20,6 @@ in
   virtualisation.virtualbox.host.enableExtensionPack = true;
 
   environment.systemPackages = with pkgs; [
-    # Nix
-    unstable.niv
-
     # Node
     nodejs
     yarn
