@@ -24,7 +24,7 @@ in
   };
 
   services.printing.enable = true;
-  services.printing.drivers = [ pkgs.gutenprint ];
+  services.printing.drivers = [ pkgs.gutenprint pkgs.epson-escpr ]; # Generic, Epson XP-225
 
   # Gnome shell extensions with browsers
   nixpkgs.config.firefox.enableGnomeExtensions = true;

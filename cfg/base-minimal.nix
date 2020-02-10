@@ -39,9 +39,9 @@ in
     promptInit = ""; # disable default (use zplug system with pure prompt instead)
   };
   environment.systemPackages = with pkgs; [
-    ag
     ansifilter # can remove ANSI terminal escape codes (colors, formatting..)
     bat # better cat
+    broot # better tree
     curl
     entr # run arbitrary commands when files change (example: ls *.hs | entr make build)
     exa # replacement for ls with sensible defaults
@@ -57,8 +57,8 @@ in
     unstable.neovim # unstable version to get correct dependencies for latests versions of nvim plugins (ie pynvim)
     nixops
     mailutils
+    ripgrep # Faster than grep, ag, ..
     super-user-spark # dotfiles manager
-    broot # better tree
     tldr # Simplified and community-driven man pages  
     unzip
     vifm
