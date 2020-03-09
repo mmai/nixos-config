@@ -59,7 +59,8 @@ in
     mailutils
     ripgrep # Faster than grep, ag, ..
     super-user-spark # dotfiles manager
-    tldr # Simplified and community-driven man pages  
+    tldr # Simplified and community-driven man pages
+    tmux tmuxp
     unzip
     vifm
     weechat # irc,.. client
