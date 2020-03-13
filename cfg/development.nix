@@ -82,6 +82,7 @@ in
     # umlDesigner # trop usine à gaz
     plantuml # draw UML diagrams from text
     radare2 # reverse engineering framework
+    soapui # soap api testing
     universal-ctags
 
   ];
