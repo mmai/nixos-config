@@ -3,6 +3,7 @@
   imports = [ 
     ./cfg/base-desktop.nix 
     ./cfg/development.nix 
+    ./cfg/atixnet.nix 
     ./cfg/sync-notes.nix 
   ];
 
@@ -14,6 +15,4 @@
     shell = pkgs.zsh;
   };
 
-  # system.stateVersion = "18.09";
-  system.stateVersion = "19.03";
 }

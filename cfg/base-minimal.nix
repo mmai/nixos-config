@@ -8,6 +8,7 @@ in
   # Locale settings
   time.timeZone = "Europe/Paris";
   services.xserver.layout = "fr";
+  services.openssh.enable = true;
   i18n = {
     consoleKeyMap = "fr";
     defaultLocale = "fr_FR.UTF-8";
@@ -54,7 +55,7 @@ in
     htop
     iotop
     ncdu
-    unstable.neovim # unstable version to get correct dependencies for latests versions of nvim plugins (ie pynvim)
+    unstable.neovim # need neovim > 0.4
     nixops
     mailutils
     ripgrep # Faster than grep, ag, ..

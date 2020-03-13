@@ -73,6 +73,8 @@ in
     dbeaver # mysql & posgresql, can do ssh tunneling
 
     # Dev tools
+    direnv # auto set environnement when entering directories
+    unstable.niv # enable to pin nix packages ( used for projects )
     docker_compose
     gitAndTools.gitflow
     gitAndTools.diff-so-fancy
@@ -82,10 +84,5 @@ in
     radare2 # reverse engineering framework
     universal-ctags
 
-    # Trying to make snx work (sitepoint network extender)
-    #    archlinux : lib32-pam  lib32-libx11  lib32-libstdc++5
-    #    ubuntu : libx11-6:i386 libstdc++5:i386 libpam0g:i386
-    #    fedora:  libX11.i686  compat-libstdc++-33.i686 pam.i686
-    # xorg.libX11 gcc5 libstdcxx5 linux-pam # => do not work, and not good for displays
   ];
 }
