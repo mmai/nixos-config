@@ -15,6 +15,4 @@
     extraGroups = [ "wheel" "networkmanager" "docker" "virtualbox" ];
     shell = pkgs.zsh;
   };
-
-  system.stateVersion = "18.09";
 }
