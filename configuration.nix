@@ -4,6 +4,7 @@
     ./cfg/base-desktop.nix 
     ./cfg/development.nix 
     ./cfg/leisure.nix 
+    ./cfg/atixnet.nix 
     ./cfg/sync-notes.nix 
   ];
 

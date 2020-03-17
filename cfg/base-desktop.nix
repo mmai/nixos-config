@@ -10,8 +10,8 @@ in
   services.keybase.enable = true;
 
   services.xserver.enable = true;
-  # services.xserver.displayManager.gdm.enable = true; # -> prettier, but freeze after login on Lenovo 470s
-  services.xserver.displayManager.lightdm.enable = true;
+  services.xserver.displayManager.gdm.enable = true;
+  # services.xserver.displayManager.lightdm.enable = true; # to use instead of gdm if computer freeze after login (ie on Lenovo 470s)
   services.xserver.desktopManager.gnome3 = {
     enable = true;
     extraGSettingsOverrides = ''
