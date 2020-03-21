@@ -1,11 +1,11 @@
 { config, lib, pkgs, stdenv, ... }:
 {
-  imports = [ 
-    ./cfg/base-desktop.nix 
-    ./cfg/development.nix 
-    ./cfg/leisure.nix 
-    ./cfg/atixnet.nix 
-    ./cfg/sync-notes.nix 
+  imports = [
+    ./cfg/base-desktop.nix
+    ./cfg/development.nix
+    ./cfg/leisure.nix
+    ./cfg/atixnet.nix
+    ./cfg/sync-notes.nix
   ];
 
   networking.hostName = "henri-desktop";
@@ -15,4 +15,6 @@
     extraGroups = [ "wheel" "networkmanager" "docker" "virtualbox" ];
     shell = pkgs.zsh;
   };
+
+  nix.trustedUsers = [ "henri" "root" ];
 }

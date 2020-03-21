@@ -1,8 +1,9 @@
 { config, lib, pkgs, ... }:
 let
   unstable = import <unstable> { config.allowUnfree = true; };# XXX the "unstable" channel needs to be available : sudo nix-channel --add https://nixos.org/channels/nixos-unstable unstable && sudo nix-channel --update
-in 
+in
 {
+  imports = [ /etc/nixos/cachix.nix ]; # use `cachix use mmai` to generate cachix files
   nixpkgs.config.allowUnfree = true ;
 
   # Locale settings
@@ -43,6 +44,7 @@ in
     ansifilter # can remove ANSI terminal escape codes (colors, formatting..)
     bat # better cat
     broot # better tree
+    cachix # custom nix packages binaries cache management
     curl
     entr # run arbitrary commands when files change (example: ls *.hs | entr make build)
     exa # replacement for ls with sensible defaults
