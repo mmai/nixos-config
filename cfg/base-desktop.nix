@@ -70,7 +70,7 @@ in
     xorg.xkill
     # xdotool # manipulate windows ; used to remove gnome-terminal header bar
 
-    alacritty # faster terminal with sane default (and zoomable)
+    unstable.alacritty # faster terminal with sane default (and zoomable) ; needs > 4.0
 
     # appimage-run # enable execution of .AppImage packages
     unstable.appimage-run
