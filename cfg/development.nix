@@ -19,6 +19,9 @@ in
   virtualisation.virtualbox.guest.enable = true;
   virtualisation.virtualbox.host.enableExtensionPack = true;
 
+  # enable /etc/hosts editing (/!\ config is reset at each config rebuild)
+  environment.etc.hosts.mode = "0644";
+
   environment.systemPackages = with pkgs; [
     # Node
     nodejs

@@ -60,6 +60,7 @@ in
     unstable.neovim # need neovim > 0.4
     nixops
     mailutils
+    psmisc # contains utilities like fuser (display process IDs currently using files or sockets), etc.
     ripgrep # Faster than grep, ag, ..
     super-user-spark # dotfiles manager
     tldr # Simplified and community-driven man pages

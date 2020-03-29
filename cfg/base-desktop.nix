@@ -1,6 +1,7 @@
 { config, lib, pkgs, ... }:
 let
   unstable = import <unstable> {}; # XXX the "unstable" channel needs to be available : sudo nix-channel --add https://nixos.org/channels/nixos-unstable unstable && sudo nix-channel update
+  mailspring = (import ./mailspring.nix) { inherit pkgs; }; # not yet in nixos (pull request: https://github.com/NixOS/nixpkgs/pull/69027)
 in
 {
   imports = [ 
@@ -62,6 +63,7 @@ in
   environment.gnome3.excludePackages = with pkgs; [ gnome3.geary ];
   environment.systemPackages = with pkgs; [
     gnome3.evolution # since 19.09 default mail client in gnome is geary 
+    mailspring # mail client (custom package) (evolution trop buggé)
     gnome3.gnome-tweaks
     gnomeExtensions.dash-to-panel
     # gnomeExtensions.gtk-title-bar # not yet packaged in nixos
