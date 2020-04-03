@@ -41,38 +41,58 @@ in
     promptInit = ""; # disable default (use zplug system with pure prompt instead)
   };
   environment.systemPackages = with pkgs; [
-    ansifilter # can remove ANSI terminal escape codes (colors, formatting..)
+    # ---- nix related ----------------
+    cachix # custom nix packages binaries cache management
+    nixops
+
+    # ------------ Classic tools alternatives
     bat # better cat
     broot # better tree
-    cachix # custom nix packages binaries cache management
-    curl
-    entr # run arbitrary commands when files change (example: ls *.hs | entr make build)
     exa # replacement for ls with sensible defaults
-    expect # A tool for automating interactive applications
     fd # better find (and used by fzf in vim)
+    ripgrep # Faster than grep, ag, ..
+
+    # ------------ Common tools
+    curl
+    wget
+    zip unzip
+
+    # --------- Mail
+    neomutt # mail client
+    mailutils
+
+    # ----------- Security
+    gnupg # Gnu privacy guard: used by pass/qpass, crypt emails
+    pass # password manager (needs gpg)
+
+    # ---------- applications
+    tmux tmuxp # terminal multiplexer & its session manager
+    unstable.neovim # need neovim > 0.4
+    super-user-spark # dotfiles manager
+    weechat # irc,.. client
+    vifm # file navigator
+
+    # -------- Cli tools
+    ansifilter # can remove ANSI terminal escape codes (colors, formatting..)
+    fzf # selection generator
+    # zola # static website generator
+
+    # ----------- diagnostics
     file # Show file information. Usefull to debug 'zsh: no such file or directory' errors on binaries
-    fzf
-    gitFull tig
-    gnumake
     htop
     iotop
     ncdu
-    unstable.neovim # need neovim > 0.4
-    nixops
-    mailutils
     psmisc # contains utilities like fuser (display process IDs currently using files or sockets), etc.
-    ripgrep # Faster than grep, ag, ..
-    super-user-spark # dotfiles manager
+
+    # -------------- Automation
+    entr # run arbitrary commands when files change (example: ls *.hs | entr make build)
+    expect # A tool for automating interactive applications
+
+    # ------------- coding related
+    gitFull tig
+    gnumake
     tldr # Simplified and community-driven man pages
-    tmux tmuxp
-    unzip
-    vifm
-    weechat # irc,.. client
-    wget
-    zip
-    # zola # static website generator
-    # optional packages that could be deported to another file
-    # oraclejre8
+
   ];
 
   # nixpkgs.config = {

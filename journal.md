@@ -25,4 +25,4 @@ nixos-rebuild switch
 
 ## Lenovo thinkpad 470s
 
-Add missing resolutions with _addModeline.sh_ script
+Add missing resolutions with _scripts/addModeline.sh_ script

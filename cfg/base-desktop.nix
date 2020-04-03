@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 let
   unstable = import <unstable> {}; # XXX the "unstable" channel needs to be available : sudo nix-channel --add https://nixos.org/channels/nixos-unstable unstable && sudo nix-channel update
-  mailspring = (import ./mailspring.nix) { inherit pkgs; }; # not yet in nixos (pull request: https://github.com/NixOS/nixpkgs/pull/69027)
+  mailspring = (import ./packages/mailspring.nix) { inherit pkgs; }; # not yet in nixos (pull request: https://github.com/NixOS/nixpkgs/pull/69027)
 in
 {
   imports = [ 
@@ -93,6 +93,7 @@ in
     gitg
     gparted
     keepassx2 # or keepassxc ?
+    qtpass # pass gui
     kbfs keybase-gui
     gnome3.meld
     gnome3.seahorse # to get rid of the "gnome default keyring locked" prompt at startup
