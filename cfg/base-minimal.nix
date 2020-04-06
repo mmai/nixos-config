@@ -3,7 +3,10 @@ let
   unstable = import <unstable> { config.allowUnfree = true; };# XXX the "unstable" channel needs to be available : sudo nix-channel --add https://nixos.org/channels/nixos-unstable unstable && sudo nix-channel --update
 in
 {
-  imports = [ /etc/nixos/cachix.nix ]; # use `cachix use mmai` to generate cachix files
+  imports = [ 
+    /etc/nixos/cachix.nix # use `cachix use mmai` to generate cachix files
+    ./cli-mails.nix # mails on terminal : mutt + mu + mbsync...
+  ];
   nixpkgs.config.allowUnfree = true ;
 
   # Locale settings
@@ -43,7 +46,7 @@ in
   environment.systemPackages = with pkgs; [
     # ---- nix related ----------------
     cachix # custom nix packages binaries cache management
-    nixops
+    nixops # nixos servers deployment
 
     # ------------ Classic tools alternatives
     bat # better cat
@@ -56,10 +59,7 @@ in
     curl
     wget
     zip unzip
-
-    # --------- Mail
-    neomutt # mail client
-    mailutils
+    mailutils # to send email from command line : `echo 'bonjour' | mail -s "my subject" "contact@something.com"`
 
     # ----------- Security
     gnupg # Gnu privacy guard: used by pass/qpass, crypt emails
@@ -68,14 +68,15 @@ in
     # ---------- applications
     tmux tmuxp # terminal multiplexer & its session manager
     unstable.neovim # need neovim > 0.4
+    xclip # manage clipboard (needed for neovim to not freeze using xsel : https://github.com/neovim/neovim/issues/9402)
     super-user-spark # dotfiles manager
     weechat # irc,.. client
     vifm # file navigator
+    # zola # static website generator
 
     # -------- Cli tools
     ansifilter # can remove ANSI terminal escape codes (colors, formatting..)
     fzf # selection generator
-    # zola # static website generator
 
     # ----------- diagnostics
     file # Show file information. Usefull to debug 'zsh: no such file or directory' errors on binaries

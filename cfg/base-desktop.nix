@@ -8,6 +8,10 @@ in
     ./base-minimal.nix 
   ];
 
+  boot.kernel.sysctl = {
+    "kernel.sysrq" = 1; # Enable Alt+Sysrq+r key (why is it restricted by default ?) to recover from freezed X sessions
+  };
+
   services.keybase.enable = true;
 
   services.xserver.enable = true;
@@ -62,10 +66,11 @@ in
 
   environment.gnome3.excludePackages = with pkgs; [ gnome3.geary ];
   environment.systemPackages = with pkgs; [
-    gnome3.evolution # since 19.09 default mail client in gnome is geary 
-    mailspring # mail client (custom package) (evolution trop buggé)
+    gnome3.evolution # since 19.09 default mail client in gnome is geary
+    # mailspring # mail client (custom package) (evolution trop buggé) # trop lourd
     gnome3.gnome-tweaks
     gnomeExtensions.dash-to-panel
+    gnomeExtensions.timepp # pomodoro, timetracker, etc.
     # gnomeExtensions.gtk-title-bar # not yet packaged in nixos
     gnomeExtensions.system-monitor
     nerdfonts
