@@ -28,15 +28,6 @@ in
   # A weekly health check for the SSD drive (executes `fstrim -a -v`)
   services.fstrim.enable = true;
 
-  networking.defaultMailServer = {
-    directDelivery = true;
-    useSTARTTLS = true;
-    hostName = "smtp.mailtrap.io:2525";
-    authUser = "7d0baad1433da6";
-    authPass = "c59e56e197f524";
-    # authPassFile = "/home/henri/ssmtp-authpass-mailtrap";
-  };
-
   networking.networkmanager.enable = true;
 
   programs.zsh = {
@@ -57,6 +48,7 @@ in
 
     # ------------ Common tools
     curl
+    ghostscript # manipulate pdfs
     wget
     zip unzip
     mailutils # to send email from command line : `echo 'bonjour' | mail -s "my subject" "contact@something.com"`
