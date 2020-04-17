@@ -15,6 +15,7 @@
   # Added by me
   services.xserver.videoDrivers = [ "nvidia" ];
   environment.systemPackages = with pkgs; [ microcodeIntel ];
+  hardware.cpu.intel.updateMicrocode = true;
 
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/a732d634-4874-401b-8533-0dfa92791be4";

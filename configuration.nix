@@ -15,6 +15,7 @@
     extraGroups = [ "wheel" "networkmanager" "docker" "virtualbox" ];
     shell = pkgs.zsh;
   };
+  # See these files for services run as 'henri' : cfg/cli-mails.nix
 
   nix.trustedUsers = [ "henri" "root" ];
 }

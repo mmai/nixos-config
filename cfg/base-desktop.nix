@@ -68,6 +68,7 @@ in
   environment.gnome3.excludePackages = with pkgs; [ gnome3.geary ];
   environment.systemPackages = with pkgs; [
     gnome3.evolution # since 19.09 default mail client in gnome is geary
+    # mailnag # don't work ? new mails on Maildir folders notification (for use with mbsync+mutt)
     # mailspring # mail client (custom package) (evolution trop buggé) # trop lourd
     gnome3.gnome-tweaks
     gnomeExtensions.dash-to-panel
