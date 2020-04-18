@@ -22,6 +22,7 @@ in
   environment.systemPackages = with pkgs; [
     # mu # utilties for indexing and searching Maildirs
     notmuch # utilties for indexing and searching Maildirs
+    notmuch-addrlookup # search email adresses (used for completion of emails in mutt)
     unstable.neomutt # mail client, needs version > 20191025 to get named-mailboxes command
     isync # (mbsync) IMAP and MailDir mailbox synchronizer
     msmtp
