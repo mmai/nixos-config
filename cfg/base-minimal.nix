@@ -13,8 +13,9 @@ in
   time.timeZone = "Europe/Paris";
   services.xserver.layout = "fr";
   services.openssh.enable = true;
+
+  console.keyMap = "fr";
   i18n = {
-    consoleKeyMap = "fr";
     defaultLocale = "fr_FR.UTF-8";
     supportedLocales = [ "fr_FR.UTF-8/UTF-8" "en_US.UTF-8/UTF-8" ];
   };
@@ -29,6 +30,24 @@ in
   services.fstrim.enable = true;
 
   networking.networkmanager.enable = true;
+
+  environment.etc =
+  let msmtprc = pkgs.writeText "msmtprc"
+    ''
+    account mailtrap
+    from henri@bourcereau.fr
+    host smtp.mailtrap.io
+    port 2525
+    user 7d0baad1433da6
+    password c59e56e197f524
+    tls on
+    auth plain
+
+    account default : mailtrap
+    '';
+  in {
+    "msmtprc".source = msmtprc;
+  };
 
   programs.zsh = {
     enable = true;
@@ -51,6 +70,7 @@ in
     ghostscript # manipulate pdfs
     wget
     zip unzip
+    msmtp
     mailutils # to send email from command line : `echo 'bonjour' | mail -s "my subject" "contact@something.com"`
 
     # ----------- Security
@@ -63,7 +83,8 @@ in
     xclip # manage clipboard (needed for neovim to not freeze using xsel : https://github.com/neovim/neovim/issues/9402)
     super-user-spark # dotfiles manager
     weechat # irc,.. client
-    vifm # file navigator
+    lf # file navigator
+    unstable.pistol # better file previewer (used by lf and fzf)
     # zola # static website generator
 
     # -------- Cli tools

@@ -54,14 +54,14 @@ in
     #   serviceConfig.Type = "oneshot";
     #   serviceConfig.User = "henri";
     # };
-    mu = {
-      description = "Updating mail database";
-      path = [ pkgs.mu ];
-      script = "mu index --quiet -m ~/.mail";
-      startAt = "daily";
-      wantedBy = [ "timers.target" ];
-      serviceConfig.User = "henri";
-    };
+    # mu = {
+    #   description = "Updating mail database";
+    #   path = [ pkgs.mu ];
+    #   script = "mu index --quiet -m ~/.mail";
+    #   startAt = "daily";
+    #   wantedBy = [ "timers.target" ];
+    #   serviceConfig.User = "henri";
+    # };
   };
 
     # msmtp-runqueue = {

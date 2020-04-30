@@ -72,7 +72,7 @@ in
     # mailspring # mail client (custom package) (evolution trop buggé) # trop lourd
     gnome3.gnome-tweaks
     gnomeExtensions.dash-to-panel
-    gnomeExtensions.timepp # pomodoro, timetracker, etc.
+    # gnomeExtensions.timepp # pomodoro, timetracker, etc. => marked broken in nixos 20.03
     # gnomeExtensions.gtk-title-bar # not yet packaged in nixos
     gnomeExtensions.system-monitor
     nerdfonts
