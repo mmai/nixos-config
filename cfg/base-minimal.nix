@@ -1,6 +1,7 @@
 { config, lib, pkgs, ... }:
 let
   unstable = import <unstable> { config.allowUnfree = true; };# XXX the "unstable" channel needs to be available : sudo nix-channel --add https://nixos.org/channels/nixos-unstable unstable && sudo nix-channel --update
+  # bombadillo = (import ./packages/bombadillo.nix) { inherit pkgs; };  # gopher, gemini client
 in
 {
   imports = [ 
@@ -49,6 +50,7 @@ in
     "msmtprc".source = msmtprc;
   };
 
+  programs.gnupg.agent.enable = true; # needed for gpg / pass to work
   programs.zsh = {
     enable = true;
     promptInit = ""; # disable default (use zplug system with pure prompt instead)
@@ -72,6 +74,10 @@ in
     zip unzip
     msmtp
     mailutils # to send email from command line : `echo 'bonjour' | mail -s "my subject" "contact@something.com"`
+
+    # ------------ Network access
+    # nfs-utils  # nfs shares
+    # smbclient cifs-utils # samba shares
 
     # ----------- Security
     gnupg # Gnu privacy guard: used by pass/qpass, crypt emails
