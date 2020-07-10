@@ -12,7 +12,7 @@ in
     "kernel.sysrq" = 1; # Enable Alt+Sysrq+r key (why is it restricted by default ?) to recover from freezed X sessions
   };
 
-  services.keybase.enable = true;
+  # services.keybase.enable = true; # not used anymore
 
   services.xserver.enable = true;
   services.xserver.displayManager.gdm.enable = true;
@@ -95,19 +95,22 @@ in
     #   pdf viewer : evince (alternatives : zathura, okular)
 
     gimp
+    gcolor2 # simple color selector
     inkscape
 
     gitg
     gparted
     keepassx2 # or keepassxc ?
     qtpass # pass gui
-    kbfs keybase-gui
     gnome3.meld
     gnome3.seahorse # to get rid of the "gnome default keyring locked" prompt at startup
     filezilla
     unetbootin # live linux usb creator
 
     # missing : rocketchat, teamviewer, gpick
+
+    # not used anymore
+    #    kbfs keybase-gui
   ];
 
   # Use current path in new terminals

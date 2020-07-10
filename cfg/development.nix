@@ -49,6 +49,7 @@ in
     # rustc cargo
     rustup # then `rustup toolchain install stable; rustup default stable `
     binutils gcc gnumake openssl pkgconfig # rustup dependencies (cf. https://github.com/NixOS/nixpkgs/blob/master/doc/languages-frameworks/rust.section.md)
+    unstable.rust-analyzer-unwrapped # used by coc-rust in vim
 
     # Java / Android dev
     unstable.android-studio # launch with `unset GDK_PIXBUF_MODULE_FILE ; android-studio` (cf. https://github.com/NixOS/nixpkgs/issues/52302#issuecomment-477818365) -> done in .zsh/aliases.sh
@@ -76,6 +77,7 @@ in
     dbeaver # mysql & posgresql, can do ssh tunneling
 
     # Dev tools
+    gettext # i18n
     direnv # auto set environnement when entering directories
     unstable.niv # enable to pin nix packages ( used for projects )
     docker_compose
