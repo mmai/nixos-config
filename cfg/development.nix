@@ -10,6 +10,7 @@ let
     };
   }; # XXX the "unstable" channel needs to be available : sudo nix-channel --add https://nixos.org/channels/nixos-unstable unstable && sudo nix-channel update
   php-env-cli = (import ./packages/php/php-env-cli.nix) {inherit pkgs; };
+  # lando = (import ./packages/lando.nix) { inherit lib; inherit pkgs; };#XXX nix expression not valid
   # umlDesigner = (import ./packages/umlDesigner.nix) { inherit pkgs; };
   # umlDesigner = with pkgs; (import ./packages/umlDesigner.nix) { inherit stdenv; inherit fetchurl; inherit unzip; inherit patchelf; };
 in
@@ -28,6 +29,7 @@ in
     yarn
 
     # PHP
+    # lando
     php-env-cli
     php72Packages.composer
     php72Packages.psysh # 

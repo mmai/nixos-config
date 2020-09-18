@@ -101,8 +101,10 @@ in
     file # Show file information. Usefull to debug 'zsh: no such file or directory' errors on binaries
     htop
     iotop
-    ncdu
+    mtr # combine ping and traceroute
+    ncdu # show disk usage
     psmisc # contains utilities like fuser (display process IDs currently using files or sockets), etc.
+    tcpdump # to monitor network calls (in and out)
 
     # -------------- Automation
     entr # run arbitrary commands when files change (example: ls *.hs | entr make build)

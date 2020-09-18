@@ -107,6 +107,7 @@ in
     filezilla
     unetbootin # live linux usb creator
 
+    wireshark
     # missing : rocketchat, teamviewer, gpick
 
     # not used anymore
