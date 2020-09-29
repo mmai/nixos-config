@@ -59,6 +59,7 @@ in
     # ---- nix related ----------------
     cachix # custom nix packages binaries cache management
     nixops # nixos servers deployment
+    nix-index # search available packages containing files (or paths) : nix-index ; nix-locate -w libstdc++.so.6
 
     # ------------ Classic tools alternatives
     bat # better cat
