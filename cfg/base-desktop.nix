@@ -94,6 +94,7 @@ in
     # Included in gnome3
     #   pdf viewer : evince (alternatives : zathura, okular)
 
+    gnome3.cheese # take photos & videos with webcam (launch with sudo ?)
     gimp
     gcolor2 # simple color selector
     inkscape

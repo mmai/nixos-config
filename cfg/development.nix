@@ -55,8 +55,8 @@ in
 
     # Java / Android dev
     unstable.android-studio # launch with `unset GDK_PIXBUF_MODULE_FILE ; android-studio` (cf. https://github.com/NixOS/nixpkgs/issues/52302#issuecomment-477818365) -> done in .zsh/aliases.sh
-    jetbrains.jdk
-    # unstable.oraclejdk
+    # jetbrains.jdk
+    unstable.oraclejdk
 
     # dev libs
     automake autoconf zlib

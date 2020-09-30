@@ -99,6 +99,7 @@ in
     fzf # selection generator
 
     # ----------- diagnostics
+    lsof # show open ports, etc.
     file # Show file information. Usefull to debug 'zsh: no such file or directory' errors on binaries
     htop
     iotop

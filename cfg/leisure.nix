@@ -19,11 +19,15 @@ in
 
   environment.systemPackages = with pkgs; [
     anki # 2.0.52
+    stellarium # planetarium (alternative: celestia which allows to move accross the universe)
 
     calibre
     yacreader # comics viewer
+
     steam
     unstable.leela-zero # go game engine (cmd = leelaz)=> additional steps : curl -O https://zero.sjeng.org/best-network && mv best-network ~/.local/share/leela-zero/
+
+    obs-studio # video recording and live streaming
     google-musicmanager # upload on Google Music
 
     android-file-transfer # copy files on tablet
