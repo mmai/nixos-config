@@ -114,6 +114,7 @@ in
 
     # ------------- coding related
     gitFull tig
+    gitAndTools.delta # better git diff
     gnumake
     tldr # Simplified and community-driven man pages
 
