@@ -1,14 +1,18 @@
 { config, lib, pkgs, ... }:
-let
-  unstable = import <unstable> { config.allowUnfree = true; };# XXX the "unstable" channel needs to be available : sudo nix-channel --add https://nixos.org/channels/nixos-unstable unstable && sudo nix-channel --update
-  # bombadillo = (import ./packages/bombadillo.nix) { inherit pkgs; };  # gopher, gemini client
-in
+
 {
   imports = [ 
-    /etc/nixos/cachix.nix # use `cachix use mmai` to generate cachix files
     ./cli-mails.nix # mails on terminal : mutt + mu + mbsync...
   ];
-  nixpkgs.config.allowUnfree = true ;
+
+  # Experimental features : nixFlakes & nix-command
+  nix = {
+    # package = pkgs.nixFlakes;
+    package = pkgs.nixUnstable;
+    extraOptions = lib.optionalString (config.nix.package == pkgs.nixFlakes)
+    "experimental-features = nix-command flakes";
+  };
+
 
   # Locale settings
   time.timeZone = "Europe/Paris";

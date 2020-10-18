@@ -8,6 +8,9 @@ nix-env -p /nix/var/nix/profiles/system --delete-generations +2
 nixos-rebuild switch
 ```
 
+## gnome labels / texts not showing
+
+`rm -rf ~/.cache/fontconfig`
 
 ## Unlock the 'default' keyring at startup
 

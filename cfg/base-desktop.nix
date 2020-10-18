@@ -1,8 +1,5 @@
 { config, lib, pkgs, ... }:
-let
-  unstable = import <unstable> {}; # XXX the "unstable" channel needs to be available : sudo nix-channel --add https://nixos.org/channels/nixos-unstable unstable && sudo nix-channel update
-  mailspring = (import ./packages/mailspring.nix) { inherit pkgs; }; # not yet in nixos (pull request: https://github.com/NixOS/nixpkgs/pull/69027)
-in
+
 {
   imports = [ 
     ./base-minimal.nix 

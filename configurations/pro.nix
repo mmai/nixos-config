@@ -1,10 +1,10 @@
 { config, lib, pkgs, ... }:
 {
   imports = [
-    ./cfg/base-desktop.nix
-    ./cfg/development.nix
-    ./cfg/atixnet.nix
-    ./cfg/sync-notes.nix
+    ../cfg/base-desktop.nix
+    ../cfg/development.nix
+    ../cfg/atixnet.nix
+    ../cfg/sync-notes.nix
   ];
 
   networking.hostName = "henri-desktop";

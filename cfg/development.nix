@@ -1,14 +1,14 @@
 { config, lib, pkgs, ... }:
 let
-  unstable = import <unstable> {
-    config = {
-      allowUnfree = true; 
-      oraclejdk.accept_license = true;
-      packageOverrides = pkgs: {
-        jre = pkgs.oraclejre8;
-      };
-    };
-  }; # XXX the "unstable" channel needs to be available : sudo nix-channel --add https://nixos.org/channels/nixos-unstable unstable && sudo nix-channel update
+#   unstable = import <unstable> {
+#     config = {
+#       allowUnfree = true; 
+#       oraclejdk.accept_license = true;
+#       packageOverrides = pkgs: {
+#         jre = pkgs.oraclejre8;
+#       };
+#     };
+#   }; # XXX the "unstable" channel needs to be available : sudo nix-channel --add https://nixos.org/channels/nixos-unstable unstable && sudo nix-channel update
   php-env-cli = (import ./packages/php/php-env-cli.nix) {inherit pkgs; };
   # lando = (import ./packages/lando.nix) { inherit lib; inherit pkgs; };#XXX nix expression not valid
   # umlDesigner = (import ./packages/umlDesigner.nix) { inherit pkgs; };
@@ -16,9 +16,9 @@ let
 in
 {
   virtualisation.docker.enable = true;
-  virtualisation.virtualbox.host.enable = true; # XXX error on last 18.09 release => error: The option value `warnings` in `/nix/var/nix/profiles/per-user/root/channels/nixos/nixos/modules/virtualisation/virtualbox-host.nix` is not a list
-  virtualisation.virtualbox.guest.enable = true;
-  virtualisation.virtualbox.host.enableExtensionPack = true;
+  # virtualisation.virtualbox.host.enable = true;
+  # virtualisation.virtualbox.guest.enable = true;
+  # virtualisation.virtualbox.host.enableExtensionPack = true;
 
   # enable /etc/hosts editing (/!\ config is reset at each config rebuild)
   environment.etc.hosts.mode = "0644";

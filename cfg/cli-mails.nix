@@ -14,9 +14,6 @@
 #   Manage calendars                          -> khal
 # and various automation provided by systemd
 { config, lib, pkgs, ... }:
-let
-  unstable = import <unstable> {};
-in
 {
   # -------------  packages ---------------
   environment.systemPackages = with pkgs; [
