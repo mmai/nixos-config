@@ -4,7 +4,7 @@
 
 ### Cachix
 
-If you don't want to use [cachix](https://cachix.org/), you can just omment the `imports = [ /etc/nixos/cachix.nix ];` line in `cfg/base-minimal.nix` file.
+If you don't want to use [cachix](https://cachix.org/), you can just comment the `imports = [ /etc/nixos/cachix.nix ];` line in `cfg/base-minimal.nix` file.
 
 Otherwise you must create an account on cachix, install and initiate cachix (see
 getting started on https://app.cachix.org/)
@@ -17,11 +17,9 @@ cachix use yourCachixName
 ### Main install
 
 ```
-	sudo ln -s $(pwd)/configuration.nix /etc/nixos/myconfig.nix
+sudo ln -s $(pwd) /etc/nixos
+sudo nixos-rebuild switch
 ```
-
-Then add _./myconfig.nix_ in _/etc/nixos/configuration.nix_ imports and do a `nixos-rebuild switch`
-
 
 ## Dotfiles
 
