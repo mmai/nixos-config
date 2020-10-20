@@ -16,9 +16,9 @@ let
 in
 {
   virtualisation.docker.enable = true;
-  # virtualisation.virtualbox.host.enable = true;
-  # virtualisation.virtualbox.guest.enable = true;
-  # virtualisation.virtualbox.host.enableExtensionPack = true;
+  virtualisation.virtualbox.host.enable = true;
+  virtualisation.virtualbox.guest.enable = true;
+  virtualisation.virtualbox.host.enableExtensionPack = true;
 
   # enable /etc/hosts editing (/!\ config is reset at each config rebuild)
   environment.etc.hosts.mode = "0644";
