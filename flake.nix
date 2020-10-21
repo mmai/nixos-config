@@ -59,10 +59,11 @@
         modules = [ 
           nixpkgs.nixosModules.notDetected 
           ( { config, pkgs, ... }:
-          { imports = [ ./machines/xxxx.nix # Include the results of the hardware scan.
+          { imports = [ ./machines/atixnet-desktop.nix
                         ./configurations/pro.nix
                         ./configurations/common.nix
                       ];
+            networking.hostName = "henri-atixnet";
             nixpkgs.overlays = [ overlay-unstable ];
             nixpkgs.config.allowUnfree = true ;
             # Let 'nixos-version --json' know about the Git revision of this flake.
