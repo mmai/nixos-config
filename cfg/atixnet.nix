@@ -6,7 +6,8 @@
 
     # Microsoft file sharing service
     # https://github.com/abraunegg/onedrive/blob/master/docs/USAGE.md
-    unstable.onedrive
+    # unstable.onedrive
+    mydist.onedrive
   ];
 
 }

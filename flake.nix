@@ -1,13 +1,20 @@
 {
   inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-20.03";
   inputs.nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+  inputs.mydist.url = "github:mmai/nixpkgs/mydist"; # my fork of nixpkgs
 
-  outputs = { self, nixpkgs, nixpkgs-unstable }: 
+  outputs = { self, nixpkgs, nixpkgs-unstable, mydist }: 
   let
     system = "x86_64-linux";
     overlay-unstable = final: prev: {
       # unstable = nixpkgs-unstable.legacyPackages.${system};
       unstable = import nixpkgs-unstable {
+        system = system;
+        config.allowUnfree = true;
+      };
+    };
+    overlay-mydist = final: prev: {
+      mydist = import mydist {
         system = system;
         config.allowUnfree = true;
       };
@@ -26,7 +33,7 @@
                           ./configurations/home.nix
                           ./configurations/common.nix
                         ];
-              nixpkgs.overlays = [ overlay-unstable ];
+              nixpkgs.overlays = [ overlay-unstable overlay-mydist ];
               nixpkgs.config.allowUnfree = true ;
               # Let 'nixos-version --json' know about the Git revision of this flake.
               system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev;
@@ -64,7 +71,7 @@
                         ./configurations/common.nix
                       ];
             networking.hostName = "henri-atixnet";
-            nixpkgs.overlays = [ overlay-unstable ];
+            nixpkgs.overlays = [ overlay-unstable overlay-mydist ];
             nixpkgs.config.allowUnfree = true ;
             # Let 'nixos-version --json' know about the Git revision of this flake.
             system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev;
