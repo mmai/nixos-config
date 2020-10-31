@@ -25,6 +25,7 @@ in
 
   environment.systemPackages = with pkgs; [
     # Node
+    nodePackages.node2nix
     nodejs
     yarn
 
