@@ -90,12 +90,12 @@
 
     # ---------- applications
     tmux tmuxp # terminal multiplexer & its session manager
-    unstable.neovim # need neovim > 0.4
+    neovim
     xclip # manage clipboard (needed for neovim to not freeze using xsel : https://github.com/neovim/neovim/issues/9402)
-    super-user-spark # dotfiles manager
+    # haskellPackages.super-user-spark # dotfiles manager / marked broken in 20.09
     weechat # irc,.. client
     lf # file navigator
-    unstable.pistol # better file previewer (used by lf and fzf)
+    pistol # better file previewer (used by lf and fzf)
     # zola # static website generator
 
     # -------- Cli tools
@@ -118,7 +118,7 @@
 
     # ------------- coding related
     gitFull tig
-    unstable.gitAndTools.delta # better git diff
+    gitAndTools.delta # better git diff
     gnumake
     tldr # Simplified and community-driven man pages
 

@@ -33,6 +33,8 @@
   nixpkgs.config.firefox.enableGnomeExtensions = true;
   services.gnome3.chrome-gnome-shell.enable = true;
 
+  networking.firewall.allowedTCPPorts = [ 8010 ]; # allow streaming to chromecast devices (vlc)
+
   # Enable widevine on chromium: needed by spotify & netflix
   # nixpkgs.config.chromium.enableWideVine = true; # broken on 19.03
 
@@ -76,15 +78,17 @@
     xorg.xkill
     # xdotool # manipulate windows ; used to remove gnome-terminal header bar
 
-    unstable.alacritty # faster terminal with sane default (and zoomable) ; needs > 4.0
+    alacritty # faster terminal with sane default (and zoomable) ; needs > 4.0
 
     # appimage-run # enable execution of .AppImage packages
-    unstable.appimage-run
+    appimage-run
 
-    libsForQt5.vlc # video viewer
+    vlc # video viewer
     libreoffice
     firefox
-    chromium
+    (chromium.override {
+      commandLineArgs = "--load-media-router-component-extension=1"; # this allows to stream to chromecast devices from the browser
+    })
     transmission-gtk # transmission
     hexchat # desktop chat client
 

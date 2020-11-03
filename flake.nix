@@ -1,5 +1,5 @@
 {
-  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-20.03";
+  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-20.09";
   inputs.nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
   inputs.mydist.url = "github:mmai/nixpkgs/mydist"; # my fork of nixpkgs
 
@@ -7,7 +7,6 @@
   let
     system = "x86_64-linux";
     overlay-unstable = final: prev: {
-      # unstable = nixpkgs-unstable.legacyPackages.${system};
       unstable = import nixpkgs-unstable {
         system = system;
         config.allowUnfree = true;

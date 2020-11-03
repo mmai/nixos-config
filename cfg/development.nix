@@ -1,15 +1,6 @@
 { config, lib, pkgs, ... }:
 let
-#   unstable = import <unstable> {
-#     config = {
-#       allowUnfree = true; 
-#       oraclejdk.accept_license = true;
-#       packageOverrides = pkgs: {
-#         jre = pkgs.oraclejre8;
-#       };
-#     };
-#   }; # XXX the "unstable" channel needs to be available : sudo nix-channel --add https://nixos.org/channels/nixos-unstable unstable && sudo nix-channel update
-  php-env-cli = (import ./packages/php/php-env-cli.nix) {inherit pkgs; };
+  # php-env-cli = (import ./packages/php/php-env-cli.nix) {inherit pkgs; };
   # lando = (import ./packages/lando.nix) { inherit lib; inherit pkgs; };#XXX nix expression not valid
   # umlDesigner = (import ./packages/umlDesigner.nix) { inherit pkgs; };
   # umlDesigner = with pkgs; (import ./packages/umlDesigner.nix) { inherit stdenv; inherit fetchurl; inherit unzip; inherit patchelf; };
@@ -31,11 +22,11 @@ in
 
     # PHP
     # lando
-    php-env-cli
-    php72Packages.composer
-    php72Packages.psysh # 
+    # php-env-cli # for msgpack
+    php74Packages.composer
+    php74Packages.psysh # 
     # php72Packages.phpcs  # CodeSniffer (detect)
-    php72Packages.phpcbf # CodeSniffer (beautify)
+    php74Packages.phpcbf # CodeSniffer (beautify)
     # Drupal coding standards installation :
     #   composer global require drupal/coder # installs phpcs as well
     #   composer global require dealerdirect/phpcodesniffer-composer-installer
@@ -43,9 +34,6 @@ in
     # Haskell
     cabal-install
     cabal2nix
-    # haskellPackages.intero # doesn't compile (bad ghc dependency)
-
-    unstable.vlang # v language (experiment)
 
     # Rust
     #   more options on https://github.com/NixOS/nixpkgs/blob/master/doc/languages-frameworks/rust.section.md
@@ -57,7 +45,7 @@ in
     # Java / Android dev
     unstable.android-studio # launch with `unset GDK_PIXBUF_MODULE_FILE ; android-studio` (cf. https://github.com/NixOS/nixpkgs/issues/52302#issuecomment-477818365) -> done in .zsh/aliases.sh
     # jetbrains.jdk
-    unstable.oraclejdk
+    oraclejdk
 
     # dev libs
     automake autoconf zlib
@@ -66,11 +54,6 @@ in
     (python3.withPackages (pypkgs: [ 
       pypkgs.pygments 
     ]))
-
-    # Python & co.
-    # (unstable.python3.withPackages (pypkgs: [ 
-    #   unstable.pythonPackages.pynvim # pynvim in next release 19.03 (needed for deoplete)
-    # ]))
 
     # Databases related
     mariadb # to get the client
@@ -82,7 +65,6 @@ in
     # Dev tools
     gettext # i18n
     direnv # auto set environnement when entering directories
-    unstable.niv # enable to pin nix packages ( used for projects )
     docker_compose
     gitAndTools.gitflow
     gitAndTools.diff-so-fancy
