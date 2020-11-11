@@ -23,7 +23,7 @@
     nixosConfigurations = {
 
       henri-desktop = nixpkgs.lib.nixosSystem {
-        system = system;
+        system = "x86_64-linux";
         modules = [ 
           nixpkgs.nixosModules.notDetected
           ( { config, pkgs, ... }:
