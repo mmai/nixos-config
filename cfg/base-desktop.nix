@@ -2,7 +2,7 @@
 
 {
   imports = [ 
-    ./base-minimal.nix 
+    ./base-terminal.nix 
   ];
 
   boot.kernel.sysctl = {
