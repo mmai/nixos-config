@@ -12,7 +12,7 @@
     leela-zero # go game engine (cmd = leelaz)=> additional steps : curl -O https://zero.sjeng.org/best-network && mv best-network ~/.local/share/leela-zero/
 
     obs-studio # video recording and live streaming
-    google-musicmanager # upload on Google Music
+    unstable.picard # MusicBrainz tagger
 
     android-file-transfer # copy files on tablet
   ];
