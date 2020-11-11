@@ -23,7 +23,8 @@
 
   environment.systemPackages = with pkgs; [
      tmux
-     chromium
+     firefox
+     # chromium
   ];
 
 }
