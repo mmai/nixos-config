@@ -23,7 +23,7 @@ in
     # PHP
     # lando
     # php-env-cli # for msgpack
-    php74Packages.composer
+    php74Packages.composer2
     php74Packages.psysh # 
     # php72Packages.phpcs  # CodeSniffer (detect)
     php74Packages.phpcbf # CodeSniffer (beautify)

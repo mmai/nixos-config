@@ -17,13 +17,14 @@
         config.allowUnfree = true;
       };
     };
+
   in 
 
   {
     nixosConfigurations = {
 
-      henri-desktop = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
+      henri-desktop = let system = "x86_64-linux"; in nixpkgs.lib.nixosSystem {
+        system = system;
         modules = [ 
           nixpkgs.nixosModules.notDetected
           ( { config, pkgs, ... }:
@@ -33,6 +34,7 @@
                         ];
               nixpkgs.overlays = [ (overlay-unstable system) (overlay-mydist system) ];
               nixpkgs.config.allowUnfree = true ;
+
               # Let 'nixos-version --json' know about the Git revision of this flake.
               system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev;
               nix.registry.nixpkgs.flake = nixpkgs;
@@ -41,8 +43,8 @@
         ];
       };
 
-      henri-laptop = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
+      henri-laptop = let system = "x86_64-linux"; in nixpkgs.lib.nixosSystem {
+        system = system;
         modules = [ 
           nixpkgs.nixosModules.notDetected
           ( { config, pkgs, ... }:
@@ -59,8 +61,8 @@
         )];
       };
 
-      henri-netbook = nixpkgs.lib.nixosSystem {
-        system = "i686-linux";
+      henri-netbook = let system = "i686-linux"; in nixpkgs.lib.nixosSystem {
+        system = system;
         modules = [ 
           nixpkgs.nixosModules.notDetected
           ( { config, pkgs, ... }:
@@ -100,8 +102,8 @@
         )];
       };
 
-      henri-atixnet = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
+      henri-atixnet = let system = "i686-linux"; in nixpkgs.lib.nixosSystem {
+        system = system;
         modules = [ 
           nixpkgs.nixosModules.notDetected 
           ( { config, pkgs, ... }:
