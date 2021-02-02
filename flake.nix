@@ -102,7 +102,7 @@
         )];
       };
 
-      henri-atixnet = let system = "i686-linux"; in nixpkgs.lib.nixosSystem {
+      henri-atixnet = let system = "x86_64-linux"; in nixpkgs.lib.nixosSystem {
         system = system;
         modules = [ 
           nixpkgs.nixosModules.notDetected 
