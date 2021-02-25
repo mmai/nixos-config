@@ -110,7 +110,7 @@
     unetbootin # live linux usb creator
 
     wireshark
-    # missing : rocketchat, teamviewer, gpick
+    # missing : teamviewer, gpick
 
     # not used anymore
     #    kbfs keybase-gui

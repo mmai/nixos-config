@@ -61,6 +61,7 @@
     pass # password manager (needs gpg)
 
     # ---------- applications
+    amfora # gemini protocol client
     tmux tmuxp # terminal multiplexer & its session manager
     # haskellPackages.super-user-spark # dotfiles manager / marked broken in 20.09
     weechat # irc,.. client
@@ -87,7 +88,7 @@
     expect # A tool for automating interactive applications
 
     # ------------- coding related
-    tig
+    lazygit tig
     gitAndTools.delta # better git diff
     gnumake
     tldr # Simplified and community-driven man pages

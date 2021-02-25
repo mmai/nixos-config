@@ -69,6 +69,7 @@ in
     gitAndTools.gitflow
     gitAndTools.diff-so-fancy
     jq # command line json parser
+    pup # Streaming HTML processor/selector (aka jq for HTML)
     # umlDesigner # trop usine à gaz
     plantuml # draw UML diagrams from text
     radare2 # reverse engineering framework
@@ -76,4 +77,7 @@ in
     universal-ctags
 
   ];
+
+  # pour atixnet mydev
+  # environment.unixODBCDrivers = with pkgs; [ unixODBCDrivers.msodbcsql17 ];
 }
