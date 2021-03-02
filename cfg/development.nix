@@ -54,6 +54,8 @@ in
     # Python & co.
     (python3.withPackages (pypkgs: [ 
       pypkgs.pygments 
+      pypkgs.pylint 
+      pypkgs.pip 
     ]))
 
     # Databases related
