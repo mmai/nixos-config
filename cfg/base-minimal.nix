@@ -26,17 +26,23 @@
 
   networking.networkmanager.enable = true;
 
+  programs.command-not-found.enable = false; # replaced by the nix-index version
   programs.zsh = {
     enable = true;
     promptInit = ""; # disable default (use zplug system with pure prompt instead)
+    interactiveShellInit = ''
+      source ${pkgs.nix-index}/etc/profile.d/command-not-found.sh
+    '';
   };
   environment.systemPackages = with pkgs; [
     # ---- nix related ----------------
+    nix-index # nix packages database with command-not-found support : nix-locate 
     cachix # custom nix packages binaries cache management
 
     # ------------ Common tools
     curl
     wget
+    unstable.zinit # zsh plugin manager
 
     # ---------- applications
     neovim
@@ -45,6 +51,7 @@
 
     # ------------- coding related
     gitFull
+    subversionClient # svn is used by zinit
 
   ];
 
