@@ -45,6 +45,7 @@
     fonts = with pkgs; [
       victor-mono
       dejavu_fonts
+      meslo-lg
       powerline-fonts
       nerdfonts
       noto-fonts
@@ -54,7 +55,8 @@
     ];
 
     fontconfig.defaultFonts = {
-      monospace = [ "DejaVuSansMono Nerd Font" ];
+      # monospace = [ "DejaVuSansMono Nerd Font" ];
+      monospace = [ "MesloLGS NF" ];
     };
   };
 
