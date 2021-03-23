@@ -56,7 +56,7 @@
 
     fontconfig.defaultFonts = {
       # monospace = [ "DejaVuSansMono Nerd Font" ];
-      monospace = [ "MesloLGS NF" ];
+      monospace = [ "MesloLGS NF" ]; # indiquer 'family: Meslo LG S' dans alacritty.yml
     };
   };
 
