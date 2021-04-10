@@ -1,5 +1,6 @@
 ## Low space on /boot
 
+Execute `sudo ./scripts/freeBootSpace.sh`, which do this:
 - `nix-collect-garbage -d`
 - Remove old entries from /boot/loader/entries
 - Remove old kernels from /boot/EFI/nixos/ (those not listed in the /boot/loader/entries/nixos-generation-xx.conf files)
@@ -18,6 +19,10 @@ nixos-rebuild switch
 
 - open Seahorse (graphical keyring manager)
 - change password for default keyring : enter empty password
+
+## keyboard layouts
+
+Gnome override the default nix config : so make sure to load dotfiles/dconf-henri.ini
 
 ## list installed packages
 

@@ -1,6 +1,7 @@
 { config, lib, pkgs, ... }:
 
 {
+  imports = [ ./keyboard-layouts ]; # import lafayette keyboard layout
 
   # Experimental features : nixFlakes & nix-command
   nix = {
@@ -12,10 +13,13 @@
 
   # Locale settings
   time.timeZone = "Europe/Paris";
-  services.xserver.layout = "fr";
   services.openssh.enable = true;
+  # services.xserver.exportConfiguration = true; # link /etc/X11/ properly, (with xkb subdirectory)
 
-  console.keyMap = "fr";
+  services.xserver.layout = "fr,lafayette,us(intl)"; # lafayette is in the keyboard-layouts import
+  services.xserver.xkbOptions = "compose:menu, grp:shifts_toggle"; # switch keyboard layout with both shift keys pressed 
+  console.useXkbConfig = true; # Console use same keyboard config as xserver
+
   i18n = {
     defaultLocale = "fr_FR.UTF-8";
     supportedLocales = [ "fr_FR.UTF-8/UTF-8" "en_US.UTF-8/UTF-8" ];
