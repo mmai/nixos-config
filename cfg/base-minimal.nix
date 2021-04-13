@@ -1,8 +1,11 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports = [ ./keyboard-layouts ]; # import lafayette keyboard layout
-
+  imports = [
+    ./keyboard-layouts # import lafayette keyboard layout
+  ];
+  # hardware.keyboard.zsa.enable = true; # after 21.05 enable udev rules for wally keyboard firmware flashing tool
+ services.udev.packages = [ pkgs.unstable.zsa-udev-rules ]; # before 21.05 
   # Experimental features : nixFlakes & nix-command
   nix = {
     # package = pkgs.nixFlakes;
@@ -16,7 +19,8 @@
   services.openssh.enable = true;
   # services.xserver.exportConfiguration = true; # link /etc/X11/ properly, (with xkb subdirectory)
 
-  services.xserver.layout = "fr,lafayette,us(intl)"; # lafayette is in the keyboard-layouts import
+  services.xserver.layout = "lafayette"; # lafayette is in the keyboard-layouts import
+  # services.xserver.layout = "lafayette,fr"; # lafayette is in the keyboard-layouts import
   services.xserver.xkbOptions = "compose:menu, grp:shifts_toggle"; # switch keyboard layout with both shift keys pressed 
   console.useXkbConfig = true; # Console use same keyboard config as xserver
 
@@ -38,10 +42,19 @@
       source ${pkgs.nix-index}/etc/profile.d/command-not-found.sh
     '';
   };
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = 
+  # let 
+  #   wally-cli = (import ./packages/wally-cli.nix) { inherit lib; buildGoModule = stdenv.buildGoModule; inherit fetchFromGitHub; inherit pkg-config; inherit libusb1; };
+  # in
+
+  with pkgs; [
     # ---- nix related ----------------
     nix-index # nix packages database with command-not-found support : nix-locate 
     cachix # custom nix packages binaries cache management
+
+    # system related
+    mydist.wally  # ergodox keyboard firmware flashing tool
+    # unstable.wally-cli  # ergodox keyboard firmware flashing tool
 
     # ------------ Common tools
     curl

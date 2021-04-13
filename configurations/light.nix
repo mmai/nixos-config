@@ -8,7 +8,7 @@
 
   users.extraUsers.henri = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" ];
+    extraGroups = [ "wheel" "networkmanager" "plugdev" ];
     shell = pkgs.zsh;
   };
 
