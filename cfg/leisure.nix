@@ -9,7 +9,7 @@
     yacreader # comics viewer
 
     steam
-    unnethack
+    unnethack crawlTiles # some roguelike games
     leela-zero # go game engine (cmd = leelaz)=> additional steps : curl -O https://zero.sjeng.org/best-network && mv best-network ~/.local/share/leela-zero/
 
     obs-studio # video recording and live streaming
