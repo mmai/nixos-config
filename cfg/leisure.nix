@@ -1,4 +1,7 @@
 { config, lib, pkgs, ... }:
+let
+  stremio = (import ./packages/stremio.nix) { inherit pkgs; };
+in
   {
 
   environment.systemPackages = with pkgs; [
@@ -7,6 +10,7 @@
 
     calibre
     yacreader # comics viewer
+    stremio # popcorntime like
 
     steam
     unnethack crawlTiles # some roguelike games

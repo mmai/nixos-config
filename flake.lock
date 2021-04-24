@@ -2,13 +2,18 @@
   "nodes": {
     "mydist": {
       "locked": {
-        "narHash": "sha256-KVuYXmiVj41VcbyxDVO79KE6QOZKF2cniPKGzG3ZggU=",
-        "path": "/home/henri/travaux/nixpkgs",
-        "type": "path"
+        "lastModified": 1618340992,
+        "narHash": "sha256-vMKdish7pU3hYW4jH7CgcQaaUSInP5/szooKdBvOo64=",
+        "owner": "mmai",
+        "repo": "nixpkgs",
+        "rev": "f4aeba026adf7562678da13a6dde4b64424f6f3e",
+        "type": "github"
       },
       "original": {
-        "path": "/home/henri/travaux/nixpkgs",
-        "type": "path"
+        "owner": "mmai",
+        "ref": "mydist",
+        "repo": "nixpkgs",
+        "type": "github"
       }
     },
     "nixpkgs": {
