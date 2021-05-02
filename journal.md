@@ -20,6 +20,10 @@ nixos-rebuild switch
 - open Seahorse (graphical keyring manager)
 - change password for default keyring : enter empty password
 
+## compilation errors during nixos-rebuild
+
+try `sudo nixos-rebuild switch --show-trace -v`
+
 ## keyboard layouts
 
 Gnome override the default nix config : so make sure to load dotfiles/dconf-henri.ini

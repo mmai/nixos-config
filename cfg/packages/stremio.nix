@@ -53,6 +53,6 @@ in qt5.mkDerivation rec {
   installPhase = ''
     make -f release.makefile install PREFIX="$out/"
     mkdir -p "$out/bin"
-    #ln -s "$out/opt/stremio/stremio" "$out/bin/stremio"
+    ln -s "$out/opt/stremio/stremio" "$out/bin/stremio"
   '';
 }

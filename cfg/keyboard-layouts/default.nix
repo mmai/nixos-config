@@ -11,6 +11,12 @@
       symbolsFile = symbols/lafayette42.symbols;
       languages = [ "fr" ];
     };
+
+    lafayette42r = {
+      description = "French (Lafayette42 rhumbs)";
+      symbolsFile = symbols/lafayette42-rhumbs.symbols;
+      languages = [ "fr" ];
+    };
   };
 
 }

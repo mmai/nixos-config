@@ -20,6 +20,11 @@ in
     unstable.picard # MusicBrainz tagger
 
     android-file-transfer # copy files on tablet
+    
+    # system related things I will only use on my personal main computer
+    mydist.wally  # ergodox keyboard firmware flashing tool
+    # unstable.wally-cli  # ergodox keyboard firmware flashing tool
+
   ];
 
   # for steam

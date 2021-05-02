@@ -51,10 +51,6 @@
     nix-index # nix packages database with command-not-found support : nix-locate 
     cachix # custom nix packages binaries cache management
 
-    # system related
-    mydist.wally  # ergodox keyboard firmware flashing tool
-    # unstable.wally-cli  # ergodox keyboard firmware flashing tool
-
     # ------------ Common tools
     curl
     wget
