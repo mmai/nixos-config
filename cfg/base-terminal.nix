@@ -73,6 +73,10 @@
     ansifilter # can remove ANSI terminal escape codes (colors, formatting..)
     fzf # selection generator
 
+    # -------- à essayer
+    hledger # accounting
+    # figlet # creates ascii art
+
     # ----------- diagnostics
     lsof # show open ports, etc.
     file # Show file information. Usefull to debug 'zsh: no such file or directory' errors on binaries

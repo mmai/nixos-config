@@ -8,6 +8,12 @@
     ../cfg/sync-notes.nix
   ];
 
+  # local network
+  networking.extraHosts =
+    ''
+    192.168.1.10 home.rhumbs.fr
+    '';
+
   networking.hostName = "henri-desktop";
 
   users.extraUsers.henri = {

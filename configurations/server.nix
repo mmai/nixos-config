@@ -44,6 +44,12 @@
   };
   users.extraGroups."${wwwGroup}".gid = 33;
 
+  services.ddclient = {
+    enable = true;
+    domains = [ "home.rhumbs.fr" ];
+    configFile = "/etc/ddclient/ddclient.conf"; # contains credentials and other confs
+  };
+
   services.nginx = {
     enable = true;
     user = wwwUser;
