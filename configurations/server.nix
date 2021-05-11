@@ -49,6 +49,15 @@
     domains = [ "home.rhumbs.fr" ];
     configFile = "/etc/ddclient/ddclient.conf"; # contains credentials and other confs
   };
+  # /etc/ddclient/ddclient.conf :
+  #
+  # protocol=dyndns2
+  # use=web, web=checkip.dyndns.com
+  # server=www.ovh.com
+  # login=rhumbs.fr-home
+  # password='xxxxxxxxx'
+  # home.rhumbs.fr
+  # cache=/var/lib/ddclient/ddclient.cache
 
   services.nginx = {
     enable = true;
