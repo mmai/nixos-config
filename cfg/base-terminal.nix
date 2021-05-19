@@ -93,6 +93,7 @@
 
     # ------------- coding related
     lazygit tig
+    gitAndTools.git-annex # sync large files with git
     gitAndTools.delta # better git diff
     gnumake
     tldr # Simplified and community-driven man pages

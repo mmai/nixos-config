@@ -70,7 +70,7 @@
 
     virtualHosts = {
 
-      "home.rhumbs.fr"  = {
+      "misc.rhumbs.fr"  = {
         enableACME = true; #Ask Let's Encrypt to sign a certificate for this vhost
         forceSSL = true;
         root = "/var/www/public/";
