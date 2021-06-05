@@ -14,7 +14,7 @@
   services.xserver.enable = true;
   services.xserver.displayManager.gdm.enable = true;
   # services.xserver.displayManager.lightdm.enable = true; # to use instead of gdm if computer freeze after login (ie on Lenovo 470s)
-  services.xserver.desktopManager.gnome3 = {
+  services.xserver.desktopManager.gnome = {
     enable = true;
     extraGSettingsOverrides = ''
       [org.gnome.shell.app-switcher]
@@ -31,7 +31,7 @@
 
   # Gnome shell extensions with browsers
   nixpkgs.config.firefox.enableGnomeExtensions = true;
-  services.gnome3.chrome-gnome-shell.enable = true;
+  services.gnome.chrome-gnome-shell.enable = true;
 
   networking.firewall.allowedTCPPorts = [ 8010 ]; # allow streaming to chromecast devices (vlc)
 
@@ -66,12 +66,12 @@
     ibus.engines = with pkgs.ibus-engines; [ libpinyin ];
   };
 
-  environment.gnome3.excludePackages = with pkgs; [ gnome3.geary ];
+  environment.gnome.excludePackages = with pkgs; [ gnome3.geary ];
   environment.systemPackages = with pkgs; [
-    gnome3.evolution # since 19.09 default mail client in gnome is geary
+    evolution # since 19.09 default mail client in gnome is geary
     # mailnag # don't work ? new mails on Maildir folders notification (for use with mbsync+mutt)
     # mailspring # mail client (custom package) (evolution trop buggé) # trop lourd
-    gnome3.gnome-tweaks
+    gnome.gnome-tweak-tool
     # gnomeExtensions.dash-to-panel # broken in nixos 20.09, enable it from https://extensions.gnome.org/extension/1160/dash-to-panel/ instead
     # gnomeExtensions.timepp # pomodoro, timetracker, etc. => marked broken in nixos 20.03
     # gnomeExtensions.gtk-title-bar # not yet packaged in nixos
@@ -97,7 +97,7 @@
     # Included in gnome3
     #   pdf viewer : evince (alternatives : zathura, okular)
 
-    gnome3.cheese # take photos & videos with webcam (launch with sudo ?)
+    gnome.cheese # take photos & videos with webcam (launch with sudo ?)
     gimp
     gcolor2 # simple color selector
     inkscape
@@ -106,8 +106,8 @@
     gparted
     keepassx2 # or keepassxc ?
     qtpass # pass gui
-    gnome3.meld
-    gnome3.seahorse # to get rid of the "gnome default keyring locked" prompt at startup
+    gnome.meld
+    gnome.seahorse # to get rid of the "gnome default keyring locked" prompt at startup
     filezilla
     unetbootin # live linux usb creator
 

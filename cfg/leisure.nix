@@ -1,6 +1,6 @@
 { config, lib, pkgs, ... }:
 let
-  stremio = (import ./packages/stremio.nix) { inherit pkgs; };
+  # stremio = (import ./packages/stremio.nix) { inherit pkgs; };
 in
   {
 
@@ -10,19 +10,20 @@ in
 
     calibre
     yacreader # comics viewer
-    stremio # popcorntime like
+    # stremio # popcorntime like
 
     steam
     unnethack crawlTiles # some roguelike games
     leela-zero # go game engine (cmd = leelaz)=> additional steps : curl -O https://zero.sjeng.org/best-network && mv best-network ~/.local/share/leela-zero/
 
     obs-studio # video recording and live streaming
-    unstable.picard # MusicBrainz tagger
+    picard # MusicBrainz tagger
 
     android-file-transfer # copy files on tablet
     
     # system related things I will only use on my personal main computer
     mydist.wally  # ergodox keyboard firmware flashing tool
+    qmk  # ferris keyboard firmware flashing tool
     # unstable.wally-cli  # ergodox keyboard firmware flashing tool
 
   ];

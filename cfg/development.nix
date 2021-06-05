@@ -24,7 +24,7 @@ in
     # lando
     # php-env-cli # for msgpack
     php
-    php74Packages.composer2
+    php74Packages.composer
     php74Packages.psysh # 
     # php72Packages.phpcs  # CodeSniffer (detect)
     php74Packages.phpcbf # CodeSniffer (beautify)
@@ -41,12 +41,12 @@ in
     # rustc cargo
     rustup # then `rustup toolchain install stable; rustup default stable `
     binutils gcc gnumake openssl pkgconfig # rustup dependencies (cf. https://github.com/NixOS/nixpkgs/blob/master/doc/languages-frameworks/rust.section.md)
-    unstable.rust-analyzer-unwrapped # used by coc-rust in vim
+    rust-analyzer-unwrapped # used by coc-rust in vim
 
     # Java / Android dev
-    unstable.android-studio # launch with `unset GDK_PIXBUF_MODULE_FILE ; android-studio` (cf. https://github.com/NixOS/nixpkgs/issues/52302#issuecomment-477818365) -> done in .zsh/aliases.sh
+    android-studio # launch with `unset GDK_PIXBUF_MODULE_FILE ; android-studio` (cf. https://github.com/NixOS/nixpkgs/issues/52302#issuecomment-477818365) -> done in .zsh/aliases.sh
     # jetbrains.jdk
-    oraclejdk
+    # oraclejdk # old insecure ffmpeg lib dependency 
 
     # dev libs
     automake autoconf zlib

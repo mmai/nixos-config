@@ -4,8 +4,8 @@
   imports = [
     ./keyboard-layouts # import lafayette keyboard layout
   ];
-  # hardware.keyboard.zsa.enable = true; # after 21.05 enable udev rules for wally keyboard firmware flashing tool
- services.udev.packages = [ pkgs.unstable.zsa-udev-rules ]; # before 21.05 
+  hardware.keyboard.zsa.enable = true; # after 21.05 enable udev rules for wally keyboard firmware flashing tool
+#  services.udev.packages = [ pkgs.unstable.zsa-udev-rules ]; # before 21.05 
   # Experimental features : nixFlakes & nix-command
   nix = {
     # package = pkgs.nixFlakes;

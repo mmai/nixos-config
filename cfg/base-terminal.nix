@@ -75,6 +75,7 @@
 
     # -------- à essayer
     hledger # accounting
+    dijo # habit tracker
     # figlet # creates ascii art
 
     # ----------- diagnostics

@@ -2,7 +2,7 @@
 {
   environment.systemPackages = with pkgs; [
     # Microsoft teams instant messaging
-    unstable.teams
+    teams
 
     # Microsoft file sharing service
     # https://github.com/abraunegg/onedrive/blob/master/docs/USAGE.md
