@@ -8,8 +8,8 @@ in
 {
   virtualisation.docker.enable = true;
   virtualisation.virtualbox.host.enable = true;
-  virtualisation.virtualbox.guest.enable = true;
   virtualisation.virtualbox.host.enableExtensionPack = true;
+  # virtualisation.virtualbox.guest.enable = true; XXX don't enable this since it prevents the nvidia driver to load
 
   # enable /etc/hosts editing (/!\ config is reset at each config rebuild)
   environment.etc.hosts.mode = "0644";
