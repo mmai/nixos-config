@@ -1,6 +1,6 @@
 ## Low space on /boot
 
-Execute `sudo ./scripts/freeBootSpace.sh`, which do this:
+Execute `sudo sh ./scripts/freeBootSpace.sh`, which do this:
 - `nix-collect-garbage -d`
 - Remove old entries from /boot/loader/entries
 - Remove old kernels from /boot/EFI/nixos/ (those not listed in the /boot/loader/entries/nixos-generation-xx.conf files)
@@ -38,3 +38,7 @@ Gnome override the default nix config : so make sure to load dotfiles/dconf-henr
 ## Lenovo thinkpad 470s
 
 Add missing resolutions with _scripts/addModeline.sh_ script
+
+## NVidia
+
+Virtualbox prevents nvidia driver to load on NixOS 21.05 -> comment lines on cfg/development.nix

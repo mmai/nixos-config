@@ -36,7 +36,7 @@
     # Already in base-minimal : cachix, curl, wget, neovim, xclip, gitFull
 
     # ---- nix related ----------------
-    nixops # nixos servers deployment
+    # nixops # nixos servers deployment => bug install python sur 21.05 ??
     nix-index # search available packages containing files (or paths) : nix-index ; nix-locate -w libstdc++.so.6
 
     # ------------ Classic tools alternatives

@@ -1,7 +1,5 @@
 update:
-	sudo nix flake update --update-input nixpkgs
-	sudo nix flake update --update-input nixpkgs-unstable
-	sudo nix flake update --update-input mydist
+	sudo nix flake update
 rebuild:
 	sudo nixos-rebuild switch
 cache:
