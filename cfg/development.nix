@@ -14,7 +14,15 @@ in
   # enable /etc/hosts editing (/!\ config is reset at each config rebuild)
   environment.etc.hosts.mode = "0644";
 
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = 
+  let
+    php' = pkgs.php.buildEnv {
+      extensions = { enabled, all }: enabled ++ [ all.xsl ]; # xsl needed by symfony
+      extraConfig = ''
+        memory_limit = 1G
+      '';
+    };
+  in with pkgs; [
     # Node
     nodePackages.node2nix
     nodejs
@@ -23,11 +31,10 @@ in
     # PHP
     # lando
     # php-env-cli # for msgpack
-    php
-    php74Packages.composer
-    php74Packages.psysh # 
-    # php72Packages.phpcs  # CodeSniffer (detect)
-    php74Packages.phpcbf # CodeSniffer (beautify)
+    php'
+    php'.packages.composer
+    php'.packages.psysh # 
+    php'.packages.phpcbf # CodeSniffer (beautify)
     # Drupal coding standards installation :
     #   composer global require drupal/coder # installs phpcs as well
     #   composer global require dealerdirect/phpcodesniffer-composer-installer

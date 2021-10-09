@@ -35,10 +35,11 @@ Gnome override the default nix config : so make sure to load dotfiles/dconf-henr
 * In configuration.nix : `nixos-option environment.systemPackages | head -2 | tail -1 | \
     sed -e 's/ /\n/g' | cut -d- -f2- | sort | uniq`
 
+## solved problems
+
+- do not install toybox : its ps command is not compatible with the tmux/vim navigation plugin
+
 ## Lenovo thinkpad 470s
 
 Add missing resolutions with _scripts/addModeline.sh_ script
 
-## NVidia
-
-Virtualbox prevents nvidia driver to load on NixOS 21.05 -> comment lines on cfg/development.nix
