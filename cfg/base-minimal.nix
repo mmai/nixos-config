@@ -62,7 +62,7 @@
     # haskellPackages.super-user-spark # dotfiles manager / marked broken in 20.09
 
     # ------------- coding related
-    gitFull
+    gitFull git-filter-repo # git-filter-repo used to group '~/think' commit history by day
     subversionClient # svn is used by zinit
 
   ];

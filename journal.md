@@ -1,7 +1,6 @@
 ## Low space on /boot
 
 Execute `sudo sh ./scripts/freeBootSpace.sh`, which do this:
-- `nix-collect-garbage -d`
 - Remove old entries from /boot/loader/entries
 - Remove old kernels from /boot/EFI/nixos/ (those not listed in the /boot/loader/entries/nixos-generation-xx.conf files)
 ```

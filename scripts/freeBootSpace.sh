@@ -1,7 +1,7 @@
 #!env sh
 
-echo " > nix-collect-garbage -d"
-nix-collect-garbage -d
+# echo " > nix-collect-garbage -d"
+# nix-collect-garbage -d
 
 echo " > Keep only 2 lasts entries from /boot/loader/entries"
 cd /boot/loader/entries && ls | head -n -2 | xargs rm --
