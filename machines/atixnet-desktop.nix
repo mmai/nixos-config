@@ -9,7 +9,7 @@
   boot.initrd.kernelModules = [ ];
   boot.extraModulePackages = [ ];
 
-  services.xserver.videoDrivers = [ "nvidia" ];
+  # services.xserver.videoDrivers = [ "nvidia" ];
 
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/63e12e15-6062-47b5-9f8b-672a3bfe1572";

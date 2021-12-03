@@ -34,6 +34,14 @@ Gnome override the default nix config : so make sure to load dotfiles/dconf-henr
 * In configuration.nix : `nixos-option environment.systemPackages | head -2 | tail -1 | \
     sed -e 's/ /\n/g' | cut -d- -f2- | sort | uniq`
 
+## services logs
+
+```
+su 
+journalctl vacuum--time 2d # if too many logs kept
+journalctl
+```
+
 ## solved problems
 
 - do not install toybox : its ps command is not compatible with the tmux/vim navigation plugin
@@ -41,4 +49,30 @@ Gnome override the default nix config : so make sure to load dotfiles/dconf-henr
 ## Lenovo thinkpad 470s
 
 Add missing resolutions with _scripts/addModeline.sh_ script
+
+## NVidia
+
+Virtualbox prevents nvidia driver to load on NixOS 21.05 -> comment lines on cfg/development.nix
+
+Afficher erreurs Nvidia : 
+
+```
+su
+journalctl | grep gdm  > logsNvida.log
+```
+
+désactivation driver "nvidia" pour machine desktop-atixnet à partir de la 21.05
+
+## Only two last generations showing in grub
+
+Up arrow :)
+
+## Manually switching to a generation
+
+```
+sudo nix-env --list-generations --profile /nix/var/nix/profiles/system
+
+sudo nix-env --switch-generation <generationNumber> -p /nix/var/nix/profiles/system
+sudo /nix/var/nix/profiles/system/bin/switch-to-configuration switch
+```
 
