@@ -43,6 +43,10 @@ journalctl vacuum--time 2d # if too many logs kept
 journalctl
 ```
 
+## solved problems
+
+- do not install toybox : its ps command is not compatible with the tmux/vim navigation plugin
+
 ## Lenovo thinkpad 470s
 
 Add missing resolutions with _scripts/addModeline.sh_ script
