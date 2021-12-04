@@ -23,7 +23,7 @@ in
     
     # system related things I will only use on my personal main computer
     mydist.wally  # ergodox keyboard firmware flashing tool
-    qmk  # ferris keyboard firmware flashing tool (see https://github.com/mmai/qmk_firmware/blob/master/keyboards/ferris/keymaps/mmai/readme.md)
+    unstable.qmk  # ferris keyboard firmware flashing tool (see https://github.com/mmai/qmk_firmware/blob/master/keyboards/ferris/keymaps/mmai/readme.md)
     # unstable.wally-cli  # ergodox keyboard firmware flashing tool
 
   ];
