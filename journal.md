@@ -76,3 +76,9 @@ sudo nix-env --switch-generation <generationNumber> -p /nix/var/nix/profiles/sys
 sudo /nix/var/nix/profiles/system/bin/switch-to-configuration switch
 ```
 
+## switch to a configuration of an other hostname
+
+
+```
+sudo nixos-rebuild switch --flake '/etc/nixos#henri-laptop'
+```
