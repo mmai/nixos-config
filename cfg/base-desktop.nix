@@ -66,6 +66,37 @@
     ibus.engines = with pkgs.ibus-engines; [ libpinyin ];
   };
 
+  # set defaults apps (especially image viewer so that it is not the last software used which become the default (I look at you Gimp))
+  # for a more complete config, see https://src.fedoraproject.org/rpms/shared-mime-info/blob/rawhide/f/mimeapps.list
+  environment.etc."xdg/mimeapps.list" = {
+    text = ''
+      [Default Applications]
+      image/bmp=org.gnome.eog.desktop;
+      image/gif=org.gnome.eog.desktop;
+      image/jpeg=org.gnome.eog.desktop;
+      image/jpg=org.gnome.eog.desktop;
+      image/pjpeg=org.gnome.eog.desktop;
+      image/png=org.gnome.eog.desktop;
+      image/tiff=org.gnome.eog.desktop;
+      image/x-bmp=org.gnome.eog.desktop;
+      image/x-gray=org.gnome.eog.desktop;
+      image/x-icb=org.gnome.eog.desktop;
+      image/x-ico=org.gnome.eog.desktop;
+      image/x-png=org.gnome.eog.desktop;
+      image/x-portable-anymap=org.gnome.eog.desktop;
+      image/x-portable-bitmap=org.gnome.eog.desktop;
+      image/x-portable-graymap=org.gnome.eog.desktop;
+      image/x-portable-pixmap=org.gnome.eog.desktop;
+      image/x-xbitmap=org.gnome.eog.desktop;
+      image/x-xpixmap=org.gnome.eog.desktop;
+      image/x-pcx=org.gnome.eog.desktop;
+      image/svg+xml=org.gnome.eog.desktop;
+      image/svg+xml-compressed=org.gnome.eog.desktop;
+      image/vnd.wap.wbmp=org.gnome.eog.desktop;
+      image/x-icns=org.gnome.eog.desktop;
+    '';
+  };
+
   environment.gnome.excludePackages = with pkgs; [ gnome3.geary ];
   environment.systemPackages = with pkgs; [
     evolution # since 19.09 default mail client in gnome is geary
