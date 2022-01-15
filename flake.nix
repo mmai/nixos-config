@@ -33,6 +33,7 @@
                           ./configurations/home.nix
                           ./configurations/common.nix
                         ];
+              networking.hostName = "henri-destktop";
               nixpkgs.overlays = [ (overlay-unstable system) (overlay-mydist system) ];
               nixpkgs.config.allowUnfree = true ;
 
@@ -53,6 +54,7 @@
                         ./configurations/home.nix
                         ./configurations/common.nix
                       ];
+            networking.hostName = "henri-laptop";
             nixpkgs.overlays = [ (overlay-unstable system) ];
             nixpkgs.config.allowUnfree = true ;
             # Let 'nixos-version --json' know about the Git revision of this flake.
@@ -70,6 +72,7 @@
           { imports = [ ./machines/shuttle.nix
                         ./configurations/server.nix
                       ];
+            networking.hostName = "nettop";
             nixpkgs.overlays = [ (overlay-unstable system) ];
             nixpkgs.config.allowUnfree = true ;
             # Let 'nixos-version --json' know about the Git revision of this flake.
@@ -89,6 +92,7 @@
                         ./configurations/light.nix
                         # no need to import common.nix
                       ];
+            networking.hostName = "henri-netbook";
             nixpkgs.overlays = [ (overlay-unstable system) ];
             nixpkgs.config.allowUnfree = true ;
 

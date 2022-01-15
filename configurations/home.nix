@@ -14,8 +14,6 @@
     192.168.1.10 home.rhumbs.fr
     '';
 
-  networking.hostName = "henri-desktop";
-
   users.extraUsers.henri = {
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" "plugdev" "docker" "virtualbox" ];

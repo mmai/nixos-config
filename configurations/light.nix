@@ -4,8 +4,6 @@
     ../cfg/base-desktop-light.nix
   ];
 
-  networking.hostName = "henri-netbook";
-
   users.extraUsers.henri = {
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" "plugdev" ];

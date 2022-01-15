@@ -9,8 +9,6 @@
     ../cfg/base-minimal.nix
   ];
 
-  networking.hostName = "nettop";
-
   users.extraUsers.henri = {
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" "plugdev" ];
