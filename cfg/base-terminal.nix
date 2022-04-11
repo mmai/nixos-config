@@ -101,6 +101,7 @@
     gitAndTools.git-annex # sync large files with git
     gitAndTools.delta # better git diff
     gnumake
+    just # better make 
     tldr # Simplified and community-driven man pages
 
   ];
