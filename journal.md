@@ -82,3 +82,16 @@ sudo /nix/var/nix/profiles/system/bin/switch-to-configuration switch
 ```
 sudo nixos-rebuild switch --flake '/etc/nixos#henri-laptop'
 ```
+
+## Erreur 'does not provide attribute ..config.system.build.toplevel'
+
+```sh
+❯ sudo nixos-rebuild switch
+warning: Git tree '/home/henri/nixos-config' is dirty
+building the system configuration...
+warning: Git tree '/home/henri/nixos-config' is dirty
+error: flake 'git+file:///home/henri/nixos-config' does not provide attribute 'packages.x86_64-linux.nixosConfigurations."henri-destktop".config.system.build.toplevel', 'legacyPackages.x86_64-linux.nixosConfigurations."henri-destktop".config.system.build.toplevel' or 'nixosConfigurations."henri-destktop".config.system.build.toplevel'
+
+❯ sudo nixos-rebuild switch --flake .#henri-desktop
+ok
+```

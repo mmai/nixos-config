@@ -34,6 +34,7 @@
   programs.gnupg.agent.enable = true; # needed for gpg / pass to work
   environment.systemPackages = with pkgs; [
     # Already in base-minimal : cachix, curl, wget, neovim, xclip, gitFull
+    helix # code editor
 
     # ---- nix related ----------------
     # nixops # nixos servers deployment => bug install python sur 21.05 ??
@@ -68,10 +69,13 @@
     lf # file navigator
     pistol # better file previewer (used by lf and fzf)
     # zola # static website generator
+    surfraw # bookmarks & search engines client 
+    newsboat # rss reader
 
     # -------- Cli tools
     ansifilter # can remove ANSI terminal escape codes (colors, formatting..)
     fzf # selection generator
+    ts # task pooler (add tasks in a queue, see the task list) 
 
     # -------- à essayer
     hledger # accounting
