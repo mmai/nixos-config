@@ -102,7 +102,7 @@
     evolution # since 19.09 default mail client in gnome is geary
     # mailnag # don't work ? new mails on Maildir folders notification (for use with mbsync+mutt)
     # mailspring # mail client (custom package) (evolution trop buggé) # trop lourd
-    gnome.gnome-tweak-tool
+    gnome.gnome-tweaks
     # gnomeExtensions.dash-to-panel # broken in nixos 20.09, enable it from https://extensions.gnome.org/extension/1160/dash-to-panel/ instead
     # gnomeExtensions.timepp # pomodoro, timetracker, etc. => marked broken in nixos 20.03
     # gnomeExtensions.gtk-title-bar # not yet packaged in nixos
@@ -137,7 +137,7 @@
     gparted
     keepassx2 # or keepassxc ?
     qtpass # pass gui
-    gnome.meld
+    meld
     gnome.seahorse # to get rid of the "gnome default keyring locked" prompt at startup
     filezilla
     unetbootin # live linux usb creator

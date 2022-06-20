@@ -1,5 +1,5 @@
 {
-  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-21.11";
+  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.05";
   inputs.nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
   # inputs.mydist.url = "/home/henri/travaux/nixpkgs"; # my fork of nixpkgs
   inputs.mydist.url = "github:mmai/nixpkgs/mydist"; # my fork of nixpkgs /!\ on branch 'mydist'
@@ -33,12 +33,13 @@
                           ./configurations/home.nix
                           ./configurations/common.nix
                         ];
-              networking.hostName = "henri-destktop";
+              networking.hostName = "henri-desktop";
               nixpkgs.overlays = [ (overlay-unstable system) (overlay-mydist system) ];
               nixpkgs.config.allowUnfree = true ;
 
               # Let 'nixos-version --json' know about the Git revision of this flake.
               system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev;
+              system.stateVersion = "21.11";
               nix.registry.nixpkgs.flake = nixpkgs;
             }
           )

@@ -17,9 +17,12 @@ in
   environment.systemPackages = 
   let
     php' = pkgs.php.buildEnv {
-      extensions = { enabled, all }: enabled ++ [ all.xsl ]; # xsl needed by symfony
+      extensions = { enabled, all }: enabled ++ [ all.xsl all.xdebug ]; # xsl needed by symfony
       extraConfig = ''
-        memory_limit = 1G
+        memory_limit = 2G
+        post_max_size=101M
+        upload_max_filesize=100M
+        xdebug.mode=debug
       '';
     };
   in with pkgs; [
@@ -75,7 +78,7 @@ in
     # Dev tools
     gettext # i18n
     direnv # auto set environnement when entering directories
-    docker_compose
+    docker-compose
     gitAndTools.gitflow
     gitAndTools.diff-so-fancy
     jq # command line json parser
