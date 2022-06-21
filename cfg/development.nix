@@ -26,6 +26,8 @@ in
       '';
     };
   in with pkgs; [
+    qemu # virtualisation
+
     # Node
     nodePackages.node2nix
     nodejs

@@ -140,6 +140,7 @@
             nixpkgs.config.allowUnfree = true ;
             # Let 'nixos-version --json' know about the Git revision of this flake.
             system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev;
+            system.stateVersion = "21.11";
             nix.registry.nixpkgs.flake = nixpkgs;
           }
         )];
