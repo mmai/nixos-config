@@ -127,6 +127,7 @@
 
     # Included in gnome3
     #   pdf viewer : evince (alternatives : zathura, okular)
+    xournalpp # manipulation de pdf : permet d'ajouter une signature png
 
     gnome.cheese # take photos & videos with webcam (launch with sudo ?)
     gimp
