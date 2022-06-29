@@ -38,7 +38,7 @@ Gnome override the default nix config : so make sure to load dotfiles/dconf-henr
 
 ```
 su 
-journalctl vacuum--time 2d # if too many logs kept
+journalctl --vacuum-time 2d # if too many logs kept
 journalctl
 ```
 
