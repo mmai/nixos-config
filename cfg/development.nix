@@ -68,6 +68,7 @@ in
       pypkgs.pygments 
       pypkgs.pylint 
       pypkgs.pip 
+      pypkgs.pynvim # neovim integration 
     ]))
 
     # Databases related
