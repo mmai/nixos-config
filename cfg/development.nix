@@ -7,8 +7,9 @@ let
 in
 {
   virtualisation.docker.enable = true;
-  virtualisation.virtualbox.host.enable = true;
-  virtualisation.virtualbox.host.enableExtensionPack = true;
+  # virtualisation.virtualbox.host.enable = true; # not supported on aarch64
+  # virtualisation.virtualbox.host.enableExtensionPack = true; # not supported on aarch64
+
   # virtualisation.virtualbox.guest.enable = true; XXX don't enable this since it prevents the nvidia driver to load
 
   # enable /etc/hosts editing (/!\ config is reset at each config rebuild)
@@ -51,7 +52,7 @@ in
     rust-analyzer-unwrapped # used by coc-rust in vim
 
     # Java / Android dev
-    android-studio # launch with `unset GDK_PIXBUF_MODULE_FILE ; android-studio` (cf. https://github.com/NixOS/nixpkgs/issues/52302#issuecomment-477818365) -> done in .zsh/aliases.sh
+    # android-studio # launch with `unset GDK_PIXBUF_MODULE_FILE ; android-studio` (cf. https://github.com/NixOS/nixpkgs/issues/52302#issuecomment-477818365) -> done in .zsh/aliases.sh # not supported on aarch64-linux (ie raspberrypi)
     # jetbrains.jdk
     # oraclejdk # old insecure ffmpeg lib dependency 
 
@@ -75,7 +76,7 @@ in
     # Dev tools
     gettext # i18n
     direnv # auto set environnement when entering directories
-    docker_compose
+    docker-compose
     gitAndTools.gitflow
     gitAndTools.diff-so-fancy
     jq # command line json parser

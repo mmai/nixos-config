@@ -3,7 +3,6 @@
   imports = [
     ../cfg/base-desktop.nix
     ../cfg/development.nix
-    ../cfg/atixnet.nix
     ../cfg/sync-notes.nix
   ];
 

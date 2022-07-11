@@ -1,5 +1,6 @@
 {
-  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-21.11";
+  #inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-21.11";
+  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
   inputs.nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
   # inputs.mydist.url = "/home/henri/travaux/nixpkgs"; # my fork of nixpkgs
   inputs.mydist.url = "github:mmai/nixpkgs/mydist"; # my fork of nixpkgs /!\ on branch 'mydist'
@@ -43,6 +44,25 @@
             }
           )
         ];
+      };
+
+      raspberry = let system = "aarch64-linux"; in nixpkgs.lib.nixosSystem {
+        system = system;
+        modules = [ 
+          nixpkgs.nixosModules.notDetected
+          ( { config, pkgs, ... }:
+          { imports = [ ./machines/raspberry4.nix
+                        ./configurations/pro.nix
+                      ];
+            networking.hostName = "raspberry";
+            nixpkgs.overlays = [ (overlay-unstable system) ];
+            nixpkgs.config.allowUnfree = true ;
+            # Let 'nixos-version --json' know about the Git revision of this flake.
+            system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev;
+            nix.registry.nixpkgs.flake = nixpkgs;
+            system.stateVersion = "22.05";
+          }
+        )];
       };
 
       henri-laptop = let system = "x86_64-linux"; in nixpkgs.lib.nixosSystem {
@@ -131,6 +151,7 @@
           nixpkgs.nixosModules.notDetected 
           ( { config, pkgs, ... }:
           { imports = [ ./machines/atixnet-desktop.nix
+                        ./cfg/atixnet.nix # removed from pro.nix
                         ./configurations/pro.nix
                         ./configurations/common.nix
                       ];
