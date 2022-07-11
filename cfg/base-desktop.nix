@@ -141,7 +141,7 @@
     meld
     gnome.seahorse # to get rid of the "gnome default keyring locked" prompt at startup
     filezilla
-    unetbootin # live linux usb creator
+    # unetbootin # live linux usb creator # not supported on aarch64/rapsberry pi (requires syslinux)
 
     wireshark
     # missing : teamviewer, gpick

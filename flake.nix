@@ -32,6 +32,7 @@
             { imports = [ ./machines/home-desktop.nix # Include the results of the hardware scan.
                           ./configurations/home.nix
                           ./configurations/common.nix
+                          ./cfg/notRaspberry.nix # virtualbox & android studio
                         ];
               networking.hostName = "henri-desktop";
               nixpkgs.overlays = [ (overlay-unstable system) (overlay-mydist system) ];
@@ -46,6 +47,25 @@
         ];
       };
 
+      raspberry = let system = "aarch64-linux"; in nixpkgs.lib.nixosSystem {
+        system = system;
+        modules = [ 
+          nixpkgs.nixosModules.notDetected
+          ( { config, pkgs, ... }:
+          { imports = [ ./machines/raspberry4.nix
+                        ./configurations/pro.nix
+                      ];
+            networking.hostName = "raspberry";
+            nixpkgs.overlays = [ (overlay-unstable system) ];
+            nixpkgs.config.allowUnfree = true ;
+            # Let 'nixos-version --json' know about the Git revision of this flake.
+            system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev;
+            nix.registry.nixpkgs.flake = nixpkgs;
+            system.stateVersion = "22.05";
+          }
+        )];
+      };
+
       henri-laptop = let system = "x86_64-linux"; in nixpkgs.lib.nixosSystem {
         system = system;
         modules = [ 
@@ -54,6 +74,7 @@
           { imports = [ ./machines/asusZenbook.nix
                         ./configurations/home.nix
                         ./configurations/common.nix
+                        ./cfg/notRaspberry.nix # virtualbox & android studio
                       ];
             networking.hostName = "henri-laptop";
             nixpkgs.overlays = [ (overlay-unstable system) (overlay-mydist system)];
@@ -135,6 +156,7 @@
           { imports = [ ./machines/atixnet-desktop.nix
                         ./configurations/pro.nix
                         ./configurations/common.nix
+                        ./cfg/notRaspberry.nix # virtualbox & android studio
                       ];
             networking.hostName = "henri-atixnet";
             nixpkgs.overlays = [ (overlay-unstable system) (overlay-mydist system) ];
