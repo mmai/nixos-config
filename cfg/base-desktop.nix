@@ -109,7 +109,7 @@
     gnomeExtensions.system-monitor
     nerdfonts
     xorg.xkill
-    # xdotool # manipulate windows ; used to remove gnome-terminal header bar
+    xdotool # manipulate gui windows from command line 
 
     alacritty # faster terminal with sane default (and zoomable) ; needs > 4.0
 
