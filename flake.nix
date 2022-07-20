@@ -1,10 +1,17 @@
 {
   inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.05";
   inputs.nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+
+  # Fuse filesystem that returns symlinks to executables based on the PATH of the requesting process. This is useful to execute shebangs on NixOS that assume hard coded locations in locations like /bin or /usr/bin etc
+  inputs.envfs = {
+    url = "github:Mic92/envfs";
+    inputs.nixpkgs.follows = "nixpkgs";
+  };
+
   # inputs.mydist.url = "/home/henri/travaux/nixpkgs"; # my fork of nixpkgs
   inputs.mydist.url = "github:mmai/nixpkgs/mydist"; # my fork of nixpkgs /!\ on branch 'mydist'
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, mydist }: 
+  outputs = { self, nixpkgs, nixpkgs-unstable, envfs, mydist }: 
   let
     overlay-unstable = system: final: prev: {
       unstable = import nixpkgs-unstable {
@@ -28,6 +35,7 @@
         system = system;
         modules = [ 
           nixpkgs.nixosModules.notDetected
+          envfs.nixosModules.envfs
           ( { config, pkgs, ... }:
             { imports = [ ./machines/home-desktop.nix # Include the results of the hardware scan.
                           ./configurations/home.nix
@@ -51,6 +59,7 @@
         system = system;
         modules = [ 
           nixpkgs.nixosModules.notDetected
+          envfs.nixosModules.envfs
           ( { config, pkgs, ... }:
           { imports = [ ./machines/raspberry4.nix
                         ./configurations/pro.nix
@@ -70,6 +79,7 @@
         system = system;
         modules = [ 
           nixpkgs.nixosModules.notDetected
+          envfs.nixosModules.envfs
           ( { config, pkgs, ... }:
           { imports = [ ./machines/asusZenbook.nix
                         ./configurations/home.nix
@@ -91,6 +101,7 @@
         system = system;
         modules = [ 
           nixpkgs.nixosModules.notDetected
+          envfs.nixosModules.envfs
           ( { config, pkgs, ... }:
           { imports = [ ./machines/shuttle.nix
                         ./configurations/server.nix
@@ -110,6 +121,7 @@
         system = system;
         modules = [ 
           nixpkgs.nixosModules.notDetected
+          envfs.nixosModules.envfs
           ( { config, pkgs, ... }:
           { imports = [ ./machines/asusEeePc.nix
                         ./configurations/light.nix
@@ -152,6 +164,7 @@
         system = system;
         modules = [ 
           nixpkgs.nixosModules.notDetected 
+          envfs.nixosModules.envfs
           ( { config, pkgs, ... }:
           { imports = [ ./machines/atixnet-desktop.nix
                         ./configurations/pro.nix

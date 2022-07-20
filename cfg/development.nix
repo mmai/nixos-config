@@ -38,6 +38,7 @@ in
     php'.packages.composer
     php'.packages.psysh # 
     php'.packages.phpcbf # CodeSniffer (beautify)
+    php'.packages.phpstan php'.packages.psalm # static analysis tools
     # Drupal coding standards installation :
     #   composer global require drupal/coder # installs phpcs as well
     #   composer global require dealerdirect/phpcodesniffer-composer-installer
