@@ -73,6 +73,7 @@ in
     dbeaver # mysql & posgresql, can do ssh tunneling
 
     # Dev tools
+    xsv # manipulation de .csv en ligne de commande
     gettext # i18n
     direnv # auto set environnement when entering directories
     docker-compose
