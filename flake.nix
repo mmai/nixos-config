@@ -19,6 +19,13 @@
       };
     };
 
+    commonConfig = {
+      allowUnfree = true ;
+      permittedInsecurePackages = [
+        "xpdf-4.04" # terminal pdf viewer (used in nvim telekasten)
+      ];
+    };
+
   in 
 
   {
@@ -36,7 +43,7 @@
                         ];
               networking.hostName = "henri-desktop";
               nixpkgs.overlays = [ (overlay-unstable system) (overlay-mydist system) ];
-              nixpkgs.config.allowUnfree = true ;
+              nixpkgs.config = commonConfig; 
 
               # Let 'nixos-version --json' know about the Git revision of this flake.
               system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev;
@@ -57,7 +64,7 @@
                       ];
             networking.hostName = "raspberry";
             nixpkgs.overlays = [ (overlay-unstable system) ];
-            nixpkgs.config.allowUnfree = true ;
+            nixpkgs.config = commonConfig; 
             # Let 'nixos-version --json' know about the Git revision of this flake.
             system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev;
             nix.registry.nixpkgs.flake = nixpkgs;
@@ -78,7 +85,7 @@
                       ];
             networking.hostName = "henri-laptop";
             nixpkgs.overlays = [ (overlay-unstable system) (overlay-mydist system)];
-            nixpkgs.config.allowUnfree = true ;
+            nixpkgs.config = commonConfig; 
             # Let 'nixos-version --json' know about the Git revision of this flake.
             system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev;
             system.stateVersion = "21.11";
@@ -97,7 +104,7 @@
                       ];
             networking.hostName = "nettop";
             nixpkgs.overlays = [ (overlay-unstable system) ];
-            nixpkgs.config.allowUnfree = true ;
+            nixpkgs.config = commonConfig; 
             # Let 'nixos-version --json' know about the Git revision of this flake.
             system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev;
             nix.registry.nixpkgs.flake = nixpkgs;
@@ -117,7 +124,7 @@
                       ];
             networking.hostName = "henri-netbook";
             nixpkgs.overlays = [ (overlay-unstable system) ];
-            nixpkgs.config.allowUnfree = true ;
+            nixpkgs.config = commonConfig; 
 
 
             # Setup cross compilation. ( `nixos-rebuild -j0 switch` to force using the remote builder )
@@ -160,7 +167,7 @@
                       ];
             networking.hostName = "henri-atixnet";
             nixpkgs.overlays = [ (overlay-unstable system) (overlay-mydist system) ];
-            nixpkgs.config.allowUnfree = true ;
+            nixpkgs.config = commonConfig;
             # Let 'nixos-version --json' know about the Git revision of this flake.
             system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev;
             system.stateVersion = "21.11";
