@@ -46,6 +46,7 @@
       victor-mono
       dejavu_fonts
       meslo-lg
+      fantasque-sans-mono # `a tester
       powerline-fonts
       nerdfonts
       noto-fonts

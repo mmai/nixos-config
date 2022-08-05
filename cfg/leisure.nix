@@ -10,6 +10,7 @@ in
 
     calibre
     yacreader # comics viewer
+    zotero # bibliography manager
     # stremio # popcorntime like
 
     steam
