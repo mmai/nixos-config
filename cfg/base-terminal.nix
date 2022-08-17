@@ -69,7 +69,7 @@
     tmux tmuxp # terminal multiplexer & its session manager
     # haskellPackages.super-user-spark # dotfiles manager / marked broken in 20.09
     weechat # irc,.. client
-    lf # file navigator
+    lf nnn # file navigators
     pistol # better file previewer (used by lf and fzf)
     # zola # static website generator
     surfraw # bookmarks & search engines client 

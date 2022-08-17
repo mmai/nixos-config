@@ -57,7 +57,7 @@
 
     fontconfig.defaultFonts = {
       # monospace = [ "DejaVuSansMono Nerd Font" ];
-      monospace = [ "MesloLGS NF" ]; # indiquer 'family: Meslo LG S' dans alacritty.yml
+      monospace = [ "MesloLGS NF" ]; # font recommended by powerlevel10k zsh prompt. Specify 'family: Meslo LG S' in alacritty.yml
     };
   };
 

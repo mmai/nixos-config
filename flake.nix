@@ -1,10 +1,16 @@
 {
-  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.05";
-  inputs.nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
-  # inputs.mydist.url = "/home/henri/travaux/nixpkgs"; # my fork of nixpkgs
-  inputs.mydist.url = "github:mmai/nixpkgs/mydist"; # my fork of nixpkgs /!\ on branch 'mydist'
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.05";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    # mydist.url = "/home/henri/travaux/nixpkgs"; # my fork of nixpkgs
+    mydist.url = "github:mmai/nixpkgs/mydist"; # my fork of nixpkgs /!\ on branch 'mydist'
+    home-manager = {
+      url = "github:nix-community/home-manager/release-22.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+  };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, mydist }: 
+  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, mydist }: 
   let
     overlay-unstable = system: final: prev: {
       unstable = import nixpkgs-unstable {
@@ -29,7 +35,16 @@
   in 
 
   {
-    nixosConfigurations = {
+    nixosConfigurations = 
+    let 
+      # withHomeManager = config: homeFile: home-manager.nixosModules.home-manager {
+      #   home-manager.useGlobalPkgs = true;
+      #   home-manager.useUserPackages = true;
+      #   home-manager.users.henri = import homeFile;
+      #   # Optionally, use home-manager.extraSpecialArgs to pass
+      #   # arguments to home.nix
+      # };
+    in {
 
       henri-desktop = let system = "x86_64-linux"; in nixpkgs.lib.nixosSystem {
         system = system;
@@ -40,6 +55,12 @@
                           ./configurations/home.nix
                           ./configurations/common.nix
                           ./cfg/notRaspberry.nix # virtualbox & android studio
+                          # withHomeManager config ./homes/henri.nix
+                          home-manager.nixosModules.home-manager {
+                            home-manager.useGlobalPkgs = true;
+                            home-manager.useUserPackages = true;
+                            home-manager.users.henri = import ./homes/henri.nix;
+                          }
                         ];
               networking.hostName = "henri-desktop";
               nixpkgs.overlays = [ (overlay-unstable system) (overlay-mydist system) ];
@@ -61,6 +82,7 @@
           ( { config, pkgs, ... }:
           { imports = [ ./machines/raspberry4.nix
                         ./configurations/pro.nix
+                        # henriHome
                       ];
             networking.hostName = "raspberry";
             nixpkgs.overlays = [ (overlay-unstable system) ];
@@ -82,6 +104,7 @@
                         ./configurations/home.nix
                         ./configurations/common.nix
                         ./cfg/notRaspberry.nix # virtualbox & android studio
+                        # henriHome
                       ];
             networking.hostName = "henri-laptop";
             nixpkgs.overlays = [ (overlay-unstable system) (overlay-mydist system)];
@@ -164,6 +187,11 @@
                         ./configurations/pro.nix
                         ./configurations/common.nix
                         ./cfg/notRaspberry.nix # virtualbox & android studio
+                        home-manager.nixosModules.home-manager {
+                          home-manager.useGlobalPkgs = true;
+                          home-manager.useUserPackages = true;
+                          home-manager.users.henri = import ./homes/henri.nix;
+                        }
                       ];
             networking.hostName = "henri-atixnet";
             nixpkgs.overlays = [ (overlay-unstable system) (overlay-mydist system) ];
