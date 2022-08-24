@@ -1,5 +1,5 @@
 update:
-	sudo nix flake update
+	nix flake lock --update-input nixpkgs --update-input guix --update-input nixpkgs-unstable --update-input mydist
 rebuild:
 	#sudo nixos-rebuild switch
 	sudo nixos-rebuild switch --flake .#$$(hostname)

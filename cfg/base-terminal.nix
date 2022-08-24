@@ -43,9 +43,9 @@
     # nixops # nixos servers deployment => bug install python sur 21.05 ??
     nix-index # search available packages containing files (or paths) : nix-index ; nix-locate -w libstdc++.so.6
 
-    # ------------ Classic tools alternatives
+    # ------------ Classic tools & alternatives
     bat # better cat
-    broot # better tree
+    tree # used by nnn
     exa # replacement for ls with sensible defaults
     fd # better find (and used by fzf in vim)
     ripgrep # Faster than grep, ag, ..
@@ -69,8 +69,11 @@
     tmux tmuxp # terminal multiplexer & its session manager
     # haskellPackages.super-user-spark # dotfiles manager / marked broken in 20.09
     weechat # irc,.. client
-    lf nnn # file navigators
+    lf # file navigator --> replaced by nnn
+    (nnn.override ({ withNerdIcons = true; })) # nnn file navigator with nerd icons
+    sxiv # image viewer (used by nnn)
     pistol # better file previewer (used by lf and fzf)
+    sshfs # sftp
     # zola # static website generator
     surfraw # bookmarks & search engines client 
     newsboat # rss reader
