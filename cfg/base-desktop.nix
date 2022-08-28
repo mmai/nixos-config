@@ -9,29 +9,45 @@
     "kernel.sysrq" = 1; # Enable Alt+Sysrq+r key (why is it restricted by default ?) to recover from freezed X sessions
   };
 
-  # services.keybase.enable = true; # not used anymore
-
-  services.xserver.enable = true;
-  services.xserver.displayManager.gdm.enable = true;
   # services.xserver.displayManager.lightdm.enable = true; # to use instead of gdm if computer freeze after login (ie on Lenovo 470s)
-  services.xserver.desktopManager.gnome = {
+
+services.xserver = {
     enable = true;
-    extraGSettingsOverrides = ''
+
+    displayManager = {
+        gdm.enable = true;
+        # sddm.enable = true;
+        # defaultSession = "none+awesome";
+    };
+
+    # windowManager.awesome = {
+    #   enable = true;
+    #   luaModules = with pkgs.luaPackages; [
+    #     luarocks # is the package manager for Lua modules
+    #     luadbi-mysql # Database abstraction layer
+    #   ];
+    #
+    # };
+
+    desktopManager.gnome = {
+      enable = true;
+      extraGSettingsOverrides = ''
       [org.gnome.shell.app-switcher]
       current-workspace-only=true
 
       [org.gnome.desktop.background]
       show-desktop-icons=true
-    '';
+      '';
+    };
   };
-
-  hardware.sane.enable = true; # Scanner
-  services.printing.enable = true;
-  services.printing.drivers = [ pkgs.gutenprint pkgs.epson-escpr ]; # Generic, Epson XP-225
 
   # Gnome shell extensions with browsers
   nixpkgs.config.firefox.enableGnomeExtensions = true;
   services.gnome.chrome-gnome-shell.enable = true;
+
+  hardware.sane.enable = true; # Scanner
+  services.printing.enable = true;
+  services.printing.drivers = [ pkgs.gutenprint pkgs.epson-escpr ]; # Generic, Epson XP-225
 
   networking.firewall.allowedTCPPorts = [ 8010 ]; # allow streaming to chromecast devices (vlc)
 

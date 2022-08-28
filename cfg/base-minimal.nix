@@ -19,8 +19,12 @@
   services.openssh.enable = true;
   # services.xserver.exportConfiguration = true; # link /etc/X11/ properly, (with xkb subdirectory)
 
-  services.xserver.layout = "lafayette42,fr"; # lafayette is in the keyboard-layouts import
-  services.xserver.xkbOptions = "compose:menu, grp:shifts_toggle"; # switch keyboard layout with both shift keys pressed 
+  services.xserver = {
+    # layout = "lafayette42,fr"; # lafayette is in the keyboard-layouts import
+    layout = "us,fr";
+    xkbVariant = "intl,"; # US, intl., with dead keys
+    xkbOptions = "compose:menu, grp:shifts_toggle"; # switch keyboard layout with both shift keys pressed 
+  };
   console.useXkbConfig = true; # Console use same keyboard config as xserver
 
   i18n = {

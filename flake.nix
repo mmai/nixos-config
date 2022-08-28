@@ -2,6 +2,7 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    # guix.url = "github:mmai/guix-flake"; # broken ? (zsh completion close tmux window...)
     # mydist.url = "/home/henri/travaux/nixpkgs"; # my fork of nixpkgs
     mydist.url = "github:mmai/nixpkgs/mydist"; # my fork of nixpkgs /!\ on branch 'mydist'
     home-manager = {
@@ -50,6 +51,7 @@
         system = system;
         modules = [ 
           nixpkgs.nixosModules.notDetected
+	        # guix.nixosModule
           ( { config, pkgs, ... }:
             { imports = [ ./machines/home-desktop.nix # Include the results of the hardware scan.
                           ./configurations/home.nix
@@ -62,8 +64,13 @@
                             home-manager.users.henri = import ./homes/henri.nix;
                           }
                         ];
+
+              # services.guix.enable = true;
+
               networking.hostName = "henri-desktop";
-              nixpkgs.overlays = [ (overlay-unstable system) (overlay-mydist system) ];
+              nixpkgs.overlays = [ 
+                # guix.overlay 
+                (overlay-unstable system) (overlay-mydist system) ];
               nixpkgs.config = commonConfig; 
 
               # Let 'nixos-version --json' know about the Git revision of this flake.
