@@ -3,6 +3,8 @@ update:
 rebuild:
 	#sudo nixos-rebuild switch
 	sudo nixos-rebuild switch --flake .#$$(hostname)
+vm:
+	sudo nixos-rebuild build-vm --flake .#nixvm
 cache:
 	cachix push mmai /nix/store/$$(readlink -f $$(which VirtualBox) | awk -F'/' '{print $$4}')
 install:

@@ -18,6 +18,8 @@ in
         post_max_size=101M
         upload_max_filesize=100M
         xdebug.mode=debug
+        [Date]
+        date.timezone = 'Europe/Paris'
       '';
     };
   in with pkgs; [

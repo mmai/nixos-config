@@ -11,7 +11,6 @@
 
   services.xserver = {
     enable = true;
-    layout = "fr"; # keymap
     libinput.enable = true; # Enable touchpad support (enabled default in most desktopManager).
     desktopManager.xfce.enable = true;
   };

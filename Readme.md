@@ -18,7 +18,7 @@ cachix use yourCachixName
 
 ```
 sudo ln -s $(pwd) /etc/nixos
-sudo nixos-rebuild switch
+sudo nixos-rebuild switch --flake .#$(hostname)
 ```
 
 ## Dotfiles

@@ -4,13 +4,17 @@
     ../cfg/base-desktop-light.nix
   ];
 
-  users.extraUsers.henri = {
+  # Pour pouvoir se connecter sur la version vm
+  users.mutableUsers = true;
+  users.users.henri = {
     isNormalUser = true;
+    initialPassword = "henri";
     extraGroups = [ "wheel" "networkmanager" "plugdev" ];
     shell = pkgs.zsh;
   };
 
-  users.extraUsers.guest = {
+  users.users.guest = {
+    initialPassword = "guest";
     isNormalUser = true;
     shell = pkgs.zsh;
   };

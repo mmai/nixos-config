@@ -82,6 +82,26 @@
         ];
       };
 
+      nixvm = let system = "x86_64-linux"; in nixpkgs.lib.nixosSystem {
+        system = system;
+        modules = [ 
+          nixpkgs.nixosModules.notDetected
+          ( { config, pkgs, ... }:
+          { imports = [ ./machines/virtualbox.nix
+                        ./configurations/light.nix
+                        # henriHome
+                      ];
+            networking.hostName = "nixvm";
+            nixpkgs.overlays = [ (overlay-unstable system) ];
+            nixpkgs.config = commonConfig; 
+            # Let 'nixos-version --json' know about the Git revision of this flake.
+            system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev;
+            nix.registry.nixpkgs.flake = nixpkgs;
+            system.stateVersion = "22.05";
+          }
+        )];
+      };
+
       raspberry = let system = "aarch64-linux"; in nixpkgs.lib.nixosSystem {
         system = system;
         modules = [ 
