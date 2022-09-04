@@ -20,14 +20,16 @@ services.xserver = {
         # defaultSession = "none+awesome";
     };
 
-    # windowManager.awesome = {
-    #   enable = true;
-    #   luaModules = with pkgs.luaPackages; [
-    #     luarocks # is the package manager for Lua modules
-    #     luadbi-mysql # Database abstraction layer
-    #   ];
-    #
-    # };
+    windowManager = {
+      xmonad.enable = true;
+      awesome = {
+        enable = true;
+        luaModules = with pkgs.luaPackages; [
+          luarocks # is the package manager for Lua modules
+          luadbi-mysql # Database abstraction layer
+        ];
+      };
+    };
 
     desktopManager.gnome = {
       enable = true;
@@ -116,6 +118,10 @@ services.xserver = {
 
   environment.gnome.excludePackages = with pkgs; [ gnome3.geary ];
   environment.systemPackages = with pkgs; [
+
+    haskellPackages.xmonad-contrib
+    haskellPackages.xmonad
+
     evolution # since 19.09 default mail client in gnome is geary
     # mailnag # don't work ? new mails on Maildir folders notification (for use with mbsync+mutt)
     # mailspring # mail client (custom package) (evolution trop buggé) # trop lourd
