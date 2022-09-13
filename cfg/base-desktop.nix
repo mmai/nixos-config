@@ -133,6 +133,7 @@ services.xserver = {
     nerdfonts
     xorg.xkill
     xdotool # manipulate gui windows from command line 
+    xdragon # drag & drop from command line
 
     alacritty # faster terminal with sane default (and zoomable) ; needs > 4.0
 
