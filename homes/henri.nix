@@ -19,6 +19,7 @@
 #       };
 #     }
 { pkgs, ... }: {
+  home.stateVersion = "22.11";
   xdg.desktopEntries.nvim = {
     name = "WrappedNeovim";
     exec="alacritty -e nvim %F";

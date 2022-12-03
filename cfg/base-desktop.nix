@@ -45,7 +45,7 @@ services.xserver = {
 
   # Gnome shell extensions with browsers
   nixpkgs.config.firefox.enableGnomeExtensions = true;
-  services.gnome.chrome-gnome-shell.enable = true;
+  services.gnome.gnome-browser-connector.enable = true;
 
   hardware.sane.enable = true; # Scanner
   services.printing.enable = true;

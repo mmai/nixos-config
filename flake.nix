@@ -1,12 +1,12 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.11";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     # guix.url = "github:mmai/guix-flake"; # broken ? (zsh completion close tmux window...)
     # mydist.url = "/home/henri/travaux/nixpkgs"; # my fork of nixpkgs
     mydist.url = "github:mmai/nixpkgs/mydist"; # my fork of nixpkgs /!\ on branch 'mydist'
     home-manager = {
-      url = "github:nix-community/home-manager/release-22.05";
+      url = "github:nix-community/home-manager/release-22.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -75,7 +75,7 @@
 
               # Let 'nixos-version --json' know about the Git revision of this flake.
               system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev;
-              system.stateVersion = "21.11";
+              system.stateVersion = "22.11";
               nix.registry.nixpkgs.flake = nixpkgs;
             }
           )
@@ -97,7 +97,7 @@
             # Let 'nixos-version --json' know about the Git revision of this flake.
             system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev;
             nix.registry.nixpkgs.flake = nixpkgs;
-            system.stateVersion = "22.05";
+            system.stateVersion = "22.11";
           }
         )];
       };
@@ -225,7 +225,7 @@
             nixpkgs.config = commonConfig;
             # Let 'nixos-version --json' know about the Git revision of this flake.
             system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev;
-            system.stateVersion = "21.11";
+            system.stateVersion = "22.11";
             nix.registry.nixpkgs.flake = nixpkgs;
           }
         )];

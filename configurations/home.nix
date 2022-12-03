@@ -64,5 +64,5 @@
   #     in top;
   #   };
 
-  nix.trustedUsers = [ "henri" "root" ];
+  nix.settings.trusted-users = [ "henri" "root" ];
 }

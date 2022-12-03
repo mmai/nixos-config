@@ -28,6 +28,9 @@ in
     # Lua
     sumneko-lua-language-server # lua lsp for neovim (the version installed by lsp-installer fails to execute on nixos )
 
+    # Scheme
+    guile_3_0
+
     # Node
     nodePackages.node2nix
     nodejs
