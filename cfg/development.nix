@@ -91,6 +91,7 @@ in
     radare2 # reverse engineering framework
     soapui # soap api testing
     universal-ctags
+    sysstat # performance monitoring tools (sar...)
 
   ];
 
