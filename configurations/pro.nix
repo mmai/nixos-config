@@ -20,6 +20,6 @@
   };
   # See these files for services run as 'henri' : cfg/cli-mails.nix
 
-  nix.trustedUsers = [ "henri" "root" ];
+  nix.settings.trusted-users = [ "henri" "root" ];
 
 }
