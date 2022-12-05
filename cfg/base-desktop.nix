@@ -122,9 +122,13 @@ services.xserver = {
     haskellPackages.xmonad-contrib
     haskellPackages.xmonad
 
-    evolution # since 19.09 default mail client in gnome is geary
+    # ---------- the forever quest for a good email client -----------
+    #  since 19.09 default mail client in gnome is geary
+    thunderbird
+    evolution # frequently loose connection, copy sent mails twice in history
     # mailnag # don't work ? new mails on Maildir folders notification (for use with mbsync+mutt)
     # mailspring # mail client (custom package) (evolution trop buggé) # trop lourd
+
     gnome.gnome-tweaks
     # gnomeExtensions.dash-to-panel # broken in nixos 20.09, enable it from https://extensions.gnome.org/extension/1160/dash-to-panel/ instead
     # gnomeExtensions.timepp # pomodoro, timetracker, etc. => marked broken in nixos 20.03
