@@ -231,6 +231,31 @@
         )];
       };
 
+      henri-atixnet-laptop = let system = "x86_64-linux"; in nixpkgs.lib.nixosSystem {
+        system = system;
+        modules = [ 
+          nixpkgs.nixosModules.notDetected 
+          ( { config, pkgs, ... }:
+          { imports = [ ./machines/thinkpadX1.nix
+                        ./configurations/pro.nix
+                        ./configurations/common.nix
+                        ./cfg/notRaspberry.nix # virtualbox & android studio
+                        home-manager.nixosModules.home-manager {
+                          home-manager.useGlobalPkgs = true;
+                          home-manager.useUserPackages = true;
+                          home-manager.users.henri = import ./homes/henri.nix;
+                        }
+                      ];
+            networking.hostName = "henri-atixnet-laptop";
+            nixpkgs.overlays = [ (overlay-unstable system) (overlay-mydist system) ];
+            nixpkgs.config = commonConfig;
+            # Let 'nixos-version --json' know about the Git revision of this flake.
+            system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev;
+            system.stateVersion = "22.11";
+            nix.registry.nixpkgs.flake = nixpkgs;
+          }
+        )];
+      };
     };
 
   };
