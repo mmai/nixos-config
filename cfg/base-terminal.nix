@@ -63,6 +63,8 @@
     # ----------- Security
     gnupg # Gnu privacy guard: used by pass/qpass, crypt emails
     pass # password manager (needs gpg)
+    age # crypt files (better alternative than gnupg)
+    git-crypt # transparent file encryption in git
 
     # ---------- applications
     amfora # gemini protocol client
@@ -71,12 +73,12 @@
     weechat # irc,.. client
     lf # file navigator --> replaced by nnn
     (nnn.override ({ withNerdIcons = true; })) # nnn file navigator with nerd icons
-    sxiv # image viewer (used by nnn)
     pistol # better file previewer (used by lf and fzf)
     sshfs # sftp
-    # zola # static website generator
     surfraw # bookmarks & search engines client 
-    newsboat # rss reader
+    sxiv # image viewer (used by nnn)
+    # zola # static website generator
+    unstable.offpunk # offline rss, gemini, ... reader (remplace newsboat)
 
     # -------- Cli tools
     ansifilter # can remove ANSI terminal escape codes (colors, formatting..)
