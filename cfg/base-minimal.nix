@@ -58,7 +58,10 @@
     # ------------ Common tools
     curl
     wget
-    unstable.zinit # zsh plugin manager
+    unstable.nushell # a new shell..
+    unstable.zoxide # z autojump like
+    oh-my-posh # shell prompt configurator (compatible with zsh & nushell)
+    zinit # zsh plugin manager
 
     # ---------- applications
     unstable.neovim

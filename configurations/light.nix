@@ -10,7 +10,8 @@
     isNormalUser = true;
     initialPassword = "henri";
     extraGroups = [ "wheel" "networkmanager" "plugdev" ];
-    shell = pkgs.zsh;
+    # shell = pkgs.zsh;
+    shell = pkgs.nushell;
   };
 
   users.users.guest = {

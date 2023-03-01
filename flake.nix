@@ -38,13 +38,15 @@
   {
     nixosConfigurations = 
     let 
-      # withHomeManager = config: homeFile: home-manager.nixosModules.home-manager {
-      #   home-manager.useGlobalPkgs = true;
-      #   home-manager.useUserPackages = true;
-      #   home-manager.users.henri = import homeFile;
-      #   # Optionally, use home-manager.extraSpecialArgs to pass
-      #   # arguments to home.nix
-      # };
+      withHomeManager = username: homeFile: {config, lib, pkgs, utils, ... } : home-manager.nixosModules.home-manager {
+        inherit config; inherit lib; inherit pkgs; inherit utils;
+        home-manager.useGlobalPkgs = true;
+        home-manager.useUserPackages = true;
+        # home-manager.users.${username} = import homeFile;
+        home-manager.users.henri = import homeFile;
+        # Optionally, use home-manager.extraSpecialArgs to pass
+        # arguments to home.nix
+      };
     in {
 
       henri-desktop = let system = "x86_64-linux"; in nixpkgs.lib.nixosSystem {
@@ -57,12 +59,14 @@
                           ./configurations/home.nix
                           ./configurations/common.nix
                           ./cfg/notRaspberry.nix # virtualbox & android studio
-                          # withHomeManager config ./homes/henri.nix
+                          # (withHomeManager "henri" ./homes/henri.nix)
+
                           home-manager.nixosModules.home-manager {
                             home-manager.useGlobalPkgs = true;
                             home-manager.useUserPackages = true;
                             home-manager.users.henri = import ./homes/henri.nix;
                           }
+
                         ];
 
               # services.guix.enable = true;
