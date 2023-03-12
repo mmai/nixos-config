@@ -25,6 +25,7 @@ in
     leela-zero # go game engine (cmd = leelaz)=> additional steps : curl -O https://zero.sjeng.org/best-network && mv best-network ~/.local/share/leela-zero/
 
     obs-studio # video recording and live streaming
+    python310Packages.deemix # for dlmusic.sh
     picard chromaprint # MusicBrainz tagger (picard) with fingerprint calculator (chromaprint)
     sublime-music # subsonic client ( ie to listen from funkwhale servers )
 
