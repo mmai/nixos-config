@@ -145,7 +145,7 @@ services.xserver = {
     # ---------- the forever quest for a good email client -----------
     #  since 19.09 default mail client in gnome is geary
     thunderbird
-    evolution # frequently loose connection, copy sent mails twice in history
+    # evolution # frequently loose connection, copy sent mails twice in history
     # mailnag # don't work ? new mails on Maildir folders notification (for use with mbsync+mutt)
     # mailspring # mail client (custom package) (evolution trop buggé) # trop lourd
 

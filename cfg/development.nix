@@ -93,6 +93,9 @@ in
     universal-ctags
     sysstat # performance monitoring tools (sar...)
 
+    # network
+    openvpn
+
   ];
 
   # pour atixnet mydev
