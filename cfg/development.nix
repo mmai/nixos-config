@@ -25,6 +25,8 @@ in
   in with pkgs; [
     qemu # virtualisation
 
+    vscode # for liveshare
+
     # Lua
     sumneko-lua-language-server # lua lsp for neovim (the version installed by lsp-installer fails to execute on nixos )
 
