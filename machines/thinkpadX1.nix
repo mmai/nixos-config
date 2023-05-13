@@ -14,7 +14,7 @@
   boot.extraModulePackages = [ ];
 
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
-  boot.kernelPackages = pkgs.linuxPackages_latest; # display-manager fails with original 5.15 kernel
+  boot.kernelPackages = pkgs.linuxPackages_6_1; # display-manager fails with original 5.15 kernel ; virtualbox fails on kernel >= 6.2
 
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/5d9c5f22-5528-4838-9b98-51083718f803";
