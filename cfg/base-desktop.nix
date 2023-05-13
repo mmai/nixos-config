@@ -172,6 +172,7 @@ services.xserver = {
     })
     transmission-gtk # transmission
     hexchat # desktop chat client
+    element-desktop # matrix client
 
     # Included in gnome3
     #   pdf viewer : evince (alternatives : zathura, okular)

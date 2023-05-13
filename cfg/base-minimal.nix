@@ -37,6 +37,12 @@
 
   networking.networkmanager.enable = true;
 
+  # permet l'execution de programmes non patchés ( ie snx )
+  programs.nix-ld.enable = true;
+  environment.variables = {
+    NIX_LD = pkgs.stdenv.cc.bintools.dynamicLinker;
+  };
+
   programs.command-not-found.enable = false; # replaced by the nix-index version
   programs.zsh = {
     enable = true;
