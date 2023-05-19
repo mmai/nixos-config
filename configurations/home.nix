@@ -17,8 +17,8 @@
   users.extraUsers.henri = {
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" "plugdev" "docker" "virtualbox" ];
-    # shell = pkgs.zsh;
-    shell = pkgs.nushell;
+    shell = pkgs.zsh;
+    # shell = pkgs.nushell;
   };
   # See these files for services run as 'henri' : cfg/cli-mails.nix
 
