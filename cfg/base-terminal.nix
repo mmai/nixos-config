@@ -35,7 +35,7 @@
   environment.systemPackages = with pkgs; [
     # Already in base-minimal : cachix, curl, wget, neovim, xclip, gitFull
     helix # code editor
-    unstable.ueberzug # display images in terminal, used by telescope-media-files.nvim (needs >= NixOS 22.11 version)
+    ueberzug # display images in terminal, used by telescope-media-files.nvim (needs >= NixOS 22.11 version)
     xpdf # Viewer for PDF files, includes pdftoppm used by telescope-media-files.nvim
     ffmpegthumbnailer # A lightweight video thumbnailer, used by telescope-media-files.nvim
 

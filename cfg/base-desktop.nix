@@ -185,7 +185,7 @@ services.xserver = {
 
     gitg
     gparted
-    keepassx2 # or keepassxc ?
+    keepassxc
     qtpass # pass gui
     meld
     gnome.seahorse # to get rid of the "gnome default keyring locked" prompt at startup

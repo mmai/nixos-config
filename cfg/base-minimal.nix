@@ -38,10 +38,10 @@
   networking.networkmanager.enable = true;
 
   # permet l'execution de programmes non patchés ( ie snx )
-  programs.nix-ld.enable = true;
-  environment.variables = {
-    NIX_LD = pkgs.stdenv.cc.bintools.dynamicLinker;
-  };
+  # programs.nix-ld.enable = true;
+  # environment.variables = {
+  #   NIX_LD = pkgs.stdenv.cc.bintools.dynamicLinker;
+  # };
 
   programs.command-not-found.enable = false; # replaced by the nix-index version
   programs.zsh = {
@@ -64,8 +64,8 @@
     # ------------ Common tools
     curl
     wget
-    unstable.nushell # a new shell..
-    unstable.zoxide # z autojump like
+    nushell # a new shell..
+    zoxide # z autojump like
     oh-my-posh # shell prompt configurator (compatible with zsh & nushell)
     zinit # zsh plugin manager
 
