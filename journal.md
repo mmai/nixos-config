@@ -95,3 +95,16 @@ error: flake 'git+file:///home/henri/nixos-config' does not provide attribute 'p
 ❯ sudo nixos-rebuild switch --flake .#henri-desktop
 ok
 ```
+
+## fonts 
+
+What font names can be used in fonts.fontconfig.defaultFonts.monospace?
+
+Those that fontconfig will understand. This can be queried from a font file using fc-query.
+
+```sh
+cd /nix/var/nix/profiles/system/sw/share/X11/fonts
+fc-query DejaVuSans.ttf | grep '^\s\+family:' | cut -d'"' -f2
+```
+
+Note that you may need to set `fonts.fontDir.enable = true;` for that X11/fonts directory to exist. 

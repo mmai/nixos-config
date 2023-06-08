@@ -80,10 +80,15 @@ services.xserver = {
   #  nerdfonts for dev symbols in text editors
   #  noto-fonts-cjk for chinese characters
   fonts = {
+    # permet de lister les fonts dans /nix/var/nix/profiles/system/sw/share/X11/fonts : 
+    # cd /nix/var/nix/profiles/system/sw/share/X11/fonts
+    # fc-query MesloLGSNerdFontMono-Regular.ttf | grep 'family:'
+    fontDir.enable = true;
+
     fonts = with pkgs; [
       victor-mono
       dejavu_fonts
-      meslo-lg
+      meslo-lgs-nf
       fantasque-sans-mono # `a tester
       powerline-fonts
       nerdfonts
@@ -95,7 +100,7 @@ services.xserver = {
 
     fontconfig.defaultFonts = {
       # monospace = [ "DejaVuSansMono Nerd Font" ];
-      monospace = [ "MesloLGS NF" ]; # font recommended by powerlevel10k zsh prompt. Specify 'family: Meslo LG S' in alacritty.yml
+      monospace = [ "MesloLGS Nerd Font Mono" ]; # font recommended by powerlevel10k zsh prompt. 
     };
   };
 
