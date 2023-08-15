@@ -27,6 +27,10 @@ in
 
     vscode # for liveshare
 
+    jdk17 # pour lancer les applis java (sonarqube nécessite 17 et pas supérieur)
+    sonar-scanner-cli # client pour lancer une analyse Sonarqube 
+    # `sonar-scanner -Dsonar.projectKey=orchestra -Dsonar.sources=. -Dsonar.host.url=http://localhost:9000 -Dsonar.token=sqp_1fe82cd6a56660c387ad50cb854db99ee8093077`, après que le serveur soit lançé (`~/softs_/sonarqube-10.1.0.73491/bin/linux-x86-64/sonar.sh start` (telechargé sur  https://www.sonarqube.org/downloads/)
+
     # Lua
     sumneko-lua-language-server # lua lsp for neovim (the version installed by lsp-installer fails to execute on nixos )
 

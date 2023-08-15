@@ -175,6 +175,7 @@ services.xserver = {
     (chromium.override {
       commandLineArgs = "--load-media-router-component-extension=1"; # this allows to stream to chromecast devices from the browser
     })
+    tor-browser-bundle-bin # TOR browser
     transmission-gtk # transmission
     hexchat # desktop chat client
     element-desktop # matrix client
