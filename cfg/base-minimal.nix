@@ -70,7 +70,7 @@
     zinit # zsh plugin manager
 
     # ---------- applications
-    unstable.neovim
+    unstable.neovim luajit
     fortune # displayed in neovim landpage
     xclip # manage clipboard (needed for neovim to not freeze using xsel : https://github.com/neovim/neovim/issues/9402)
     # haskellPackages.super-user-spark # dotfiles manager / marked broken in 20.09

@@ -9,6 +9,8 @@ in
   # enable /etc/hosts editing (/!\ config is reset at each config rebuild)
   environment.etc.hosts.mode = "0644";
 
+  virtualisation.docker.enable = true;
+
   environment.systemPackages = 
   let
     php' = pkgs.php.buildEnv {
@@ -90,7 +92,7 @@ in
     docker-compose
     gitAndTools.gitflow
     gitAndTools.diff-so-fancy
-    jq # command line json parser
+    jq jless # command line json parsers (jq : queries ; jless : explorer )
     pup # Streaming HTML processor/selector (aka jq for HTML)
     # umlDesigner # trop usine à gaz
     plantuml # draw UML diagrams from text
