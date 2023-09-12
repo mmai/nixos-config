@@ -25,11 +25,8 @@ sudo nixos-rebuild switch --flake .#$(hostname)
 
 To fully replicate my desktop configuration, you can even install my dotfiles :
 
-```
-git clone https://github.com/mmai/dotfiles.git
-cd dotfiles
-make install
-```
+- fork the https://github.com/mmai/dotfiles repository
+- follow the _Replication_ instrutions on https://github.com/mmai/dotfiles/tree/master/.dotfiles 
 
 ## Usage
 
