@@ -34,6 +34,7 @@
   programs.gnupg.agent.enable = true; # needed for gpg / pass to work
   environment.systemPackages = with pkgs; [
     # Already in base-minimal : cachix, curl, wget, neovim, xclip, gitFull
+    bfg-repo-cleaner # suppression des secrets d'un repo git
     helix # code editor
     ueberzug # display images in terminal, used by telescope-media-files.nvim (needs >= NixOS 22.11 version)
     xpdf # Viewer for PDF files, includes pdftoppm used by telescope-media-files.nvim

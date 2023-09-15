@@ -27,7 +27,7 @@
   with pkgs; [
     ddclient # dyndns client. conf dans /etc/ddclient/ddclient.conf . identifiant défini dans manager OVH section dynhost
     nodejs # pour plugins nvim
-    exa # parmis les aliases zsh
+    eza # parmis les aliases zsh
   ];
 
 
