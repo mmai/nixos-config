@@ -35,9 +35,11 @@
   environment.systemPackages = with pkgs; [
     # Already in base-minimal : cachix, curl, wget, neovim, xclip, gitFull
     helix # code editor
-    ueberzug # display images in terminal, used by telescope-media-files.nvim (needs >= NixOS 22.11 version)
+    ueberzugpp # display images in terminal, used by yazi
     xpdf # Viewer for PDF files, includes pdftoppm used by telescope-media-files.nvim
-    ffmpegthumbnailer # A lightweight video thumbnailer, used by telescope-media-files.nvim
+    ffmpegthumbnailer # A lightweight video thumbnailer, used by yazi, telescope-media-files.nvim
+    unar # archive viewer (for yazi)
+    poppler # pdf viewer (for yazi)
 
     # ---- nix related ----------------
     # nixops # nixos servers deployment => bug install python sur 21.05 ??
@@ -73,6 +75,7 @@
     weechat # irc,.. client
     lf # file navigator --> replaced by nnn
     (nnn.override ({ withNerdIcons = true; })) # nnn file navigator with nerd icons
+    unstable.yazi # nnn replacement ?
     pistol # better file previewer (used by lf and fzf)
     sshfs # sftp
     surfraw # bookmarks & search engines client 
