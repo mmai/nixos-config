@@ -34,6 +34,7 @@
   programs.gnupg.agent.enable = true; # needed for gpg / pass to work
   environment.systemPackages = with pkgs; [
     # Already in base-minimal : cachix, curl, wget, neovim, xclip, gitFull
+    bfg-repo-cleaner # suppression des secrets d'un repo git
     helix # code editor
     ueberzugpp # display images in terminal, used by yazi
     xpdf # Viewer for PDF files, includes pdftoppm used by telescope-media-files.nvim
