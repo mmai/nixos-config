@@ -32,6 +32,15 @@
   };
 
   programs.gnupg.agent.enable = true; # needed for gpg / pass to work
+  services.pcscd.enable = true; # pour Yubikey : Middleware to access a smart card using SCard API (PC/SC)
+  security.pam = {
+    # yubico.enable = true; # enable users listed in ~/.yubico/authorized_yubikeys to log in
+    u2f.origin = "henri-deskop";
+    services = { # placer les  ~/.config/Yubico/u2f_keys
+        # login.u2fAuth = true;
+        # sudo.u2fAuth = true;
+      };
+  };
   environment.systemPackages = with pkgs; [
     # Already in base-minimal : cachix, curl, wget, neovim, xclip, gitFull
     bfg-repo-cleaner # suppression des secrets d'un repo git
@@ -68,6 +77,7 @@
     pass # password manager (needs gpg)
     age # crypt files (better alternative than gnupg)
     git-crypt # transparent file encryption in git
+    yubikey-manager yubico-piv-tool pam_u2f
 
     # ---------- applications
     amfora # gemini protocol client

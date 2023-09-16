@@ -29,7 +29,7 @@
     khard # Contacts cli viewer
     khal  # Calendar cli viewer
     w3m
-    gnupg1orig
+    # gnupg1orig # ou gnupg ?
   ];
 
   # -----------  services -----------
