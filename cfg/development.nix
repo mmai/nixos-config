@@ -63,9 +63,9 @@ in
     # Rust
     #   more options on https://github.com/NixOS/nixpkgs/blob/master/doc/languages-frameworks/rust.section.md
     # rustc cargo
-    rustup # then `rustup toolchain install stable; rustup default stable `
+    rustup # then `rustup toolchain install stable; rustup default stable ; rustup component add rust-analyzer`
     binutils gcc gnumake openssl pkgconfig # rustup dependencies (cf. https://github.com/NixOS/nixpkgs/blob/master/doc/languages-frameworks/rust.section.md)
-    rust-analyzer-unwrapped # used by coc-rust in vim
+    rust-analyzer-unwrapped # used by lsp in neovimg
 
     # dev libs
     automake autoconf zlib
