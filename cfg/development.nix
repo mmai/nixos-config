@@ -51,7 +51,8 @@ in
     php'.packages.composer
     php'.packages.psysh # 
     php'.packages.phpcbf # CodeSniffer (beautify)
-    php'.packages.phpstan php'.packages.psalm # static analysis tools
+    php'.packages.psalm # static analysis tool
+    # php'.packages.phpstan # static analysis tools // fail to install on nixos 23.11
     # Drupal coding standards installation :
     #   composer global require drupal/coder # installs phpcs as well
     #   composer global require dealerdirect/phpcodesniffer-composer-installer
@@ -64,8 +65,12 @@ in
     #   more options on https://github.com/NixOS/nixpkgs/blob/master/doc/languages-frameworks/rust.section.md
     # rustc cargo
     rustup # then `rustup toolchain install stable; rustup default stable ; rustup component add rust-analyzer`
-    binutils gcc gnumake openssl pkgconfig # rustup dependencies (cf. https://github.com/NixOS/nixpkgs/blob/master/doc/languages-frameworks/rust.section.md)
+    binutils gcc gnumake openssl pkg-config # rustup dependencies (cf. https://github.com/NixOS/nixpkgs/blob/master/doc/languages-frameworks/rust.section.md)
     rust-analyzer-unwrapped # used by lsp in neovimg
+
+    # multi platform dev, can be used with rust thanks to rinf
+    # flutter # needs 3Go  # Flutter, uses android-studio, chromium,...
+    # android-studio
 
     # dev libs
     automake autoconf zlib

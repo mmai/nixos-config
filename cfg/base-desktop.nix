@@ -47,8 +47,11 @@ services.xserver = {
   };
 
   # Gnome shell extensions with browsers
-  nixpkgs.config.firefox.enableGnomeExtensions = true;
   services.gnome.gnome-browser-connector.enable = true;
+  nixpkgs.config.firefox.enableGnomeExtensions = true; # deprecated, replaced by following directive
+  programs.firefox.nativeMessagingHosts.packages = [
+    pkgs.gnome-browser-connector
+  ];
 
   # Enable sound with pipewire.
   sound.enable = true;
@@ -85,7 +88,7 @@ services.xserver = {
     # fc-query MesloLGSNerdFontMono-Regular.ttf | grep 'family:'
     fontDir.enable = true;
 
-    fonts = with pkgs; [
+    packages = with pkgs; [
       victor-mono
       dejavu_fonts
       meslo-lgs-nf
