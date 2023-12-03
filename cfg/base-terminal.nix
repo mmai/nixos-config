@@ -58,7 +58,7 @@
     # ------------ Classic tools & alternatives
     bat # better cat
     tree # used by nnn
-    exa # replacement for ls with sensible defaults
+    eza # replacement for ls with sensible defaults
     fd # better find (and used by fzf in vim)
     ripgrep # Faster than grep, ag, ..
 
