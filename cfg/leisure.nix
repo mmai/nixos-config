@@ -21,14 +21,15 @@ in
     # stremio # popcorntime like
 
     steam
-    unnethack crawlTiles unstable.cataclysm-dda # some roguelike games
+    unnethack crawlTiles # some roguelike games
     leela-zero # go game engine (cmd = leelaz)=> additional steps : curl -O https://zero.sjeng.org/best-network && mv best-network ~/.local/share/leela-zero/
 
     obs-studio # video recording and live streaming
     libsForQt5.kdenlive mediainfo # video editing
     python310Packages.deemix # for dlmusic.sh
     picard chromaprint # MusicBrainz tagger (picard) with fingerprint calculator (chromaprint)
-    sublime-music # subsonic client ( ie to listen from funkwhale servers )
+    #sublime-music # à supprimer ? subsonic client ( ie to listen from funkwhale servers )
+    supersonic # à tester ? subsonic client ( ie to listen from funkwhale servers )
 
     android-file-transfer # copy files on tablet
     

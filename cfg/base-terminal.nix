@@ -103,6 +103,7 @@
     hledger # accounting
     dijo # habit tracker
     # figlet # creates ascii art
+    # vocage # tui spaced repetition (à la Anki) -> comment installer ?
 
     # ----------- diagnostics
     lsof # show open ports, etc.

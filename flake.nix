@@ -2,6 +2,7 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    vocage.url = "github:proycon/vocage"; # tui space repetition (à la Anki)
     # guix.url = "github:mmai/guix-flake"; # broken ? (zsh completion close tmux window...)
     # mydist.url = "/home/henri/travaux/nixpkgs"; # my fork of nixpkgs
     mydist.url = "github:mmai/nixpkgs/mydist"; # my fork of nixpkgs /!\ on branch 'mydist'
@@ -11,12 +12,17 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, mydist }: 
+  outputs = { self, nixpkgs, nixpkgs-unstable, vocage, home-manager, mydist }: 
   let
     overlay-unstable = system: final: prev: {
       unstable = import nixpkgs-unstable {
         system = system;
         config.allowUnfree = true;
+      };
+    };
+    overlay-vocage = system: final: prev: {
+      vocage = import vocage {
+        system = system;
       };
     };
     overlay-mydist = system: final: prev: {
@@ -30,6 +36,7 @@
       allowUnfree = true ;
       permittedInsecurePackages = [
         "xpdf-4.04" # terminal pdf viewer (used in nvim telekasten)
+        "electron-24.8.6" # for feishin music player (added 2023-12-31)
       ];
     };
 
@@ -74,7 +81,7 @@
               networking.hostName = "henri-desktop";
               nixpkgs.overlays = [ 
                 # guix.overlay 
-                (overlay-unstable system) (overlay-mydist system) ];
+                (overlay-unstable system) (overlay-mydist system)  ];
               nixpkgs.config = commonConfig; 
 
               # Let 'nixos-version --json' know about the Git revision of this flake.
