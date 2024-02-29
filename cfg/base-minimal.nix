@@ -37,8 +37,11 @@
 
   networking.networkmanager.enable = true;
 
-  # permet l'execution de programmes non patchés ( ie snx )
-  # programs.nix-ld.enable = true;
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+    # Add any missing dynamic libraries for unpackaged 
+    # programs here, NOT in environment.systemPackages
+  ];
   # environment.variables = {
   #   NIX_LD = pkgs.stdenv.cc.bintools.dynamicLinker;
   # };
