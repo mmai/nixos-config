@@ -35,7 +35,7 @@
     commonConfig = {
       allowUnfree = true ;
       permittedInsecurePackages = [
-        "xpdf-4.04" # terminal pdf viewer (used in nvim telekasten)
+        # "xpdf-4.04" # terminal pdf viewer (used in nvim telekasten)
         "electron-24.8.6" # for feishin music player (added 2023-12-31)
       ];
     };
