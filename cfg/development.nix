@@ -66,7 +66,8 @@ in
     # rustc cargo
     rustup # then `rustup toolchain install stable; rustup default stable ; rustup component add rust-analyzer`
     binutils gcc gnumake openssl pkg-config # rustup dependencies (cf. https://github.com/NixOS/nixpkgs/blob/master/doc/languages-frameworks/rust.section.md)
-    rust-analyzer-unwrapped # used by lsp in neovimg
+    rust-analyzer-unwrapped # used by lsp in neovim
+    lldb # debugger (used by rustaceanvim)
 
     # multi platform dev, can be used with rust thanks to rinf
     # flutter # needs 3Go  # Flutter, uses android-studio, chromium,...
@@ -102,6 +103,7 @@ in
     pup # Streaming HTML processor/selector (aka jq for HTML)
     # umlDesigner # trop usine à gaz
     plantuml # draw UML diagrams from text
+    graphviz # draw graphs (used by restaceanvim)
     radare2 # reverse engineering framework
     soapui # soap api testing
     universal-ctags
