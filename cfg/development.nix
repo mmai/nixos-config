@@ -67,6 +67,7 @@ in
     rustup # then `rustup toolchain install stable; rustup default stable ; rustup component add rust-analyzer`
     binutils gcc gnumake openssl pkg-config # rustup dependencies (cf. https://github.com/NixOS/nixpkgs/blob/master/doc/languages-frameworks/rust.section.md)
     rust-analyzer-unwrapped # used by lsp in neovim
+    cargo-nextest # used by neotest-rust in neovim
     lldb # debugger (used by rustaceanvim)
 
     # multi platform dev, can be used with rust thanks to rinf
