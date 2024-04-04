@@ -3,13 +3,15 @@ let
   ifTheyExist = groups: builtins.filter (group: builtins.hasAttr group config.users.groups) groups;
 in
 {
+  # TODO : sops
   # Decrypt ta-password to /run/secrets-for-users/ so it can be used to create the user
-  sops.secrets.ta-password.neededForUsers = true;
-  users.mutableUsers = false; # Required for password to be set via sops during system activation!
+  # sops.secrets.ta-password.neededForUsers = true;
+  # users.mutableUsers = false; # Required for password to be set via sops during system activation!
 
   users.users.henri = {
     isNormalUser = true;
-    hashedPasswordFile = config.sops.secrets.ta-password.path;
+    # TODO : sops
+    # hashedPasswordFile = config.sops.secrets.ta-password.path;
     shell = pkgs.zsh; # default shell
     # shell = pkgs.nushell;
     extraGroups = [

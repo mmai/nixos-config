@@ -36,7 +36,7 @@ in
 
       # extract to default pam-u2f authfile location for passwordless sudo. see ../optional/yubikey
       "yubico/u2f_keys" = {
-        path = "/home/ta/.config/Yubico/u2f_keys";
+        path = "/home/henri/.config/Yubico/u2f_keys";
       };
     };
   };

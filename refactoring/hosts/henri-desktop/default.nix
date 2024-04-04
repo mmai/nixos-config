@@ -15,6 +15,7 @@
     ./hardware-configuration.nix
 
     #################### Host-specific Optional Configs ####################
+    ../common/optional/home-network.nix # access local network services (synology, etc.)
     # ../common/optional/services/openssh.nix # allow remote SSH access
     #
     # ../common/optional/xfce.nix # window manager
@@ -26,25 +27,9 @@
     ../common/users/henri
   ];
 
-  # Enable some basic X server options
-  services.xserver.enable = true;
-  services.xserver.displayManager = {
-    lightdm.enable = true;
-    autoLogin.enable = true;
-    autoLogin.user = "media";
-  };
-
   networking = {
     hostName = "henri-desktop";
-    enableIPv6 = false;
-  };
-
-  boot = {
-    loader = {
-      systemd-boot.enable = true;
-      efi.canTouchEfiVariables = true;
-      timeout = 3;
-    };
+    networkmanager.enable = true;
   };
 
   system.stateVersion = "23.11";
