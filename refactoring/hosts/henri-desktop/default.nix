@@ -16,6 +16,8 @@
 
     #################### Host-specific Optional Configs ####################
     ../common/optional/home-network.nix # access local network services (synology, etc.)
+    ../common/optional/msmtp.nix # simple copie TODO
+    ../common/optional/yubikey # simple copie TODO
     # ../common/optional/services/openssh.nix # allow remote SSH access
     #
     # ../common/optional/xfce.nix # window manager

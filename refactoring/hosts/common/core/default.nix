@@ -34,6 +34,7 @@
   # };
 
   programs.command-not-found.enable = false; # replaced by the nix-index version
+  programs.gnupg.agent.enable = true; # needed for gpg / pass to work
 
   hardware.enableRedistributableFirmware = true;
 
@@ -50,6 +51,7 @@
   # in
 
   with pkgs; [
+  # ================ from base-minimal =====================================
     # ---- nix related ----------------
     nix-index # nix packages database with command-not-found support : nix-locate 
     cachix # custom nix packages binaries cache management
@@ -70,6 +72,89 @@
     # ------------- coding related
     gitFull git-filter-repo # git-filter-repo used to group '~/think' commit history by day
     subversionClient # svn is used by zinit
+
+  # ================ from base-terminal =====================================
+    # Already in base-minimal : cachix, curl, wget, neovim, xclip, gitFull
+    bfg-repo-cleaner # suppression des secrets d'un repo git
+    helix # code editor
+    ueberzugpp # display images in terminal, used by yazi
+    # xpdf # Viewer for PDF files, includes pdftoppm used by telescope-media-files.nvim
+    ffmpegthumbnailer # A lightweight video thumbnailer, used by yazi, telescope-media-files.nvim
+    unar # archive viewer (for yazi)
+    poppler # pdf viewer (for yazi)
+
+    # ---- nix related ----------------
+    # nixops # nixos servers deployment => bug install python sur 21.05 ??
+    nix-index # search available packages containing files (or paths) : nix-index ; nix-locate -w libstdc++.so.6
+
+    # ------------ Classic tools & alternatives
+    bat # better cat
+    tree # used by nnn
+    eza # replacement for ls with sensible defaults
+    fd # better find (and used by fzf in vim)
+    ripgrep # Faster than grep, ag, ..
+
+    # ------------ Common tools
+    ghostscript # manipulate pdfs
+    zip unzip
+    mailutils # to send email from command line : `echo 'bonjour' | mail -s "my subject" "contact@something.com"`
+
+    # ------------ Network access
+    # nfs-utils  # nfs shares
+    # smbclient cifs-utils # samba shares
+
+    # ----------- Security
+    gnupg # Gnu privacy guard: used by pass/qpass, crypt emails
+    pass # password manager (needs gpg)
+    age # crypt files (better alternative than gnupg)
+    git-crypt # transparent file encryption in git
+
+    # ---------- applications
+    # amfora # gemini protocol client
+    tmux tmuxp # terminal multiplexer & its session manager
+    lf # file navigator --> replaced by nnn
+    pistol # better file previewer (used by lf and fzf)
+    (nnn.override ({ withNerdIcons = true; })) # nnn file navigator with nerd icons
+    sxiv # image viewer (used by nnn)
+    unstable.yazi # nnn replacement ?
+    sshfs # sftp
+    surfraw # bookmarks & search engines client 
+    weechat # irc,.. client
+    # zola # static website generator
+    # unstable.offpunk # offline rss, gemini, ... reader (remplace newsboat)
+
+    # -------- Cli tools
+    ansifilter # can remove ANSI terminal escape codes (colors, formatting..)
+    fzf # selection generator
+    ts # task pooler (add tasks in a queue, see the task list) 
+
+    # -------- à essayer
+    # hledger # accounting
+    # dijo # habit tracker
+    # figlet # creates ascii art
+    # vocage # tui spaced repetition (à la Anki) -> comment installer ?
+
+    # ----------- diagnostics
+    lsof # show open ports, etc.
+    file # Show file information. Usefull to debug 'zsh: no such file or directory' errors on binaries
+    htop
+    iotop
+    mtr # combine ping and traceroute
+    ncdu # show disk usage
+    psmisc # contains utilities like fuser (display process IDs currently using files or sockets), etc.
+    tcpdump # to monitor network calls (in and out)
+
+    # -------------- Automation
+    entr # run arbitrary commands when files change (example: ls *.hs | entr make build)
+    expect # A tool for automating interactive applications
+
+    # ------------- coding related
+    lazygit tig
+    gitAndTools.git-annex # sync large files with git
+    gitAndTools.delta # better git diff
+    gnumake
+    just # better make 
+    tldr # Simplified and community-driven man pages
 
   ];
 
