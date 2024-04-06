@@ -1,6 +1,7 @@
 { config, ... }:
 {
 
+  # copié de base_terminal.nix
   environment.etc =
   let msmtprc = pkgs.writeText "msmtprc"
     ''

@@ -109,6 +109,12 @@
           modules = [ ./hosts/henri-atixnet-laptop ];
           specialArgs = { inherit inputs outputs; };
         };
+        # old work desktop
+        henri-atixnet = lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [ ./hosts/henri-atixnet ];
+          specialArgs = { inherit inputs outputs; };
+        };
       };
 
       #################### User-level Home-Manager Configurations ####################
