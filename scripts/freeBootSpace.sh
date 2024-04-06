@@ -4,17 +4,22 @@
 # nix-collect-garbage -d
 
 echo " > Keep only 2 lasts entries from /boot/loader/entries"
-cd /boot/loader/entries && ls | head -n -2 | xargs rm --
+cd /boot/loader/entries && ls | head -n -2 | sudo xargs rm --
 
 echo " > Remove old kernels from /boot/EFI/nixos/"
-TOKEEP=$(cat /boot/loader/entries/* | grep -Eow "linux-[0-9]+.[0-9]+.[0-9]+" | sort -u | sed ':a; N; $!ba; s/\n/\\|/g')  
+TOKEEP=$(cat /boot/loader/entries/* | grep -Eow "linux-[0-9]+.[0-9]+.[0-9]+" | sort -u | sed ':a; N; $!ba; s/\n/\\|/g')
 cd /boot/EFI/nixos
-# ls | grep -v $TOKEEP 
-ls | grep -v $TOKEEP | xargs rm --
+# ls | grep -v $TOKEEP
+ls | grep -v $TOKEEP | xargs sudo rm --
 
 echo " > Delete old nixos generations"
-nix-env -p /nix/var/nix/profiles/system --delete-generations +2
+sudo nix-env -p /nix/var/nix/profiles/system --delete-generations +2
 
 echo " > Rebuild system"
-nixos-rebuild switch
+sudo nixos-rebuild switch
 
+# en dernier recours :
+# sudo mv /boot/EFI/Microsoft ~/backup_boot_Microsoft/
+# sudo nixos-rebuild switch
+# just free-boot-space
+# sudo mv ~/backup_boot_Microsoft/ /boot/EFI/Microsoft

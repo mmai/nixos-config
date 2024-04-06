@@ -15,7 +15,7 @@
 
     #################### Host-specific Optional Configs ####################
     ../common/optional/msmtp.nix # simple copie extraite de base_terminal.nix TODO
-    ../common/optional/destkop.nix # copié de cfg/base-desktop.nix  TODO : diviser en fichiers logiques
+    ../common/optional/desktop.nix # copié de cfg/base-desktop.nix  TODO : diviser en fichiers logiques
     ../common/optional/developpement.nix # copié de cfg/developpement.nix  TODO : diviser en fichiers logiques
     # ../common/optional/androidStudio.nix # copié de cfg/notRaspberry.nix
     ../common/optional/virtualbox.nix # copié de cfg/notRaspberry.nix

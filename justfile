@@ -14,16 +14,11 @@ ci:
 ci-all:
   pre-commit run --all-files
 
-# Run `git add .` and `./scripts/build.sh`
-build:
-  git add .
-  scripts/build.sh
-
 # Stage all files to git, rebuild the flake for the current, or specified hosts, and then valdiation sops activation via `just check-sops`.
 rebuild:
   git add .
   scripts/system-flake-rebuild.sh
-  just check-sops
+  # just check-sops
 
 # Same as `just rebuild` except with the `--show-trace` flag enabled.
 rebuild-trace:
@@ -39,6 +34,9 @@ update:
 rebuild-update:
   just update
   just rebuild
+
+free-boot-space:
+  ./scripts/freeBootSpace.sh
 
 # Run `git diff ':!flake.lock'`
 diff:

@@ -4,6 +4,7 @@
 # at the user level fails for some reason.
 #
 
+{ pkgs, ... }:
 {
   programs.zsh = {
     enable = true;

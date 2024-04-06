@@ -23,4 +23,11 @@
       config.allowUnfree = true;
     };
   };
+
+  overlay-mydist = final: prev: {
+    mydist = import inputs.mydist {
+      system = final.system;
+      config.allowUnfree = true;
+    };
+  };
 }

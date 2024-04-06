@@ -24,6 +24,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    mydist.url = "github:mmai/nixpkgs/mydist"; # my fork of nixpkgs /!\ on branch 'mydist'
+
     # vim4LMFQR!
     nixvim = {
       url = "github:nix-community/nixvim/nixos-23.11";
@@ -74,8 +76,8 @@
 
       # Custom modules to enable special functionality for nixos or home-manager oriented configs.
       # -- currently empty (2024-04-01)
-      # nixosModules = import ./modules/nixos;
-      # homeManagerModules = import ./modules/home-manager;
+      nixosModules = import ./modules/nixos;
+      homeManagerModules = import ./modules/home-manager;
 
       # Custom modifications/overrides to upstream packages.
       # -- ex : apply a patch in the source code of a package...
@@ -98,7 +100,7 @@
 
       nixosConfigurations = {
         # home pc
-        henri-desktop  lib.nixosSystem {
+        henri-desktop = lib.nixosSystem {
           system = "x86_64-linux";
           modules = [ ./hosts/henri-desktop ];
           specialArgs = { inherit inputs outputs; };

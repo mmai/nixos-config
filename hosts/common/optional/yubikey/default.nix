@@ -1,5 +1,6 @@
 { pkgs, ... }:
 
+{
   services.pcscd.enable = true; # pour Yubikey : Middleware to access a smart card using SCard API (PC/SC)
   security.pam = {
     # yubico.enable = true; # enable users listed in ~/.yubico/authorized_yubikeys to log in
