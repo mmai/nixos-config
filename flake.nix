@@ -1,274 +1,138 @@
 {
+  description = "Mmai's Nix-Config";
+
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
-    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
-    vocage.url = "github:proycon/vocage"; # tui space repetition (à la Anki)
-    # guix.url = "github:mmai/guix-flake"; # broken ? (zsh completion close tmux window...)
-    # mydist.url = "/home/henri/travaux/nixpkgs"; # my fork of nixpkgs
-    mydist.url = "github:mmai/nixpkgs/mydist"; # my fork of nixpkgs /!\ on branch 'mydist'
+    #################### Official NixOS Package Sources ####################
+
+    nixpkgs.url = "github:NixOS/nixpkgs/release-23.11";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable"; # also see 'unstable-packages' overlay at 'overlays/default.nix"
+
+    #################### Utilities ####################
+
+    # Official NixOS hardware packages
+    hardware.url = "github:nixos/nixos-hardware";
+
+    # Secrets management. See ./docs/secretsmgmt.md
+    sops-nix = {
+      url = "github:mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # Home-manager for declaring user/home configurations
     home-manager = {
       url = "github:nix-community/home-manager/release-23.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # vim4LMFQR!
+    nixvim = {
+      url = "github:nix-community/nixvim/nixos-23.11";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # Windows management
+    # for now trying to avoid this one because I want stability for my wm
+    # this is the hyprland development flake package / unstable
+    # hyprland = {
+    #   url = "github:hyprwm/hyprland";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
+    #   hyprland-plugins = {
+    #   url = "github:hyprwm/hyprland-plugins";
+    #   inputs.hyprland.follows = "hyprland";
+    # };
+
+    #################### Personal Repositories ####################
+
+    # Private secrets repo.  See ./docs/secretsmgmt.md
+    # Authenticate via ssh and use shallow clone
+    # mysecrets = {
+    #   url = "git+ssh://git@gitlab.com/emergentmind/nix-secrets.git?ref=main&shallow=1";
+    #   flake = false;
+    # };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, vocage, home-manager, mydist }: 
-  let
-    overlay-unstable = system: final: prev: {
-      unstable = import nixpkgs-unstable {
-        system = system;
-        config.allowUnfree = true;
-      };
-    };
-    overlay-vocage = system: final: prev: {
-      vocage = import vocage {
-        system = system;
-      };
-    };
-    overlay-mydist = system: final: prev: {
-      mydist = import mydist {
-        system = system;
-        config.allowUnfree = true;
-      };
-    };
-
-    commonConfig = {
-      allowUnfree = true ;
-      permittedInsecurePackages = [
-        # "xpdf-4.04" # terminal pdf viewer (used in nvim telekasten)
-        "electron-24.8.6" # for feishin music player (added 2023-12-31)
+  outputs = { self, nixpkgs, home-manager, ... } @ inputs:
+    let
+      inherit (self) outputs;
+      lib = nixpkgs.lib // home-manager.lib;
+      systems = [
+        "x86_64-linux"
+        "aarch64-linux"
+        # "x86_64-darwin"
+        # "aarch64-darwin"
+        "i686-linux"
       ];
-    };
+      forEachSystem = f: lib.genAttrs systems (system: f pkgsFor.${system});
+      pkgsFor = lib.genAttrs systems (system: import nixpkgs {
+        inherit system;
+        config.allowUnfree = true;
+      });
+    in
+    {
+      inherit lib;
 
-  in 
+      # Custom modules to enable special functionality for nixos or home-manager oriented configs.
+      # -- currently empty (2024-04-01)
+      # nixosModules = import ./modules/nixos;
+      # homeManagerModules = import ./modules/home-manager;
 
-  {
-    nixosConfigurations = 
-    let 
-      withHomeManager = username: homeFile: {config, lib, pkgs, utils, ... } : home-manager.nixosModules.home-manager {
-        inherit config; inherit lib; inherit pkgs; inherit utils;
-        home-manager.useGlobalPkgs = true;
-        home-manager.useUserPackages = true;
-        # home-manager.users.${username} = import homeFile;
-        home-manager.users.henri = import homeFile;
-        # Optionally, use home-manager.extraSpecialArgs to pass
-        # arguments to home.nix
-      };
-    in {
+      # Custom modifications/overrides to upstream packages.
+      # -- ex : apply a patch in the source code of a package...
+      overlays = import ./overlays { inherit inputs outputs; };
 
-      henri-desktop = let system = "x86_64-linux"; in nixpkgs.lib.nixosSystem {
-        system = system;
-        modules = [ 
-          nixpkgs.nixosModules.notDetected
-	        # guix.nixosModule
-          ( { config, pkgs, ... }:
-            { imports = [ ./machines/home-desktop.nix # Include the results of the hardware scan.
-                          ./configurations/home.nix
-                          ./configurations/common.nix
-                          ./cfg/notRaspberry.nix # virtualbox & android studio
-                          # (withHomeManager "henri" ./homes/henri.nix)
+      # Your custom packages meant to be shared or upstreamed.
+      # Accessible through 'nix build', 'nix shell', etc
+      packages = forEachSystem (pkgs: import ./pkgs { inherit pkgs; });
 
-                          home-manager.nixosModules.home-manager {
-                            home-manager.useGlobalPkgs = true;
-                            home-manager.useUserPackages = true;
-                            home-manager.users.henri = import ./homes/henri.nix;
-                          }
+      # Nix formatter available through 'nix fmt' https://nix-community.github.io/nixpkgs-fmt
+      formatter = forEachSystem (pkgs: pkgs.nixpkgs-fmt);
 
-                        ];
+      # Shell configured with packages that are typically only needed when working on or with nix-config.
+      devShells = forEachSystem (pkgs: import ./shell.nix { inherit pkgs; });
 
-              # services.guix.enable = true;
+      #################### NixOS Configurations ####################
+      #
+      # Available through 'nixos-rebuild --flake .#hostname'
+      # Typically adopted using 'sudo nixos-rebuild switch --flake .#hostname'
 
-              networking.hostName = "henri-desktop";
-              nixpkgs.overlays = [ 
-                # guix.overlay 
-                (overlay-unstable system) (overlay-mydist system)  ];
-              nixpkgs.config = commonConfig; 
-
-              # Let 'nixos-version --json' know about the Git revision of this flake.
-              system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev;
-              system.stateVersion = "23.11";
-              nix.registry.nixpkgs.flake = nixpkgs;
-            }
-          )
-        ];
-      };
-
-      nixvm = let system = "x86_64-linux"; in nixpkgs.lib.nixosSystem {
-        system = system;
-        modules = [ 
-          nixpkgs.nixosModules.notDetected
-          ( { config, pkgs, ... }:
-          { imports = [ ./machines/virtualbox.nix
-                        ./configurations/light.nix
-                        # henriHome
-                      ];
-            networking.hostName = "nixvm";
-            nixpkgs.overlays = [ (overlay-unstable system) ];
-            nixpkgs.config = commonConfig; 
-            # Let 'nixos-version --json' know about the Git revision of this flake.
-            system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev;
-            nix.registry.nixpkgs.flake = nixpkgs;
-            system.stateVersion = "23.11";
-          }
-        )];
+      nixosConfigurations = {
+        # home pc
+        henri-desktop  lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [ ./hosts/henri-desktop ];
+          specialArgs = { inherit inputs outputs; };
+        };
+        # work laptop (thinkpad X1)
+        henri-atixnet-laptop = lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [ ./hosts/henri-atixnet-laptop ];
+          specialArgs = { inherit inputs outputs; };
+        };
+        # old work desktop
+        henri-atixnet = lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [ ./hosts/henri-atixnet ];
+          specialArgs = { inherit inputs outputs; };
+        };
       };
 
-      raspberry = let system = "aarch64-linux"; in nixpkgs.lib.nixosSystem {
-        system = system;
-        modules = [ 
-          nixpkgs.nixosModules.notDetected
-          ( { config, pkgs, ... }:
-          { imports = [ ./machines/raspberry4.nix
-                        ./configurations/pro.nix
-                        # henriHome
-                      ];
-            networking.hostName = "raspberry";
-            nixpkgs.overlays = [ (overlay-unstable system) ];
-            nixpkgs.config = commonConfig; 
-            # Let 'nixos-version --json' know about the Git revision of this flake.
-            system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev;
-            nix.registry.nixpkgs.flake = nixpkgs;
-            system.stateVersion = "22.05";
-          }
-        )];
-      };
+      #################### User-level Home-Manager Configurations ####################
+      #
+      # Available through 'home-manager --flake .#primary-username@hostname'
+      # Typically adopted using 'home-manager switch --flake .#primary-username@hostname'
 
-      henri-laptop = let system = "x86_64-linux"; in nixpkgs.lib.nixosSystem {
-        system = system;
-        modules = [ 
-          nixpkgs.nixosModules.notDetected
-          ( { config, pkgs, ... }:
-          { imports = [ ./machines/asusZenbook.nix
-                        ./configurations/home.nix
-                        ./configurations/common.nix
-                        ./cfg/notRaspberry.nix # virtualbox & android studio
-                        # henriHome
-                      ];
-            networking.hostName = "henri-laptop";
-            nixpkgs.overlays = [ (overlay-unstable system) (overlay-mydist system)];
-            nixpkgs.config = commonConfig; 
-            # Let 'nixos-version --json' know about the Git revision of this flake.
-            system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev;
-            system.stateVersion = "21.11";
-            nix.registry.nixpkgs.flake = nixpkgs;
-          }
-        )];
-      };
-
-      nettop = let system = "x86_64-linux"; in nixpkgs.lib.nixosSystem {
-        system = system;
-        modules = [ 
-          nixpkgs.nixosModules.notDetected
-          ( { config, pkgs, ... }:
-          { imports = [ ./machines/shuttle.nix
-                        ./configurations/server.nix
-                      ];
-            networking.hostName = "nettop";
-            nixpkgs.overlays = [ (overlay-unstable system) ];
-            nixpkgs.config = commonConfig; 
-            # Let 'nixos-version --json' know about the Git revision of this flake.
-            system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev;
-            nix.registry.nixpkgs.flake = nixpkgs;
-            system.stateVersion = "20.09";
-          }
-        )];
-      };
-
-      henri-netbook = let system = "i686-linux"; in nixpkgs.lib.nixosSystem {
-        system = system;
-        modules = [ 
-          nixpkgs.nixosModules.notDetected
-          ( { config, pkgs, ... }:
-          { imports = [ ./machines/asusEeePc.nix
-                        ./configurations/light.nix
-                        # no need to import common.nix
-                      ];
-            networking.hostName = "henri-netbook";
-            nixpkgs.overlays = [ (overlay-unstable system) ];
-            nixpkgs.config = commonConfig; 
-
-
-            # Setup cross compilation. ( `nixos-rebuild -j0 switch` to force using the remote builder )
-            nixpkgs = {
-              # platform for wich the derivation is built
-              crossSystem = { config = "i686-unknown-linux-gnu"; system = "i686-linux"; }; 
-              # platform on wich the derivation is built
-              localSystem = { config = "x86_64-unknown-linux-gnu"; system = "x86_64-linux"; };
-            };
-
-            nix.distributedBuilds = true;
-            nix.buildMachines = [ {
-              hostName = "henri-desktop";
-              sshUser = "henri";
-              sshKey = "/home/henri/.ssh/id_rsa";
-              system = "x86_64-linux";
-            } ];
-
-            # Enable tools for remote installation.
-            security.sudo.enable = true;
-            hardware.enableRedistributableFirmware = true;
-
-            # Let 'nixos-version --json' know about the Git revision of this flake.
-            system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev;
-            system.stateVersion = "20.09"; # Did you read the comment?
-            nix.registry.nixpkgs.flake = nixpkgs;
-          }
-        )];
-      };
-
-      henri-atixnet = let system = "x86_64-linux"; in nixpkgs.lib.nixosSystem {
-        system = system;
-        modules = [ 
-          nixpkgs.nixosModules.notDetected 
-          ( { config, pkgs, ... }:
-          { imports = [ ./machines/atixnet-desktop.nix
-                        ./configurations/pro.nix
-                        ./configurations/common.nix
-                        ./cfg/notRaspberry.nix # virtualbox & android studio
-                        home-manager.nixosModules.home-manager {
-                          home-manager.useGlobalPkgs = true;
-                          home-manager.useUserPackages = true;
-                          home-manager.users.henri = import ./homes/henri.nix;
-                        }
-                      ];
-            networking.hostName = "henri-atixnet";
-            nixpkgs.overlays = [ (overlay-unstable system) (overlay-mydist system) ];
-            nixpkgs.config = commonConfig;
-            # Let 'nixos-version --json' know about the Git revision of this flake.
-            system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev;
-            system.stateVersion = "23.11";
-            nix.registry.nixpkgs.flake = nixpkgs;
-          }
-        )];
-      };
-
-      henri-atixnet-laptop = let system = "x86_64-linux"; in nixpkgs.lib.nixosSystem {
-        system = system;
-        modules = [ 
-          nixpkgs.nixosModules.notDetected 
-          ( { config, pkgs, ... }:
-          { imports = [ ./machines/thinkpadX1.nix
-                        ./configurations/pro.nix
-                        ./configurations/common.nix
-                        ./cfg/notRaspberry.nix # virtualbox & android studio
-                        home-manager.nixosModules.home-manager {
-                          home-manager.useGlobalPkgs = true;
-                          home-manager.useUserPackages = true;
-                          home-manager.users.henri = import ./homes/henri.nix;
-                        }
-                      ];
-            networking.hostName = "henri-atixnet-laptop";
-            nixpkgs.overlays = [ (overlay-unstable system) (overlay-mydist system) ];
-            nixpkgs.config = commonConfig;
-            # Let 'nixos-version --json' know about the Git revision of this flake.
-            system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev;
-            system.stateVersion = "23.11";
-            nix.registry.nixpkgs.flake = nixpkgs;
-          }
-        )];
+      homeConfigurations = {
+        "henri@henri-desktop" = lib.homeManagerConfiguration {
+          modules = [ ./home/henri/henri-desktop.nix ];
+          pkgs = pkgsFor.x86_64-linux;
+          extraSpecialArgs = { inherit inputs outputs; };
+        };
+        "henri@henri-atixnet-laptop" = lib.homeManagerConfiguration {
+          modules = [ ./home/henri/henri-atixnet-laptop.nix ];
+          pkgs = pkgsFor.x86_64-linux;
+          extraSpecialArgs = { inherit inputs outputs; };
+        };
       };
     };
-
-  };
-
 }
