@@ -15,10 +15,11 @@
     ./hardware-configuration.nix
 
     #################### Host-specific Optional Configs ####################
+    ../common/optional/services/printing.nix
     ../common/optional/home-network.nix # access local network services (synology, etc.)
     ../common/optional/msmtp.nix # simple copie TODO
     ../common/optional/yubikey # simple copie TODO
-    ../common/optional/desktop.nix # copié de cfg/base-desktop.nix  TODO : diviser en fichiers logiques
+    ../common/optional/desktop 
     ../common/optional/developpement.nix # copié de cfg/developpement.nix  TODO : diviser en fichiers logiques
     # ../common/optional/androidStudio.nix # copié de cfg/notRaspberry.nix
     ../common/optional/virtualbox.nix # copié de cfg/notRaspberry.nix
@@ -27,13 +28,17 @@
     # ../common/optional/services/openssh.nix # allow remote SSH access
     #
     # ../common/optional/xfce.nix # window manager
-    # ../common/optional/pipewire.nix # audio
+    ../common/optional/pipewire.nix # audio
     # ../common/optional/smbclient.nix # mount the ghost mediashare
     # ../common/optional/vlc.nix # media player
 
     #################### Users to Create ####################
     ../common/users/henri
   ];
+
+  # options définies dans services/greetd.nix
+  # autoLogin.enable = true;
+  # autoLogin.username = "henri";
 
   networking = {
     hostName = "henri-desktop";
