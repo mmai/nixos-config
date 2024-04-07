@@ -30,4 +30,7 @@
       config.allowUnfree = true;
     };
   };
+
+  # cf. https://gist.github.com/sioodmy/1932583dd8a804e0b3fe86416b923a16
+  overlay-wayland = inputs.nixpkgs-wayland.overlay;
 }

@@ -15,6 +15,8 @@
     ./hardware-configuration.nix
 
     #################### Host-specific Optional Configs ####################
+    ../common/optional/nvidia.nix
+
     ../common/optional/services/printing.nix
     ../common/optional/home-network.nix # access local network services (synology, etc.)
     ../common/optional/msmtp.nix # simple copie TODO

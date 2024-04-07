@@ -12,6 +12,10 @@
     # Official NixOS hardware packages
     hardware.url = "github:nixos/nixos-hardware";
 
+    # Hyprland (cf. https://gist.github.com/sioodmy/1932583dd8a804e0b3fe86416b923a16)
+    hyprland.url = "github:hyprwm/Hyprland/";
+    nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
+
     # Secrets management. See ./docs/secretsmgmt.md
     sops-nix = {
       url = "github:mic92/sops-nix";
