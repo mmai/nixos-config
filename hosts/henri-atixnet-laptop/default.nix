@@ -13,9 +13,6 @@
     #################### Required Configs ####################
     ../common/core
     ./hardware-configuration.nix # detected hardware-configuration
-    # custom hardware configuration
-    boot.kernelPackages = pkgs.linuxPackages_6_1; # display-manager fails with original 5.15 kernel ; virtualbox fails on kernel >= 6.2
-
 
     #################### Host-specific Optional Configs ####################
     ../common/optional/msmtp.nix # simple copie extraite de base_terminal.nix TODO
@@ -34,6 +31,9 @@
     #################### Users to Create ####################
     ../common/users/henri
   ];
+
+  # custom hardware configuration
+  #boot.kernelPackages = pkgs.linuxPackages_6_1; # display-manager fails with original 5.15 kernel ; virtualbox fails on kernel >= 6.2
 
   networking = {
     hostName = "henri-atixnet-laptop";
