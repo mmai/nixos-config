@@ -4,38 +4,25 @@
   imports = [
     ./core.nix
 
-    # ../services/greetd.nix # display manager (launch Hyprland session) # XXX : crash
-    #./hyprland.nix # window manager # XXX : crash
+    ../services/greetd.nix # display manager (launch Hyprland session)
+    ./hyprland.nix # window manager 
     
-     ./gnome.nix # window manager
+     # ./gnome.nix # window manager
   ];
 
   # services.xserver.displayManager.lightdm.enable = true; # to use instead of gdm if computer freeze after login (ie on Lenovo 470s)
 
-  services.xserver = {
-    enable = true;
+  # services.xserver = {
+    # enable = true;
 
-    displayManager = {
-      gdm = {
-        enable = true;
-        wayland = false; # disable wayland in order to allow microsoft teams to share desktop
-      };
-      # sddm.enable = true;
-      # defaultSession = "none+awesome";
-    };
-
-    windowManager = {
-      xmonad.enable = true;
-      awesome = {
-        enable = true;
-        luaModules = with pkgs.luaPackages; [
-          luarocks # is the package manager for Lua modules
-          luadbi-mysql # Database abstraction layer
-        ];
-      };
-    };
-
-  };
+    # displayManager = {
+    #   gdm = {
+    #     enable = true;
+    #   };
+    #   # sddm.enable = true;
+    #   # defaultSession = "none+awesome";
+    # };
+  # };
 
   networking.firewall.allowedTCPPorts = [ 8010 ]; # allow streaming to chromecast devices (vlc)
 
