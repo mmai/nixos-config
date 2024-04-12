@@ -20,18 +20,19 @@ in
       MOZ_DISABLE_RDD_SANDBOX = "1";
       EGL_PLATFORM = "wayland";
     };
-  # environment.variables = {
-  #   GBM_BACKEND = "nvidia-drm";
-  #   WLR_NO_HARDWARE_CURSORS = "1";
-  #   LIBVA_DRIVER_NAME = "nvidia";
-  #   __GLX_VENDOR_LIBRARY_NAME = "nvidia";
-  # };
+  environment.variables = {
+    GBM_BACKEND = "nvidia-drm";
+    WLR_NO_HARDWARE_CURSORS = "1";
+    LIBVA_DRIVER_NAME = "nvidia";
+    __GLX_VENDOR_LIBRARY_NAME = "nvidia";
+  };
 
-  # environment.systemPackages = with pkgs; [
-  #   vulkan-loader
-  #   vulkan-validation-layers
-  #   vulkan-tools
-  # ];
+  environment.systemPackages = with pkgs; [
+    glxinfo
+    vulkan-loader
+    vulkan-validation-layers
+    vulkan-tools
+  ];
 
   hardware = {
     nvidia = {
@@ -44,7 +45,7 @@ in
 
     opengl = {
       enable = true;
-      # extraPackages = with pkgs; [nvidia-vaapi-driver];
+      extraPackages = with pkgs; [nvidia-vaapi-driver];
     };
   };
 }
