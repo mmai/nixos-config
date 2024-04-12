@@ -49,7 +49,7 @@ in
     php'
     php'.packages.composer
     php'.packages.psysh # 
-    php'.packages.phpcbf # CodeSniffer (beautify)
+    php'.packages.php-codesniffer # CodeSniffer (beautify)
     php'.packages.psalm # static analysis tool
     # php'.packages.phpstan # static analysis tools // fail to install on nixos 23.11
     # Drupal coding standards installation :
