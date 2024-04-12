@@ -5,7 +5,8 @@
     ./core.nix
 
     # ../services/greetd.nix # display manager (launch Hyprland session) # XXX : crash
-    #./hyprland.nix # window manager # XXX : crash
+    # ./hyprland.nix # window manager # XXX : crash
+    # ./sway.nix # window manager 
     
      ./gnome.nix # window manager
   ];
@@ -18,23 +19,23 @@
     displayManager = {
       gdm = {
         enable = true;
-        wayland = false; # disable wayland in order to allow microsoft teams to share desktop
+        # wayland = false; # disable wayland in order to allow microsoft teams to share desktop
       };
       # sddm.enable = true;
       # defaultSession = "none+awesome";
     };
 
-    windowManager = {
-      xmonad.enable = true;
-      awesome = {
-        enable = true;
-        luaModules = with pkgs.luaPackages; [
-          luarocks # is the package manager for Lua modules
-          luadbi-mysql # Database abstraction layer
-        ];
-      };
-    };
-
+  #   windowManager = {
+  #     xmonad.enable = true;
+  #     awesome = {
+  #       enable = true;
+  #       luaModules = with pkgs.luaPackages; [
+  #         luarocks # is the package manager for Lua modules
+  #         luadbi-mysql # Database abstraction layer
+  #       ];
+  #     };
+  #   };
+  #
   };
 
   networking.firewall.allowedTCPPorts = [ 8010 ]; # allow streaming to chromecast devices (vlc)
@@ -44,8 +45,8 @@
 
   environment.systemPackages = with pkgs; [
 
-    haskellPackages.xmonad-contrib
-    haskellPackages.xmonad
+    # haskellPackages.xmonad-contrib
+    # haskellPackages.xmonad
 
     # ---------- the forever quest for a good email client -----------
     #  since 19.09 default mail client in gnome is geary

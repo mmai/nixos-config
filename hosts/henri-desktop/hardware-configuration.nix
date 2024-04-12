@@ -10,7 +10,6 @@
   boot.extraModulePackages = [ ];
 
   # Added by me
-  services.xserver.videoDrivers = [ "nvidia" ];
   environment.systemPackages = with pkgs; [ microcodeIntel ];
   hardware.cpu.intel.updateMicrocode = true;
 
