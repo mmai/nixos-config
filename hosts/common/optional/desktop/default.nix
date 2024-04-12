@@ -5,10 +5,10 @@
     ./core.nix
 
     # ../services/greetd.nix # display manager (launch Hyprland session) # XXX : crash
-    # ./hyprland.nix # window manager # XXX : crash
+    ./hyprland.nix # window manager # XXX : crash
     # ./sway.nix # window manager 
     
-     ./gnome.nix # window manager
+     # ./gnome.nix # window manager
   ];
 
   # services.xserver.displayManager.lightdm.enable = true; # to use instead of gdm if computer freeze after login (ie on Lenovo 470s)
@@ -16,14 +16,14 @@
   services.xserver = {
     enable = true;
 
-    displayManager = {
-      gdm = {
-        enable = true;
-        wayland = true; # disable wayland in order to allow microsoft teams to share desktop
-      };
-      # sddm.enable = true;
-      # defaultSession = "none+awesome";
-    };
+    # displayManager = {
+    #   gdm = {
+    #     enable = true;
+    #     wayland = true; # disable wayland in order to allow microsoft teams to share desktop
+    #   };
+    #   # sddm.enable = true;
+    #   # defaultSession = "none+awesome";
+    # };
 
   #   windowManager = {
   #     xmonad.enable = true;

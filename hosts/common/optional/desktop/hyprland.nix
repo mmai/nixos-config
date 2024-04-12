@@ -34,8 +34,9 @@
       SDL_VIDEODRIVER = "wayland";
       XDG_CACHE_HOME = "/home/henri/.cache";
       CLUTTER_BACKEND = "wayland";
-      WLR_DRM_DEVICES = "/dev/dri/card0";
     };
+      # WLR_DRM_DEVICES = "/dev/dri/card0";
+
     loginShellInit = ''
       dbus-update-activation-environment --systemd DISPLAY
       eval $(gnome-keyring-daemon --start --components=ssh,secrets)
