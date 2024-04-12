@@ -12,9 +12,22 @@
     # Official NixOS hardware packages
     hardware.url = "github:nixos/nixos-hardware";
 
-    # Hyprland (cf. https://gist.github.com/sioodmy/1932583dd8a804e0b3fe86416b923a16)
-    hyprland.url = "github:hyprwm/Hyprland/";
-    # nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
+    wayland = {
+      url = "github:nix-community/nixpkgs-wayland";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # Windows management
+    # for now trying to avoid this one because I want stability for my wm
+    # this is the hyprland development flake package / unstable
+    # hyprland = {
+    #   url = "github:hyprwm/hyprland";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
+    #   hyprland-plugins = {
+    #   url = "github:hyprwm/hyprland-plugins";
+    #   inputs.hyprland.follows = "hyprland";
+    # };
 
     # Secrets management. See ./docs/secretsmgmt.md
     sops-nix = {
@@ -35,18 +48,6 @@
       url = "github:nix-community/nixvim/nixos-23.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # Windows management
-    # for now trying to avoid this one because I want stability for my wm
-    # this is the hyprland development flake package / unstable
-    # hyprland = {
-    #   url = "github:hyprwm/hyprland";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-    #   hyprland-plugins = {
-    #   url = "github:hyprwm/hyprland-plugins";
-    #   inputs.hyprland.follows = "hyprland";
-    # };
 
     #################### Personal Repositories ####################
 
