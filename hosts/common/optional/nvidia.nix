@@ -36,7 +36,7 @@ in
   hardware = {
     nvidia = {
       package = nvidiaPkg;
-      open = true;
+      open = false; # x fails with : nvidia card does not support 'open'
       modesetting.enable = true;
       nvidiaSettings = false;
       powerManagement.enable = false;
