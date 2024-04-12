@@ -19,7 +19,7 @@
     displayManager = {
       gdm = {
         enable = true;
-        # wayland = false; # disable wayland in order to allow microsoft teams to share desktop
+        wayland = true; # disable wayland in order to allow microsoft teams to share desktop
       };
       # sddm.enable = true;
       # defaultSession = "none+awesome";
