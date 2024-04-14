@@ -4,7 +4,7 @@
   imports = [
     ./core.nix
 
-    # ../services/greetd.nix # display manager (launch Hyprland session) # XXX : crash
+    ../services/greetd.nix # display manager (launch Hyprland session) # XXX : crash
     ./hyprland.nix # window manager # XXX : crash
     # ./sway.nix # window manager 
     

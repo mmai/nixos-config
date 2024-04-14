@@ -7,9 +7,9 @@
   };
 
 # copié de sioodmy :: system/wayland/default.nix
-  environment.etc."greetd/environments".text = ''
-    Hyprland
-  '';
+  # environment.etc."greetd/environments".text = ''
+  #   Hyprland
+  # '';
 
   environment = {
     variables = {
@@ -37,11 +37,11 @@
     };
       # WLR_DRM_DEVICES = "/dev/dri/card0";
 
-    loginShellInit = ''
-      dbus-update-activation-environment --systemd DISPLAY
-      eval $(gnome-keyring-daemon --start --components=ssh,secrets)
-      eval $(ssh-agent)
-    '';
+    # loginShellInit = ''
+    #   dbus-update-activation-environment --systemd DISPLAY
+    #   eval $(gnome-keyring-daemon --start --components=ssh,secrets)
+    #   eval $(ssh-agent)
+    # '';
   };
 
   hardware = {
@@ -49,46 +49,46 @@
     pulseaudio.support32Bit = true;
   };
 
-  xdg.portal = {
-    enable = true;
-    config.common.default = "*";
-    extraPortals = [
-      pkgs.xdg-desktop-portal-gtk
-      pkgs.xdg-desktop-portal-hyprland
-    ];
-  };
+  # xdg.portal = {
+  #   enable = true;
+  #   config.common.default = "*";
+  #   extraPortals = [
+  #     pkgs.xdg-desktop-portal-gtk
+  #     pkgs.xdg-desktop-portal-hyprland
+  #   ];
+  # };
 
 # copié de sioodmy :: system/wayland/services.nix
-  systemd.services = {
-# permet de donner des droits aux programmes ( /dev/dri/card0 pour hyprland..)
-    seatd = {
-      enable = true;
-      description = "Seat management daemon";
-      script = "${pkgs.seatd}/bin/seatd -g wheel";
-      serviceConfig = {
-        Type = "simple";
-        Restart = "always";
-        RestartSec = "1";
-      };
-      wantedBy = ["multi-user.target"];
-    };
-  };
+#   systemd.services = {
+# # permet de donner des droits aux programmes ( /dev/dri/card0 pour hyprland..)
+#     seatd = {
+#       enable = true;
+#       description = "Seat management daemon";
+#       script = "${pkgs.seatd}/bin/seatd -g wheel";
+#       serviceConfig = {
+#         Type = "simple";
+#         Restart = "always";
+#         RestartSec = "1";
+#       };
+#       wantedBy = ["multi-user.target"];
+#     };
+#   };
 
-  services = {
-    greetd = {
-      enable = true;
-      settings = rec {
-        initial_session = {
-          command = "Hyprland";
-          user = "henri";
-        };
-        default_session = initial_session;
-      };
-    };
-
-    gnome = {
-      glib-networking.enable = true;
-      gnome-keyring.enable = true;
-    };
-  };
+  # services = {
+  #   greetd = {
+  #     enable = true;
+  #     settings = rec {
+  #       initial_session = {
+  #         command = "Hyprland";
+  #         user = "henri";
+  #       };
+  #       default_session = initial_session;
+  #     };
+  #   };
+  #
+  #   gnome = {
+  #     glib-networking.enable = true;
+  #     gnome-keyring.enable = true;
+  #   };
+  # };
 }
