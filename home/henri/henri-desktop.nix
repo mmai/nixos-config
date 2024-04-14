@@ -3,7 +3,9 @@
     #################### Required Configs ####################
     common/core # required
 
-    #################### Host-specific Optional Configs ####################
+    #################### Optional Configs ####################
     common/optional/hyprland
+
+    #################### Host-specific Optional Configs ####################
   ];
 }

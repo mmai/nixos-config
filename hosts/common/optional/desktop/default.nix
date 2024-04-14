@@ -8,7 +8,7 @@
     ./hyprland.nix # window manager
     # ./sway.nix # window manager 
     
-     # ./gnome.nix # window manager
+    # ./gnome.nix # window manager
   ];
 
   # services.xserver.displayManager.lightdm.enable = true; # to use instead of gdm if computer freeze after login (ie on Lenovo 470s)
@@ -54,6 +54,9 @@
     # evolution # frequently loose connection, copy sent mails twice in history
     # mailnag # don't work ? new mails on Maildir folders notification (for use with mbsync+mutt)
     # mailspring # mail client (custom package) (evolution trop buggé) # trop lourd
+    
+    # file manager
+    libsForQt5.dolphin
 
     nerdfonts
     xorg.xkill

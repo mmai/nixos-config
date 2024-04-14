@@ -24,8 +24,14 @@
         "$mod, Y, exec, $fileManager"
         "$mod, M, exec, $menu"
         "$mod, O, fullscreen, 0"
+
+        # Move/resize windows with mainMod + LMB/RMB and dragging
+        "$mod, mouse:272, movewindow"
+        # "$mod, mouse:273, resizewindow"
+
         "ALT, F4, killactive" 
         "$mod ALT, X, exit"
+
         ", Print, exec, grimblast copy area"
       ];
   };

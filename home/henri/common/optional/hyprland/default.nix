@@ -21,41 +21,75 @@
         # "QT_QPA_PLATFORM,wayland"
       ];
 
-      #   general = {
-      #     gaps_in = 8;
-      #     gaps_out = 5;
-      #     border_size = 3;
-      #     cursor_inactive_timeout = 4;
-      #   };
-      #
-      #   input = {
-      #   kb_layout = "us";
-      #     # mouse = {
-      #     #   acceleration = 1.0;
-      #     #   naturalScroll = true;
-      #     # };
-      #   };
-      #
-      #   decoration = {
-      #     active_opacity = 0.94;
-      #     inactive_opacity = 0.75;
-      #     fullscreen_opacity = 1.0;
-      #     # rounding = 7;
-      #     blur = {
-      #     enabled = false;
-      #     size = 5;
-      #     passes = 3;
-      #     new_optimizations = true;
-      #     ignore_opacity = true;
-      #   };
-      #   drop_shadow = false;
-      #   shadow_range = 12;
-      #   shadow_offset = "3 3";
-      #   "col.shadow" = "0x44000000";
-      #   "col.shadow_inactive" = "0x66000000";
-      # };
+      input = {
+        kb_layout = "us";
+        kb_variant = "intl"; # US, intl., with dead keys
+        follow_mouse = 1;
+      };
 
-      # exec-once = ''${startupScript}/path'';
+      exec-once = ''waybar & hyprpaper'';
+
+      general = {
+        gaps_in = 5;
+        gaps_out = 20;
+        border_size = 2;
+        "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
+        "col.inactive_border" = "rgba(595959aa)";
+
+        layout = "dwindle";
+
+        # Please see https://wiki.hyprland.org/Configuring/Tearing/ before you turn this on
+        allow_tearing = false;
+      };
+
+    # See https://wiki.hyprland.org/Configuring/Variables/ for more
+        decoration = {
+          rounding = 10;
+          blur = {
+            enabled = true;
+            size = 3;
+            passes = 1;
+          };
+
+          drop_shadow = true;
+          shadow_range = 4;
+          shadow_render_power = 3;
+          "col.shadow" = "rgba(1a1a1aee)";
+        };
+
+        animations = {
+          enabled = true;
+
+# Some default animations, see https://wiki.hyprland.org/Configuring/Animations/ for more
+
+          bezier = "myBezier, 0.05, 0.9, 0.1, 1.05";
+
+          animation = [
+              "windows, 1, 7, myBezier"
+              "windowsOut, 1, 7, default, popin 80%"
+              "border, 1, 10, default"
+              "borderangle, 1, 8, default"
+              "fade, 1, 7, default"
+              "workspaces, 1, 6, default"
+          ];
+        };
+
+        dwindle = {
+# See https://wiki.hyprland.org/Configuring/Dwindle-Layout/ for more
+          pseudotile = true; # master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below
+            preserve_split = true; # you probably want this
+        };
+
+        master = {
+# See https://wiki.hyprland.org/Configuring/Master-Layout/ for more
+          new_is_master = true;
+        };
+
+        # See https://wiki.hyprland.org/Configuring/Window-Rules/ for more
+        windowrulev2 = [
+          "suppressevent maximize, class:.*" # You'll probably like this.
+        ];
+
     };
 
     # load at the end of the hyperland set
