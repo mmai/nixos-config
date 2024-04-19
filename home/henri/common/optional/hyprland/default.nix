@@ -27,7 +27,8 @@
         follow_mouse = 1;
       };
 
-      exec-once = ''waybar & hyprpaper'';
+      exec-once = ''waybar & hyprpaper & dunst'';
+# networkmanagerapplet : nm-applet --indicator &
 
       general = {
         gaps_in = 5;
@@ -45,6 +46,8 @@
     # See https://wiki.hyprland.org/Configuring/Variables/ for more
         decoration = {
           rounding = 10;
+
+          # blur & drop_shadow are battery hungry
           blur = {
             enabled = true;
             size = 3;
@@ -55,6 +58,11 @@
           shadow_range = 4;
           shadow_render_power = 3;
           "col.shadow" = "rgba(1a1a1aee)";
+        };
+
+        # lower the amount of sent frames when nothing is happening on-screen 
+        misc = {
+          vfr = true;
         };
 
         animations = {
@@ -99,22 +107,17 @@
   # # TODO: move below into individual .nix files with their own configs
   home.packages = builtins.attrValues {
     inherit (pkgs)
-  #   nm-applet --indicator &  # notification manager applet.
-  #   bar
+    dunst # notifications
+
     waybar  # closest thing to polybar available
-  #   where is polybar? not supported yet: https://github.com/polybar/polybar/issues/414
-  #   eww # alternative - complex at first but can do cool shit apparently
+  #   eww # bar alternative - complex at first but can do cool shit apparently
   #
   #   # Wallpaper daemon
     hyprpaper
-  #   swaybg
-  #   wpaperd
-  #   mpvpaper
   #   swww # vimjoyer recoomended
   #   nitrogen
   #
   #   # app launcher
-  #   rofi-wayland;
-    wofi; # gtk rofi
+    rofi-wayland;
   };
 }

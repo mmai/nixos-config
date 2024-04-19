@@ -2,8 +2,9 @@
   wayland.windowManager.hyprland.settings = {
     "$mod" = "SUPER";
     "$terminal" = "alacritty";
-    "$menu" = "wofi --show drun";
-    "$fileManager" = "dolphin";
+    "$menu" = "rofi -show drun -show-icons";
+    "$fileManager" = "nautilus";
+    "$webbrowser" = "firefox";
     bind =
       [
         "$mod, Q, movetoworkspace, 1"
@@ -15,14 +16,15 @@
         "$mod, D, workspace, 3"
         "$mod, F, workspace, 4"
         "$mod, space, togglefloating"
-        "$mod SHIFT, J, movefocus, d"
-        "$mod SHIFT, K, movefocus, u"
-        "$mod SHIFT, L, movefocus, r"
-        "$mod SHIFT, H, movefocus, l"
+        "$mod, J, movefocus, d"
+        "$mod, K, movefocus, u"
+        "$mod, L, movefocus, r"
+        "$mod, H, movefocus, l"
 
         "$mod, T, exec, $terminal"
-        "$mod, Y, exec, $fileManager"
-        "$mod, M, exec, $menu"
+        "$mod, B, exec, $webbrowser"
+        "$mod, Y, exec, xdg-open ~"
+        "$mod, Z, exec, $menu"
         "$mod, O, fullscreen, 0"
 
         # Move/resize windows with mainMod + LMB/RMB and dragging
@@ -32,7 +34,7 @@
         "ALT, F4, killactive" 
         "$mod ALT, X, exit"
 
-        ", Print, exec, grimblast copy area"
+        "$mod, P, exec, grimblast copy area"
       ];
   };
 

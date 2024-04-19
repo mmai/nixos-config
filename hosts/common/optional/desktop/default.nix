@@ -4,38 +4,23 @@
   imports = [
     ./core.nix
 
-    ../services/greetd.nix # display manager (launch Hyprland session)
+    # ../services/greetd.nix # display manager (launch Hyprland session)
     ./hyprland.nix # window manager
-    # ./sway.nix # window manager 
     
-    # ./gnome.nix # window manager
+    ./gnome.nix # window manager
   ];
-
-  # services.xserver.displayManager.lightdm.enable = true; # to use instead of gdm if computer freeze after login (ie on Lenovo 470s)
 
   services.xserver = {
     enable = true;
 
-    # displayManager = {
-    #   gdm = {
-    #     enable = true;
-    #     wayland = true; # disable wayland in order to allow microsoft teams to share desktop
-    #   };
-    #   # sddm.enable = true;
-    #   # defaultSession = "none+awesome";
-    # };
-
-  #   windowManager = {
-  #     xmonad.enable = true;
-  #     awesome = {
-  #       enable = true;
-  #       luaModules = with pkgs.luaPackages; [
-  #         luarocks # is the package manager for Lua modules
-  #         luadbi-mysql # Database abstraction layer
-  #       ];
-  #     };
-  #   };
-  #
+    displayManager = {
+      gdm = {
+        enable = true;
+        wayland = true; # disable wayland in order to allow microsoft teams to share desktop
+      };
+      # sddm.enable = true;
+      # defaultSession = "none+awesome";
+    };
   };
 
   networking.firewall.allowedTCPPorts = [ 8010 ]; # allow streaming to chromecast devices (vlc)
@@ -45,9 +30,6 @@
 
   environment.systemPackages = with pkgs; [
 
-    # haskellPackages.xmonad-contrib
-    # haskellPackages.xmonad
-
     # ---------- the forever quest for a good email client -----------
     #  since 19.09 default mail client in gnome is geary
     thunderbird
@@ -55,9 +37,6 @@
     # mailnag # don't work ? new mails on Maildir folders notification (for use with mbsync+mutt)
     # mailspring # mail client (custom package) (evolution trop buggé) # trop lourd
     
-    # file manager
-    libsForQt5.dolphin
-
     nerdfonts
     xorg.xkill
     xdotool # manipulate gui windows from command line 
@@ -100,6 +79,9 @@
     # not used anymore
     #    kbfs keybase-gui
 
+# gnome app that I use. Needed if gnome is not enabled
+  # gnome.gnome-clocks
+   
     # gnome apps installed in gnome.nix : alternatives available for other envs ?
     # gnome.cheese # take photos & videos with webcam (launch with sudo ?)
     # gcolor2 # simple color selector
