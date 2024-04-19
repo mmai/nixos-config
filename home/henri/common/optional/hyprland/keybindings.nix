@@ -3,6 +3,7 @@
     "$mod" = "SUPER";
     "$terminal" = "alacritty";
     "$menu" = "rofi -show drun -show-icons";
+    "$appswitcher" = "rofi -show window -show-icons";
     "$fileManager" = "nautilus";
     "$webbrowser" = "firefox";
     bind =
@@ -15,7 +16,13 @@
         "$mod, S, workspace, 2"
         "$mod, D, workspace, 3"
         "$mod, F, workspace, 4"
+
         "$mod, space, togglefloating"
+        # toggles the split (top/side) of the current window. preserve_split must be enabled for toggling to work
+        "$mod, M, togglesplit"
+        # swaps the two halves of the split of the current window.
+        "$mod, N, swapsplit"
+
         "$mod, J, movefocus, d"
         "$mod, K, movefocus, u"
         "$mod, L, movefocus, r"
@@ -25,6 +32,7 @@
         "$mod, B, exec, $webbrowser"
         "$mod, Y, exec, xdg-open ~"
         "$mod, Z, exec, $menu"
+        "$mod, tab, exec, $appswitcher"
         "$mod, O, fullscreen, 0"
 
         # Move/resize windows with mainMod + LMB/RMB and dragging
@@ -36,6 +44,32 @@
 
         "$mod, P, exec, grimblast copy area"
       ];
+
+    bindl = [
+      # media controls
+      ", XF86AudioPlay, exec, playerctl play-pause"
+      ", XF86AudioPrev, exec, playerctl previous"
+      ", XF86AudioNext, exec, playerctl next"
+
+      # volume & mic on/off
+      ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+      ", XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+    ];
+
+    bindle = [
+      # volume + / -
+      ", XF86AudioRaiseVolume, exec, wpctl set-volume -l '1.0' @DEFAULT_AUDIO_SINK@ 6%+"
+      ", XF86AudioLowerVolume, exec, wpctl set-volume -l '1.0' @DEFAULT_AUDIO_SINK@ 6%-"
+    ];
   };
 
 }
+
+# bind flags :
+# l -> locked, aka. works also when an input inhibitor (e.g. a lockscreen) is active.
+# r -> release, will trigger on release of a key.
+# e -> repeat, will repeat when held.
+# n -> non-consuming, key/mouse events will be passed to the active window in addition to triggering the dispatcher.
+# m -> mouse, see below
+# t -> transparent, cannot be shadowed by other binds.
+# i -> ignore mods, will ignore modifiers.

@@ -12,13 +12,8 @@
 
     settings = {
       env = [
-        "NIXOS_OZONE_WL, 1" # for ozone-based and electron apps to run on wayland
-        "MOZ_ENABLE_WAYLAND, 1" # for firefox to run on wayland
-        "MOZ_WEBRENDER, 1" # for firefox to run on wayland
-        "XDG_SESSION_TYPE,wayland"
-        "WLR_NO_HARDWARE_CURSORS,1"
-        "WLR_RENDERER_ALLOW_SOFTWARE,1"
-        # "QT_QPA_PLATFORM,wayland"
+        # "MOZ_WEBRENDER, 1" # for firefox to run on wayland
+        # "WLR_RENDERER_ALLOW_SOFTWARE,1"
       ];
 
       input = {
@@ -83,14 +78,16 @@
         };
 
         dwindle = {
-# See https://wiki.hyprland.org/Configuring/Dwindle-Layout/ for more
+          # See https://wiki.hyprland.org/Configuring/Dwindle-Layout/ for more
           pseudotile = true; # master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below
-            preserve_split = true; # you probably want this
+          preserve_split = true; # you probably want this
+          no_gaps_when_only = 1;
         };
 
         master = {
-# See https://wiki.hyprland.org/Configuring/Master-Layout/ for more
+          # See https://wiki.hyprland.org/Configuring/Master-Layout/ for more
           new_is_master = true;
+          no_gaps_when_only = 1;
         };
 
         # See https://wiki.hyprland.org/Configuring/Window-Rules/ for more
@@ -108,15 +105,22 @@
   home.packages = builtins.attrValues {
     inherit (pkgs)
     dunst # notifications
+    grimblast # screen capture
 
     waybar  # closest thing to polybar available
   #   eww # bar alternative - complex at first but can do cool shit apparently
   #
   #   # Wallpaper daemon
     hyprpaper
-  #   swww # vimjoyer recoomended
+  #   swww # vimjoyer recomended
   #   nitrogen
-  #
+
+    # lock screen
+    hyprlock
+   
+    # logout
+    wlogout
+
   #   # app launcher
     rofi-wayland;
   };
