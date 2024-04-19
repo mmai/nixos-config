@@ -36,7 +36,7 @@
         "$mod, O, fullscreen, 0"
 
         # Move/resize windows with mainMod + LMB/RMB and dragging
-        "$mod, mouse:272, movewindow"
+        "$mod, mouse:272, movewindow" # doesn't work ??
         # "$mod, mouse:273, resizewindow"
 
         "ALT, F4, killactive" 
@@ -44,6 +44,10 @@
 
         "$mod, P, exec, grimblast copy area"
       ];
+
+    bindr = [
+      "$mod, SUPER_L, exec, pkill rofi || rofi -show combi -show-icons"
+    ];
 
     bindl = [
       # media controls

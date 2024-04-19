@@ -104,6 +104,7 @@
   # # TODO: move below into individual .nix files with their own configs
   home.packages = builtins.attrValues {
     inherit (pkgs)
+    wl-clipboard # cli copy / paste (allows to share clipboard with neovim)
     dunst # notifications
     grimblast # screen capture
 

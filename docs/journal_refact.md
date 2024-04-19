@@ -21,7 +21,6 @@ En s'inspirant peut-être aussi de https://github.com/sioodmy/dotfiles
 
 --- TODO --
 
-- nvim copy paste from terminal (clipboard..)
 - config barre
   - auto hide : https://www.reddit.com/r/swaywm/comments/rttbt9/hide_waybar/
   - show running  apps ?

@@ -64,7 +64,7 @@
         "custom/power" = {
           tooltip = false;
           on-click = "wlogout &";
-          format = "";
+          format = "  ";
         };
         # clock = {
           # format = ''{:%H : %M}'';
