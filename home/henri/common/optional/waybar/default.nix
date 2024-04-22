@@ -36,14 +36,21 @@
         "custom/power"
         ];
 
-        "keyboard-state" = {
+        keyboard-state = {
             "numlock" = false;
             "capslock" = true;
-            "format" = "{name} {icon}";
+            "format" = "{icon}";
             "format-icons" = {
                 "locked" = "";
                 "unlocked" = "";
             };
+        };
+        idle_inhibitor = {
+          format = "{icon}";
+          format-icons = {
+            activated = "";
+            deactivated = "";
+          };
         };
         "cpu" = {
             "format" = "{usage}% ";
@@ -89,12 +96,25 @@
           on-click = "wlogout &";
           format = "  ";
         };
-        # clock = {
-          # format = ''{:%H : %M}'';
-          # tooltip-format = ''
-          #   <big>{:%Y %B}</big>
-          #   <tt><small>{calendar}</small></tt>'';
-        # };
+        clock = {
+          format = ''{:%A %d %B %H:%M}'';
+          tooltip-format = ''
+            <big>{:%Y %B}</big>
+            <tt><small>{calendar}</small></tt>'';
+          calendar = {
+            mode = "year";
+            mode-mon-col = 3;
+            weeks-pos = "right";
+            on-scroll = 1;
+            format = {
+              months = "<span color='#ffead3'><b>{}</b></span>";
+              days =   "<span color='#ecc6d9'><b>{}</b></span>";
+              weeks =  "<span color='#99ffdd'><b>W{}</b></span>";
+              weekdays = "<span color='#ffcc66'><b>{}</b></span>";
+              today =    "<span color='#ff6699'><b><u>{}</u></b></span>";
+            };
+          };
+        };
         # backlight = {
         #   format = "{icon}";
         #   format-icons = ["" "" "" "" "" "" "" "" ""];
