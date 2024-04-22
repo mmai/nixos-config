@@ -1,4 +1,15 @@
-{ lib, config, ... }: {
+{ lib, config, pkgs, ... }: 
+let
+  tmux-hypr-nav = pkgs.writeShellApplication {
+    name = "tmux-hypr-nav";
+    runtimeInputs = builtins.attrValues {
+      inherit (pkgs)
+        jq;
+    };
+    text = builtins.readFile ./tmux-hypr-nav.sh;
+  };
+  in
+{
   wayland.windowManager.hyprland.settings = {
     "$mod" = "SUPER";
     "$terminal" = "alacritty";
@@ -28,6 +39,15 @@
         "$mod, L, movefocus, r"
         "$mod, H, movefocus, l"
 
+        # "CTRL, J, exec, ${tmux-hypr-nav} d"
+        # "CTRL, K, exec, ${tmux-hypr-nav} u"
+        # "CTRL, L, exec, ${tmux-hypr-nav} r"
+        # "CTRL, H, exec, ${tmux-hypr-nav} l"
+        "CTRL, J, exec, /home/henri/nixos-config/home/henri/common/optional/hyprland/tmux-hypr-nav.sh d"
+        "CTRL, K, exec, /home/henri/nixos-config/home/henri/common/optional/hyprland/tmux-hypr-nav.sh u"
+        "CTRL, L, exec, /home/henri/nixos-config/home/henri/common/optional/hyprland/tmux-hypr-nav.sh r"
+        "CTRL, H, exec, /home/henri/nixos-config/home/henri/common/optional/hyprland/tmux-hypr-nav.sh l"
+
         "$mod, T, exec, $terminal"
         "$mod, B, exec, $webbrowser"
         "$mod, Y, exec, xdg-open ~"
@@ -40,7 +60,7 @@
         # "$mod, mouse:273, resizewindow"
 
         "ALT, F4, killactive" 
-        "$mod ALT, X, exit"
+        "$mod ALT, X, exit" # or wlogout ?
 
         "$mod, P, exec, grimblast copy area"
       ];

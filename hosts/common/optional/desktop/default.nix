@@ -16,10 +16,10 @@
     displayManager = {
       gdm = {
         enable = true;
-        wayland = true; # disable wayland in order to allow microsoft teams to share desktop
+        wayland = true; # disable wayland in order to allow microsoft teams to share desktop ?
       };
       # sddm.enable = true;
-      # defaultSession = "none+awesome";
+      defaultSession = "hyprland";
     };
   };
 
@@ -38,6 +38,8 @@
     # mailspring # mail client (custom package) (evolution trop buggé) # trop lourd
     
     nerdfonts
+
+    # pour X11
     xorg.xkill
     xdotool # manipulate gui windows from command line 
     xdragon # drag & drop from command line

@@ -21,10 +21,10 @@
     ../common/optional/home-network.nix # access local network services (synology, etc.)
     ../common/optional/msmtp.nix # simple copie TODO
     ../common/optional/yubikey # simple copie TODO
-    ../common/optional/desktop 
+    ../common/optional/desktop
     ../common/optional/developpement.nix # copié de cfg/developpement.nix  TODO : diviser en fichiers logiques
     # ../common/optional/androidStudio.nix # copié de cfg/notRaspberry.nix
-    # ../common/optional/virtualbox.nix # copié de cfg/notRaspberry.nix
+    ../common/optional/virtualbox.nix # copié de cfg/notRaspberry.nix
     ../common/optional/leisure.nix # copié de cfg/leisure.nix  TODO : diviser en fichiers logiques
     ../common/optional/sync-notes.nix # copié de cfg/sync-notes.nix  TODO : diviser en fichiers logiques
     # ../common/optional/services/openssh.nix # allow remote SSH access
@@ -37,10 +37,6 @@
     #################### Users to Create ####################
     ../common/users/henri
   ];
-
-  # options définies dans services/greetd.nix
-  # autoLogin.enable = true;
-  # autoLogin.username = "henri";
 
   networking = {
     hostName = "henri-desktop";

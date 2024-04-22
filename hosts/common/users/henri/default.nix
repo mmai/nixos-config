@@ -19,6 +19,7 @@ in
       "audio"
       "video"
       "plugdev"
+      "input"
     ] ++ ifTheyExist [
       "docker"
       "virtualbox"

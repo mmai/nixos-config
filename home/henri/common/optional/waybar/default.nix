@@ -1,7 +1,7 @@
 { pkgs, lib, ... }: {
   programs.waybar = {
     enable = true;
-    # style = import ./style.nix;
+    style = import ./style.nix;
     # systemd = {
     #   enable = true;
     #   target = "hyprland-session.target";
@@ -9,39 +9,62 @@
     settings = {
       mainBar = {
         layer = "top";
-        # position = "left";
+        position = "top";
         # width = 57;
         # spacing = 7;
         modules-left = [
           # "custom/search"
+          "keyboard-state"
           "hyprland/workspaces"
+          "wlr/taskbar"
           # "custom/lock"
           # "custom/weather"
           # "backlight"
           # "battery"
         ];
-        modules-center = [];
-        modules-right = ["pulseaudio" "network" "clock" "custom/power"];
+        modules-center = [
+          "hyprland/window"
+        ];
+        modules-right = [
+        "clock"
+        "idle_inhibitor"
+        "pulseaudio"
+        "tray"
+        "network"
+        "cpu"
+        "memory"
+        "custom/power"
+        ];
+
+        "keyboard-state" = {
+            "numlock" = false;
+            "capslock" = true;
+            "format" = "{name} {icon}";
+            "format-icons" = {
+                "locked" = "";
+                "unlocked" = "";
+            };
+        };
+        "cpu" = {
+            "format" = "{usage}% ";
+            "tooltip" = false;
+        };
+        "memory" = {
+            "format" = "{}% ";
+        };
         "hyprland/workspaces" = {
           on-click = "activate";
-        #   format = "{icon}";
-        #   active-only = false;
-        #   format-icons = {
-        #     "1" = "一";
-        #     "2" = "二";
-        #     "3" = "三";
-        #     "4" = "四";
-        #     "5" = "五";
-        #     "6" = "六";
-        #     "7" = "七";
-        #     "8" = "八";
-        #     "9" = "九";
-        #     "10" = "十";
-        #   };
-        #
           persistent_workspaces = {
             "*" = 4;
           };
+        };
+
+        "wlr/taskbar" = {
+          format= "{icon}";
+          icon-size= 16;
+          tooltip-format = "{title}";
+          on-click = "activate";
+          on-click-middle = "close";
         };
         # "custom/search" = {
         #   format = " ";
