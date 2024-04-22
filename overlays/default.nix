@@ -30,4 +30,6 @@
       config.allowUnfree = true;
     };
   };
+
+  overlay-wayland = inputs.wayland.overlay;
 }

@@ -8,8 +8,7 @@ cd /boot/loader/entries && ls | head -n -2 | sudo xargs rm --
 
 echo " > Remove old kernels from /boot/EFI/nixos/"
 TOKEEP=$(cat /boot/loader/entries/* | grep -Eow "linux-[0-9]+.[0-9]+.[0-9]+" | sort -u | sed ':a; N; $!ba; s/\n/\\|/g')
-cd /boot/EFI/nixos
-# ls | grep -v $TOKEEP
+cd /boot/EFI/nixos || exit
 ls | grep -v $TOKEEP | xargs sudo rm --
 
 echo " > Delete old nixos generations"

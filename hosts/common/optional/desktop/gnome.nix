@@ -58,7 +58,7 @@
     # gnomeExtensions.dash-to-panel # broken in nixos 20.09, enable it from https://extensions.gnome.org/extension/1160/dash-to-panel/ instead
     # gnomeExtensions.timepp # pomodoro, timetracker, etc. => marked broken in nixos 20.03
     # gnomeExtensions.gtk-title-bar # not yet packaged in nixos
-    gnomeExtensions.system-monitor
+    gnomeExtensions.system-monitor-2
 
     gnome.cheese # take photos & videos with webcam (launch with sudo ?)
     gcolor2 # simple color selector

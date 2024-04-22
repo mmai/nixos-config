@@ -4,25 +4,26 @@
   imports = [
     ./core.nix
 
-    ../services/greetd.nix # display manager (launch Hyprland session)
-    ./hyprland.nix # window manager 
+    # ../services/greetd.nix # display manager (launch Hyprland session)
+    ./hyprland.nix # window manager
     
-     # ./gnome.nix # window manager
+    ./gnome.nix # window manager
   ];
 
   # services.xserver.displayManager.lightdm.enable = true; # to use instead of gdm if computer freeze after login (ie on Lenovo 470s)
 
-  # services.xserver = {
-    # enable = true;
+  services.xserver = {
+    enable = true;
 
-    # displayManager = {
-    #   gdm = {
-    #     enable = true;
-    #   };
-    #   # sddm.enable = true;
-    #   # defaultSession = "none+awesome";
-    # };
-  # };
+    displayManager = {
+      gdm = {
+        enable = true;
+        wayland = true; # disable wayland in order to allow microsoft teams to share desktop ?
+      };
+      # sddm.enable = true;
+      defaultSession = "hyprland";
+    };
+  };
 
   networking.firewall.allowedTCPPorts = [ 8010 ]; # allow streaming to chromecast devices (vlc)
 
@@ -31,17 +32,16 @@
 
   environment.systemPackages = with pkgs; [
 
-    haskellPackages.xmonad-contrib
-    haskellPackages.xmonad
-
     # ---------- the forever quest for a good email client -----------
     #  since 19.09 default mail client in gnome is geary
     thunderbird
     # evolution # frequently loose connection, copy sent mails twice in history
     # mailnag # don't work ? new mails on Maildir folders notification (for use with mbsync+mutt)
     # mailspring # mail client (custom package) (evolution trop buggé) # trop lourd
-
+    
     nerdfonts
+
+    # pour X11
     xorg.xkill
     xdotool # manipulate gui windows from command line 
     xdragon # drag & drop from command line

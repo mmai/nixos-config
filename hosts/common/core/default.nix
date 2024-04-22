@@ -7,7 +7,7 @@
     ./zsh.nix # load a basic shell just in case we need it without home-manager
 
     # ./services/auto-upgrade.nix # TODO : auto-upgrade service, à activer quand la config refacto aura remplacé l'ancienne
-    # ../../../cachix.nix # TODO : à activer quand la config refacto aura remplacé l'ancienne (pour avoir les bons chemins)
+    ../../../cachix.nix
 
   ] ++ (builtins.attrValues outputs.nixosModules);
 
