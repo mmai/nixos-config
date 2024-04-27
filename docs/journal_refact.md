@@ -12,14 +12,15 @@ En s'inspirant peut-être aussi de
 - https://github.com/sioodmy/dotfiles
 - https://github.com/anotherhadi/nixy/
 
+- https://gitlab.com/stephan-raabe/dotfiles : style hyprland
 
 --- en cours --
-- veille auto : hypridle
 
 --- TODO --
 - show application starting indicator
 - rofi -> wofi ? -> ulauncher ?
 - config barre
+  - clock : français + large
   - waybar alternatives ?
   - styling
   - auto hide : https://www.reddit.com/r/swaywm/comments/rttbt9/hide_waybar/

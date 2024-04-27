@@ -45,13 +45,14 @@ in
     vulkan-tools
   ];
 
+
   hardware = {
     nvidia = {
       package = nvidiaPkg;
       open = false; # x fails with : nvidia card does not support 'open'
       modesetting.enable = true;
       nvidiaSettings = false;
-      powerManagement.enable = false;
+      powerManagement.enable = true; # fix suspend resume issues
     };
 
     opengl = {
