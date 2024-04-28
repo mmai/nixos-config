@@ -55,6 +55,9 @@ home-update:
   just update
   just home
 
+# Run `home-manager news --flake .#henri@$(hostname)`
+home-news:
+  home-manager news --flake .#henri@$(hostname)
 #################### Secrets Management ####################
 
 # TODO sops: update or relocate to nix-secrets?
