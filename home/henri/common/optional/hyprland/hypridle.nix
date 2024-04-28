@@ -10,7 +10,7 @@
     listener {
         timeout = 900
         on-timeout = ${pkgs.hyprlock}/bin/hyprlock
-        on-resume = ${pkgs.libnotify}/bin/notify-send "Welcome back ${config.home.username}!"
+        on-resume = ${pkgs.libnotify}/bin/notify-send "Welcome back!"
     }
 
     # Suspend
