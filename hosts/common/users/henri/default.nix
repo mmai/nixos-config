@@ -35,6 +35,6 @@ in
   };
 
   # Import this user's personal/home configurations
-  home-manager.users.henri = import ../../../../home/henri/${config.networking.hostName}.nix;
+  # home-manager.users.henri = import ../../../../home/henri/${config.networking.hostName}.nix;
 
 }

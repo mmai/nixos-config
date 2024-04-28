@@ -35,6 +35,7 @@ rebuild-update:
   just update
   just rebuild
 
+# Delete old kernels from /boot partition
 free-boot-space:
   ./scripts/freeBootSpace.sh
 
@@ -44,18 +45,19 @@ diff:
 
 #################### Home Manager ####################
 
-# Run `home-manager --impure --flake . switch` and `just check-sops`
+# Run `home-manager switch --flake .#henri@$(hostname)` and `just check-sops`
 home:
-  # HACK: This is is until the home manager bug is fixed, otherwise any adding extensions deletes all of them
-  # rm $HOME/.vscode/extensions/extensions.json || true
-  home-manager --impure --flake . switch
-  just check-sops
+  home-manager switch --flake .#henri@$(hostname)
+  # just check-sops
 
 # Run `just update` and `just home`
 home-update:
   just update
   just home
 
+# Run `home-manager news --flake .#henri@$(hostname)`
+home-news:
+  home-manager news --flake .#henri@$(hostname)
 #################### Secrets Management ####################
 
 # TODO sops: update or relocate to nix-secrets?

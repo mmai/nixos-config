@@ -1,4 +1,4 @@
-{ lib, config, pkgs, ... }: 
+{ lib, config, pkgs, ... }:
 let
   tmux-hypr-nav = pkgs.writeShellApplication {
     name = "tmux-hypr-nav";
@@ -8,7 +8,7 @@ let
     };
     text = builtins.readFile ./tmux-hypr-nav.sh;
   };
-  in
+in
 {
   wayland.windowManager.hyprland.settings = {
     "$mod" = "SUPER";
@@ -59,14 +59,14 @@ let
         "$mod, mouse:272, movewindow" # doesn't work ??
         # "$mod, mouse:273, resizewindow"
 
-        "ALT, F4, killactive" 
+        "ALT, F4, killactive"
         "$mod ALT, X, exit" # or wlogout ?
 
         "$mod, P, exec, grimblast copy area"
       ];
 
     bindr = [
-      "$mod, SUPER_L, exec, pkill rofi || rofi -show combi -show-icons"
+      # "$mod, SUPER_L, exec, pkill rofi || rofi -show combi -show-icons"
     ];
 
     bindl = [

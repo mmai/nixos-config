@@ -42,9 +42,11 @@
     hostName = "henri-desktop";
     networkmanager.enable = true;
 
-    nameservers = [ 
-      "1.1.1.1" "1.0.0.1" # Cloudflare
-      "8.8.8.8" "8.8.4.4" # Google
+    nameservers = [
+      "1.1.1.1"
+      "1.0.0.1" # Cloudflare
+      "8.8.8.8"
+      "8.8.4.4" # Google
     ];
     # Once upon a time I tried to configure wireguard, it almost worked, it was on the 'wireguard' git tag
   };
