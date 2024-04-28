@@ -79,24 +79,16 @@
     flake-parts.lib.mkFlake { inherit inputs; } {
       imports = [ ./lib ];
       flake = { config, ... }: {
+        # Home manager configurations
         homeConfigurations = {
           "henri@henri-desktop" = self.lib.mkHome [ ./home/henri/henri-desktop.nix ] stateVersion system;
-          # "henri@henri-atixnet-laptop" = self.lib.mkHome [ ./home/henri/henri-atixnet-laptop.nix ] stateVersion system;
+          "henri@henri-atixnet-laptop" = self.lib.mkHome [ ./home/henri/henri-atixnet-laptop.nix ] stateVersion system;
         };
 
-        # cf. ./nixos folder
+        # NixOS configurations
         nixosConfigurations = {
           henri-desktop = self.lib.mkLinuxSystem [ ./hosts/henri-desktop ] stateVersion system;
-
-          #   henri-atixnet-laptop =
-          #     self.lib.mkLinuxSystem
-          #     [
-          #     ./hosts/henri-atixnet-laptop
-          #       config.nixosModules."henri@henri-atixnet-laptop"
-          #     # config.nixosModules.shared
-          #     ]
-          #     stateVersion
-          #     system;
+          henri-atixnet-laptop = self.lib.mkLinuxSystem [ ./hosts/henri-atixnet-laptop ] stateVersion system;
         };
       };
       systems = [ system ];
