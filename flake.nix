@@ -8,24 +8,12 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable"; # also see 'unstable-packages' overlay at 'overlays/default.nix"
 
-    #################### Utilities ####################
+    #################### Flake / package utilities ####################
 
-    # Official NixOS hardware packages
-    hardware.url = "github:nixos/nixos-hardware";
-
-    wayland = {
-      url = "github:nix-community/nixpkgs-wayland";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
- 
-    # Windows management
-    hyprland = {
-      url = "github:hyprwm/Hyprland";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    hyprland-plugins = {
-      url = "github:hyprwm/hyprland-plugins";
-      inputs.hyprland.follows = "hyprland";
+    # generate systems & enable module structure
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts";
+      inputs.nixpkgs-lib.follows = "nixpkgs";
     };
 
     # Secrets management. See ./docs/secretsmgmt.md
@@ -41,7 +29,27 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    mydist.url = "github:mmai/nixpkgs/mydist"; # my fork of nixpkgs /!\ on branch 'mydist'
+    # Official NixOS hardware packages
+    hardware.url = "github:nixos/nixos-hardware";
+
+    #################### Additional sources ####################
+
+    wayland = {
+      url = "github:nix-community/nixpkgs-wayland";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # Windows management
+    hyprland = {
+      url = "github:hyprwm/Hyprland";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    hyprland-plugins = {
+      url = "github:hyprwm/hyprland-plugins";
+      inputs.hyprland.follows = "hyprland";
+    };
+
+    # mydist.url = "github:mmai/nixpkgs/mydist"; # my fork of nixpkgs /!\ on branch 'mydist'
 
     # vim4LMFQR!
     # nixvim = {
@@ -59,87 +67,46 @@
     # };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... } @ inputs:
+  outputs =
+    inputs @ { flake-parts
+    , self
+    , ...
+    }:
     let
-      inherit (self) outputs;
-      lib = nixpkgs.lib // home-manager.lib;
-      systems = [
-        "x86_64-linux"
-        "aarch64-linux"
-        # "x86_64-darwin"
-        # "aarch64-darwin"
-        "i686-linux"
-      ];
-      forEachSystem = f: lib.genAttrs systems (system: f pkgsFor.${system});
-      pkgsFor = lib.genAttrs systems (system: import nixpkgs {
-        inherit system;
-        config.allowUnfree = true;
-      });
+      stateVersion = "24.05";
+      system = "x86_64-linux";
     in
-    {
-      inherit lib;
+    flake-parts.lib.mkFlake { inherit inputs; } {
+      imports = [ ./lib ];
+      flake = { config, ... }: {
+        # homeConfigurations = {
+        #   "henri@henri-desktop" = self.lib.mkHome [ ./home/henri/henri-desktop.nix ] stateVersion system;
+        #   # "henri@henri-atixnet-laptop" = self.lib.mkHome [ ./home/henri/henri-atixnet-laptop.nix ] stateVersion system;
+        # };
 
-      # Custom modules to enable special functionality for nixos or home-manager oriented configs.
-      # -- currently empty (2024-04-01)
-      nixosModules = import ./modules/nixos;
-      homeManagerModules = import ./modules/home-manager;
+        # cf. ./nixos folder
+        nixosConfigurations = {
+          henri-desktop =
+            self.lib.mkLinuxSystem
+              [
+                ./hosts/henri-desktop
+                # config.nixosModules."henri@henri-desktop"
+                # config.nixosModules.shared
+              ]
+              stateVersion
+              system;
 
-      # Custom modifications/overrides to upstream packages.
-      # -- ex : apply a patch in the source code of a package...
-      overlays = import ./overlays { inherit inputs outputs; };
-
-      # Your custom packages meant to be shared or upstreamed.
-      # Accessible through 'nix build', 'nix shell', etc
-      packages = forEachSystem (pkgs: import ./pkgs { inherit pkgs; });
-
-      # Nix formatter available through 'nix fmt' https://nix-community.github.io/nixpkgs-fmt
-      formatter = forEachSystem (pkgs: pkgs.nixpkgs-fmt);
-
-      # Shell configured with packages that are typically only needed when working on or with nix-config.
-      devShells = forEachSystem (pkgs: import ./shell.nix { inherit pkgs; });
-
-      #################### NixOS Configurations ####################
-      #
-      # Available through 'nixos-rebuild --flake .#hostname'
-      # Typically adopted using 'sudo nixos-rebuild switch --flake .#hostname'
-
-      nixosConfigurations = {
-        # home pc
-        henri-desktop = lib.nixosSystem {
-          system = "x86_64-linux";
-          modules = [ ./hosts/henri-desktop ];
-          specialArgs = { inherit inputs outputs; };
-        };
-        # work laptop (thinkpad X1)
-        henri-atixnet-laptop = lib.nixosSystem {
-          system = "x86_64-linux";
-          modules = [ ./hosts/henri-atixnet-laptop ];
-          specialArgs = { inherit inputs outputs; };
-        };
-        # old work desktop
-        henri-atixnet = lib.nixosSystem {
-          system = "x86_64-linux";
-          modules = [ ./hosts/henri-atixnet ];
-          specialArgs = { inherit inputs outputs; };
+          #   henri-atixnet-laptop =
+          #     self.lib.mkLinuxSystem
+          #     [
+          #     ./hosts/henri-atixnet-laptop
+          #       config.nixosModules."henri@henri-atixnet-laptop"
+          #     # config.nixosModules.shared
+          #     ]
+          #     stateVersion
+          #     system;
         };
       };
-
-      #################### User-level Home-Manager Configurations ####################
-      #
-      # Available through 'home-manager --flake .#primary-username@hostname'
-      # Typically adopted using 'home-manager switch --flake .#primary-username@hostname'
-
-      homeConfigurations = {
-        "henri@henri-desktop" = lib.homeManagerConfiguration {
-          modules = [ ./home/henri/henri-desktop.nix ];
-          pkgs = pkgsFor.x86_64-linux;
-          extraSpecialArgs = { inherit inputs outputs; };
-        };
-        "henri@henri-atixnet-laptop" = lib.homeManagerConfiguration {
-          modules = [ ./home/henri/henri-atixnet-laptop.nix ];
-          pkgs = pkgsFor.x86_64-linux;
-          extraSpecialArgs = { inherit inputs outputs; };
-        };
-      };
+      systems = [ system ];
     };
 }

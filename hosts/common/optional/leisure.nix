@@ -10,22 +10,24 @@
     stremio # popcorntime like
 
     steam
-    unnethack crawlTiles # some roguelike games
+    unnethack
+    crawlTiles # some roguelike games
     # superTux
     # leela-zero # go game engine (cmd = leelaz)=> additional steps : curl -O https://zero.sjeng.org/best-network && mv best-network ~/.local/share/leela-zero/
 
     # obs-studio # video recording and live streaming
     # libsForQt5.kdenlive mediainfo # video editing
     python310Packages.deemix # for dlmusic.sh
-    picard chromaprint # MusicBrainz tagger (picard) with fingerprint calculator (chromaprint)
+    picard
+    chromaprint # MusicBrainz tagger (picard) with fingerprint calculator (chromaprint)
     #sublime-music # à supprimer ? subsonic client ( ie to listen from funkwhale servers )
     supersonic # à tester ? subsonic client ( ie to listen from funkwhale servers )
 
     android-file-transfer # copy files on tablet
-    
+
     # system related things I will only use on my personal main computer
-    mydist.wally  # 2.1.1 ergodox keyboard firmware flashing tool
-    qmk  # ferris keyboard firmware flashing tool (see https://github.com/mmai/qmk_firmware/blob/master/keyboards/ferris/keymaps/mmai/readme.md)
+    # mydist.wally  # 2.1.1 ergodox keyboard firmware flashing tool
+    qmk # ferris keyboard firmware flashing tool (see https://github.com/mmai/qmk_firmware/blob/master/keyboards/ferris/keymaps/mmai/readme.md)
     # unstable.wally-cli  # ergodox keyboard firmware flashing tool
 
   ];
