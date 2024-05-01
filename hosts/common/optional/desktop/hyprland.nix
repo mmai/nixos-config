@@ -9,7 +9,7 @@
     xwayland.enable = true;
   };
 
-# copié de sioodmy :: system/wayland/default.nix
+  # copié de sioodmy :: system/wayland/default.nix
   # environment.etc."greetd/environments".text = ''
   #   Hyprland
   # '';
@@ -37,7 +37,7 @@
       # All the following variables are from 
       # https://wiki.hyprland.org/Configuring/Environment-variables/
       # TODO : check if they are already set by nixos or homemanager packages
-      
+
       # ---- hyprland env variables ----
       # Enables more verbose logging of wlroots.
       # HYPRLAND_LOG_WLR = "1";
@@ -45,7 +45,7 @@
       HYPRLAND_NO_RT = "1";
       # If systemd, disables the sd_notify calls.
       HYPRLAND_NO_SD_NOTIFY = "1";
-       
+
       # ---- Toolkit Backend variables ----
       # Use wayland if available, fall back to x11 if not
       GDK_BACKEND = "wayland,x11";
@@ -61,6 +61,7 @@
       # XDG_CURRENT_DESKTOP = "Hyprland";
       # XDG_SESSION_DESKTOP = "Hyprland";
       XDG_CACHE_HOME = "/home/henri/.cache";
+      XDG_CONFIG_HOME = "/home/henri/.config";
 
       # ---- QT variables ----
       # (From the Qt documentation) enables automatic scaling, based on the monitor’s pixel density
@@ -71,7 +72,7 @@
       QT_QPA_PLATFORM = "wayland;xcb";
       # Tells Qt based applications to pick your theme from qt5ct, use with Kvantum.
       # QT_QPA_PLATFORMTHEME = "qt5ct";
-      
+
       # ---- NVidia spcifics : see nvidia.nix ----
 
       # ---- Theming Related Variables ----
@@ -95,21 +96,21 @@
     pulseaudio.support32Bit = true;
   };
 
-# copié de sioodmy :: system/wayland/services.nix
-#   systemd.services = {
-# # permet de donner des droits aux programmes ( /dev/dri/card0 pour hyprland..)
-#     seatd = {
-#       enable = true;
-#       description = "Seat management daemon";
-#       script = "${pkgs.seatd}/bin/seatd -g wheel";
-#       serviceConfig = {
-#         Type = "simple";
-#         Restart = "always";
-#         RestartSec = "1";
-#       };
-#       wantedBy = ["multi-user.target"];
-#     };
-#   };
+  # copié de sioodmy :: system/wayland/services.nix
+  #   systemd.services = {
+  # # permet de donner des droits aux programmes ( /dev/dri/card0 pour hyprland..)
+  #     seatd = {
+  #       enable = true;
+  #       description = "Seat management daemon";
+  #       script = "${pkgs.seatd}/bin/seatd -g wheel";
+  #       serviceConfig = {
+  #         Type = "simple";
+  #         Restart = "always";
+  #         RestartSec = "1";
+  #       };
+  #       wantedBy = ["multi-user.target"];
+  #     };
+  #   };
 
   # services = {
   #   greetd = {

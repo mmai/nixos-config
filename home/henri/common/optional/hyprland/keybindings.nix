@@ -13,7 +13,8 @@ in
   wayland.windowManager.hyprland.settings = {
     "$mod" = "SUPER";
     "$terminal" = "alacritty";
-    "$menu" = "rofi -show drun -show-icons";
+    # "$menu" = "rofi -show drun -show-icons";
+    "$menu" = "nwg-drawer";
     "$appswitcher" = "rofi -show window -show-icons";
     "$fileManager" = "nautilus";
     "$webbrowser" = "firefox";
@@ -66,6 +67,8 @@ in
       ];
 
     bindr = [
+      # show/hide nwg-panel (see panel settings/showhide option to get the command)
+      "$mod, SUPER_L, exec, pkill -f -64 nwg-panel"
       # "$mod, SUPER_L, exec, pkill rofi || rofi -show combi -show-icons"
     ];
 

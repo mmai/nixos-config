@@ -14,7 +14,7 @@
       "default" = "";
     };
     "persistent-workspaces" = {
-      "*" = 5;
+      "*" = 4;
     };
   };
   # Taskbar
@@ -172,37 +172,31 @@
   };
   # Clock
   "clock" = {
-    "format" = "{:%H:%M %a}";
-    # "timezone" = "America/New_York";
+    "format" = "{:%H:%M}";
     "tooltip-format" = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
-    # START CLOCK FORMAT
-    "format-alt" = "{:%Y-%m-%d}";
-    # END CLOCK FORMAT
-  };
-  # System
-  "custom/system" = {
-    "format" = "";
-    "tooltip" = false;
+    "format-alt" = "{:%A %d %B}";
+    "on-click-right" = "gnome-clocks";
+    "on-click-middle" = "gnome-calendar";
   };
   # CPU
   "cpu" = {
-    "format" = "/ C {usage}% ";
+    "format" = "   {usage}%";
     "on-click" = "alacritty -e htop";
   };
   # Memory
   "memory" = {
-    "format" = "/ M {}% ";
+    "format" = "   {}%";
     "on-click" = "alacritty -e htop";
   };
   # Harddisc space used
   "disk" = {
     "interval" = 30;
-    "format" = "D {percentage_used}% ";
+    "format" = " 🖴  {percentage_used}% ";
     "path" = "/";
     "on-click" = "alacritty -e htop";
   };
   "hyprland/language" = {
-    "format" = "/ K {short}";
+    "format" = " {short}";
   };
   # Group Hardware;
   # "group/hardware" = {
@@ -318,7 +312,7 @@
     "format" = "{icon}";
     "tooltip" = true;
     "format-icons" = {
-      "activated" = "";
+      "activated" = "👁️";
       "deactivated" = "";
     };
     "on-click-right" = "hyprlock";
