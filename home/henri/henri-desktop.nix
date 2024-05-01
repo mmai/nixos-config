@@ -5,6 +5,7 @@
 
     #################### Optional Configs ####################
     common/optional/hyprland
+    common/optional/rofi
 
     # common/optional/waybar # bar
     # common/optional/eww/eww-bar # bar

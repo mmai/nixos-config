@@ -18,10 +18,9 @@ En s'inspirant peut-être aussi de
 
 --- TODO --
 - show application starting indicator
-- rofi -> wofi ? -> ulauncher ?
+- gestion des notifications
+- switch apps : https://github.com/H3rmt/hyprswitch ? // rofi ?
+- configurer cliphist (clipboard history)
 - config barre
+  - change pointer on clickable elements
   - clock : français + large
-  - waybar alternatives ?
-  - styling
-  - auto hide : https://www.reddit.com/r/swaywm/comments/rttbt9/hide_waybar/
-  - switch apps : https://github.com/H3rmt/hyprswitch ? // rofi ?

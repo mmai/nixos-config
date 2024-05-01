@@ -1,13 +1,13 @@
 { self, pkgs, config, hyprland, ... }: {
 
-  imports = [ 
-  ./keybindings.nix
-  ./hyprlock.nix
-  ./hypridle.nix
-  ./hyprpaper.nix
-  ./hyprcursor.nix
+  imports = [
+    ./keybindings.nix
+    ./hyprlock.nix
+    ./hypridle.nix
+    ./hyprpaper.nix
+    ./hyprcursor.nix
   ];
-  
+
   wayland.windowManager.hyprland = {
     enable = true;
     # package = hyprland.packages."${pkgs.system}".hyprland;
@@ -22,17 +22,18 @@
       input = {
         kb_layout = "us";
         kb_variant = "intl"; # US, intl., with dead keys
-        follow_mouse = 1;
+        follow_mouse = 0;
       };
 
       exec-once = [
         "${pkgs.hypridle}/bin/hypridle"
         "${pkgs.hyprpaper}/bin/hyprpaper"
-        "${pkgs.waybar}/bin/waybar"
+        "nwg-panel"
+        # "${pkgs.waybar}/bin/waybar"
         # "hyprlock" # needed ??
         "alacritty -e tmux new-session -t main"
       ];
-# networkmanagerapplet : nm-applet --indicator &
+      # networkmanagerapplet : nm-applet --indicator &
 
       general = {
         gaps_in = 5;
@@ -67,62 +68,62 @@
         new_window_takes_over_fullscreen = 2;
       };
 
-        animations = {
-          enabled = true;
+      animations = {
+        enabled = true;
 
-          # Some default animations, see https://wiki.hyprland.org/Configuring/Animations/ for more
-          # bezier = "myBezier, 0.05, 0.9, 0.1, 1.05";
-          # animation = [
-          #     "windows, 1, 7, myBezier"
-          #     "windowsOut, 1, 7, default, popin 80%"
-          #     "border, 1, 10, default"
-          #     "borderangle, 1, 8, default"
-          #     "fade, 1, 7, default"
-          #     "workspaces, 1, 6, default"
-          # ];
+        # Some default animations, see https://wiki.hyprland.org/Configuring/Animations/ for more
+        # bezier = "myBezier, 0.05, 0.9, 0.1, 1.05";
+        # animation = [
+        #     "windows, 1, 7, myBezier"
+        #     "windowsOut, 1, 7, default, popin 80%"
+        #     "border, 1, 10, default"
+        #     "borderangle, 1, 8, default"
+        #     "fade, 1, 7, default"
+        #     "workspaces, 1, 6, default"
+        # ];
 
-          # from nixy
-          bezier = [
-            "linear, 0, 0, 1, 1"
-            "md3_standard, 0.2, 0, 0, 1"
-            "md3_decel, 0.05, 0.7, 0.1, 1"
-            "md3_accel, 0.3, 0, 0.8, 0.15"
-            "overshot, 0.05, 0.9, 0.1, 1.1"
-            "crazyshot, 0.1, 1.5, 0.76, 0.92 "
-            "hyprnostretch, 0.05, 0.9, 0.1, 1.0"
-            "fluent_decel, 0.1, 1, 0, 1"
-            "easeInOutCirc, 0.85, 0, 0.15, 1"
-            "easeOutCirc, 0, 0.55, 0.45, 1"
-            "easeOutExpo, 0.16, 1, 0.3, 1"
-          ];
-
-          animation = [
-            "windows, 1, 3, md3_decel, popin 60%"
-            "border, 1, 10, default"
-            "fade, 1, 2.5, md3_decel"
-            "workspaces, 1, 3.5, easeOutExpo, slide"
-            "specialWorkspace, 1, 3, md3_decel, slidevert"
-          ];
-        };
-
-
-        dwindle = {
-          # See https://wiki.hyprland.org/Configuring/Dwindle-Layout/ for more
-          pseudotile = true; # master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below
-          preserve_split = true; # you probably want this
-          no_gaps_when_only = 1;
-        };
-
-        master = {
-          # See https://wiki.hyprland.org/Configuring/Master-Layout/ for more
-          new_is_master = true;
-          no_gaps_when_only = 1;
-        };
-
-        # See https://wiki.hyprland.org/Configuring/Window-Rules/ for more
-        windowrulev2 = [
-          "suppressevent maximize, class:.*" # You'll probably like this.
+        # from nixy
+        bezier = [
+          "linear, 0, 0, 1, 1"
+          "md3_standard, 0.2, 0, 0, 1"
+          "md3_decel, 0.05, 0.7, 0.1, 1"
+          "md3_accel, 0.3, 0, 0.8, 0.15"
+          "overshot, 0.05, 0.9, 0.1, 1.1"
+          "crazyshot, 0.1, 1.5, 0.76, 0.92 "
+          "hyprnostretch, 0.05, 0.9, 0.1, 1.0"
+          "fluent_decel, 0.1, 1, 0, 1"
+          "easeInOutCirc, 0.85, 0, 0.15, 1"
+          "easeOutCirc, 0, 0.55, 0.45, 1"
+          "easeOutExpo, 0.16, 1, 0.3, 1"
         ];
+
+        animation = [
+          "windows, 1, 3, md3_decel, popin 60%"
+          "border, 1, 10, default"
+          "fade, 1, 2.5, md3_decel"
+          "workspaces, 1, 3.5, easeOutExpo, slide"
+          "specialWorkspace, 1, 3, md3_decel, slidevert"
+        ];
+      };
+
+
+      dwindle = {
+        # See https://wiki.hyprland.org/Configuring/Dwindle-Layout/ for more
+        pseudotile = true; # master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below
+        preserve_split = true; # you probably want this
+        no_gaps_when_only = 1;
+      };
+
+      master = {
+        # See https://wiki.hyprland.org/Configuring/Master-Layout/ for more
+        new_is_master = true;
+        no_gaps_when_only = 1;
+      };
+
+      # See https://wiki.hyprland.org/Configuring/Window-Rules/ for more
+      windowrulev2 = [
+        "suppressevent maximize, class:.*" # You'll probably like this.
+      ];
 
     };
 
@@ -133,27 +134,24 @@
   # # TODO: move below into individual .nix files with their own configs
   home.packages = builtins.attrValues {
     inherit (pkgs)
-    wtype # xdotool type for wayland
-    wl-clipboard # cli copy / paste (allows to share clipboard with neovim)
-    dunst # notifications
-    grimblast # screen capture
+      wtype# xdotool type for wayland
+      wl-clipboard# cli copy / paste (allows to share clipboard with neovim)
+      dunst# notifications
+      grimblast# screen capture
 
-    waybar  # closest thing to polybar available
-  #   eww # bar alternative - complex at first but can do cool shit apparently
-  #
-  #   # Wallpaper daemon
-    hyprpaper
-  #   swww # vimjoyer recomended
-  #   nitrogen
+      waybar# closest thing to polybar available
+      #   eww # bar alternative - complex at first but can do cool shit apparently
+      #
+      #   # Wallpaper daemon
+      hyprpaper
+      #   swww # vimjoyer recomended
+      #   nitrogen
 
-    # logout
-    wlogout
-
-  #   # app launcher
-    rofi-wayland;
+      # logout
+      wlogout;
   };
 
- qt = {
+  qt = {
     enable = true;
     platformTheme = "gtk";
     style.name = "gtk2";

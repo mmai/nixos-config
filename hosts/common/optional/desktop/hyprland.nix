@@ -15,6 +15,10 @@
   # '';
 
   environment = {
+    systemPackages = with pkgs; [
+      # Wayland event viewer
+      wev
+    ];
     variables = {
       # Hints electron apps to use wayland
       NIXOS_OZONE_WL = "1";

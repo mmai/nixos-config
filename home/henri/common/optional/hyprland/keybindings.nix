@@ -13,8 +13,8 @@ in
   wayland.windowManager.hyprland.settings = {
     "$mod" = "SUPER";
     "$terminal" = "alacritty";
-    # "$menu" = "rofi -show drun -show-icons";
-    "$menu" = "nwg-drawer";
+    "$menu" = "rofi -show drun -show-icons";
+    # "$menu" = "nwg-drawer";
     "$appswitcher" = "rofi -show window -show-icons";
     "$fileManager" = "nautilus";
     "$webbrowser" = "firefox";
@@ -56,15 +56,17 @@ in
         "$mod, tab, exec, $appswitcher"
         "$mod, O, fullscreen, 0"
 
-        # Move/resize windows with mainMod + LMB/RMB and dragging
-        "$mod, mouse:272, movewindow" # doesn't work ??
-        # "$mod, mouse:273, resizewindow"
-
         "ALT, F4, killactive"
         "$mod ALT, X, exit" # or wlogout ?
 
         "$mod, P, exec, grimblast copy area"
       ];
+
+    bindm = [
+      # Move/resize windows with mainMod + LMB/RMB and dragging
+      "$mod, mouse:272, movewindow"
+      "$mod, mouse:273, resizewindow"
+    ];
 
     bindr = [
       # show/hide nwg-panel (see panel settings/showhide option to get the command)
