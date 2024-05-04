@@ -12,10 +12,13 @@ in
 {
   wayland.windowManager.hyprland.settings = {
     "$mod" = "SUPER";
+    "$mod_release" = "SUPER_L";
+    "$reverse" = "SHIFT";
     "$terminal" = "alacritty";
     "$menu" = "rofi -show drun -show-icons";
     # "$menu" = "nwg-drawer";
     "$appswitcher" = "rofi -show window -show-icons";
+    # "$appswitcher" = "hyprswitch --daemon --do-initial-execute";
     "$fileManager" = "nautilus";
     "$webbrowser" = "firefox";
     bind =
@@ -54,6 +57,7 @@ in
         "$mod, Y, exec, xdg-open ~"
         "$mod, Z, exec, $menu"
         "$mod, tab, exec, $appswitcher"
+        # "$mod, tab, submap, switch" # cf extraConfig section
         "$mod, O, fullscreen, 0"
 
         "ALT, F4, killactive"
@@ -68,11 +72,11 @@ in
       "$mod, mouse:273, resizewindow"
     ];
 
-    bindr = [
-      # show/hide nwg-panel (see panel settings/showhide option to get the command)
-      "$mod, SUPER_L, exec, pkill -f -64 nwg-panel"
-      # "$mod, SUPER_L, exec, pkill rofi || rofi -show combi -show-icons"
-    ];
+    # bindr = [
+    #   # show/hide nwg-panel (see panel settings/showhide option to get the command)
+    #   "$mod, SUPER_L, exec, pkill -f -64 nwg-panel"
+    #   # "$mod, SUPER_L, exec, pkill rofi || rofi -show combi -show-icons"
+    # ];
 
     bindl = [
       # media controls
@@ -90,7 +94,16 @@ in
       ", XF86AudioRaiseVolume, exec, wpctl set-volume -l '1.0' @DEFAULT_AUDIO_SINK@ 6%+"
       ", XF86AudioLowerVolume, exec, wpctl set-volume -l '1.0' @DEFAULT_AUDIO_SINK@ 6%-"
     ];
+
   };
+
+  # wayland.windowManager.hyprland.extraConfig = ''
+  #   submap = switch
+  #   unbind = $mod, tab
+  #   # exit submap
+  #   bindrt = $mod, $mod_release, submap, reset
+  #   submap = reset
+  # '';
 
 }
 

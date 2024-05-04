@@ -17,10 +17,10 @@ En s'inspirant peut-être aussi de
 --- en cours --
 
 --- TODO --
-- show application starting indicator
+- show application starting indicator : forme de la souris ? pas actif dans hyprland...
+- switch apps : https://github.com/H3rmt/hyprswitch ? // trop lent
+- exposé
 - gestion des notifications
-- switch apps : https://github.com/H3rmt/hyprswitch ? // rofi ?
 - configurer cliphist (clipboard history)
 - config barre
   - change pointer on clickable elements
-  - clock : français + large

@@ -48,6 +48,10 @@
       url = "github:hyprwm/hyprland-plugins";
       inputs.hyprland.follows = "hyprland";
     };
+    hyprswitch = {
+      url = "github:h3rmt/hyprswitch/release";
+      inputs.hyprswitch.follows = "nixpkgs";
+    };
 
     # mydist.url = "github:mmai/nixpkgs/mydist"; # my fork of nixpkgs /!\ on branch 'mydist'
 

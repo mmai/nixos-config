@@ -1,4 +1,4 @@
-{ self, pkgs, config, hyprland, ... }: {
+{ self, inputs, pkgs, config, hyprland, ... }: {
 
   imports = [
     ./keybindings.nix
@@ -28,8 +28,11 @@
       exec-once = [
         "${pkgs.hypridle}/bin/hypridle"
         "${pkgs.hyprpaper}/bin/hyprpaper"
-        "nwg-panel"
-        # "${pkgs.waybar}/bin/waybar"
+
+        (if config.programs.waybar.enable then
+          "${pkgs.waybar}/bin/waybar"
+        else
+          "nwg-panel")
         # "hyprlock" # needed ??
         "alacritty -e tmux new-session -t main"
       ];
@@ -132,24 +135,23 @@
   };
 
   # # TODO: move below into individual .nix files with their own configs
-  home.packages = builtins.attrValues {
-    inherit (pkgs)
-      wtype# xdotool type for wayland
-      wl-clipboard# cli copy / paste (allows to share clipboard with neovim)
-      dunst# notifications
-      grimblast# screen capture
+  home.packages = builtins.attrValues
+    {
+      inherit (pkgs)
+        wtype# xdotool type for wayland
+        wl-clipboard# cli copy / paste (allows to share clipboard with neovim)
+        dunst# notifications
+        grimblast# screen capture
 
-      waybar# closest thing to polybar available
-      #   eww # bar alternative - complex at first but can do cool shit apparently
-      #
-      #   # Wallpaper daemon
-      hyprpaper
-      #   swww # vimjoyer recomended
-      #   nitrogen
+        #   # Wallpaper daemon
+        hyprpaper
+        #   swww # vimjoyer recomended
+        #   nitrogen
 
-      # logout
-      wlogout;
-  };
+        # logout
+        wlogout;
+    };
+  # } ++ [ inputs.hyprswitch.packages.x86_64-linux.default ];
 
   qt = {
     enable = true;
@@ -175,10 +177,10 @@
     };
   };
 
-  home.pointerCursor = {
-    gtk.enable = true;
-    package = pkgs.bibata-cursors;
-    name = "Bibata-Modern-Classic";
-    size = 14;
-  };
+  # home.pointerCursor = {
+  #   gtk.enable = true;
+  #   package = pkgs.bibata-cursors;
+  #   name = "Bibata-Modern-Classic";
+  #   size = 14;
+  # };
 }

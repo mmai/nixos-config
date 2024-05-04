@@ -172,9 +172,11 @@
   };
   # Clock
   "clock" = {
-    "format" = "{:%H:%M}";
-    "tooltip-format" = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
-    "format-alt" = "{:%A %d %B}";
+    "timezone" = "Europe/Paris";
+    "locale" = "fr_FR.UTF-8";
+    "format" = "{:L%H:%M}";
+    "tooltip-format" = "<big>{:L%a %d %B}</big>\n<tt><small>{calendar}</small></tt>";
+    "format-alt" = "{:L%a %d %B}";
     "on-click-right" = "gnome-clocks";
     "on-click-middle" = "gnome-calendar";
   };
