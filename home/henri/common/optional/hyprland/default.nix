@@ -11,13 +11,25 @@
   wayland.windowManager.hyprland = {
     enable = true;
     # package = hyprland.packages."${pkgs.system}".hyprland;
-    # plugins = [];
+    plugins = [
+      inputs.hyprland-virtual-desktops.packages.x86_64-linux.virtual-desktops
+    ];
 
     settings = {
       env = [
         # "MOZ_WEBRENDER, 1" # for firefox to run on wayland
         # "WLR_RENDERER_ALLOW_SOFTWARE,1"
       ];
+
+      plugin = {
+        virtual-desktops = {
+          names = "1:coding, 2:internet, 3:mail and chats, 4: other";
+          cyleworkspaces = "1";
+          notifyinit = "0";
+          verbose_logging = "0";
+        };
+
+      };
 
       input = {
         kb_layout = "us";
@@ -26,6 +38,7 @@
       };
 
       exec-once = [
+        "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP HYPRLAND_INSTANCE_SIGNATURE" # fix bug HYPRLAND_INSTANCE_SIGNATURE not set
         "${pkgs.hypridle}/bin/hypridle"
         "${pkgs.hyprpaper}/bin/hyprpaper"
 
@@ -150,8 +163,9 @@
 
         # logout
         wlogout;
-    };
-  # } ++ [ inputs.hyprswitch.packages.x86_64-linux.default ];
+  } ++ [ 
+  # inputs.hyprswitch.packages.x86_64-linux.default 
+  ];
 
   qt = {
     enable = true;

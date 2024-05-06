@@ -1,5 +1,9 @@
 { lib, config, pkgs, ... }:
 let
+  # multi-monitor-workspaces = pkgs.writeShellApplication {
+  #   name = "multi-monitor-workspaces";
+  #   text = builtins.readFile ./multi-monitor-workspaces.sh;
+  # };
   tmux-hypr-nav = pkgs.writeShellApplication {
     name = "tmux-hypr-nav";
     runtimeInputs = builtins.attrValues {
@@ -27,6 +31,7 @@ in
         "$mod, W, movetoworkspace, 2"
         "$mod, E, movetoworkspace, 3"
         "$mod, R, movetoworkspace, 4"
+        # "$mod, A, exec, ${multi-monitor-workspaces} 1"
         "$mod, A, workspace, 1"
         "$mod, S, workspace, 2"
         "$mod, D, workspace, 3"
@@ -50,7 +55,7 @@ in
         "CTRL, J, exec, /home/henri/nixos-config/home/henri/common/optional/hyprland/tmux-hypr-nav.sh d"
         "CTRL, K, exec, /home/henri/nixos-config/home/henri/common/optional/hyprland/tmux-hypr-nav.sh u"
         "CTRL, L, exec, /home/henri/nixos-config/home/henri/common/optional/hyprland/tmux-hypr-nav.sh r"
-        "CTRL, H, exec, /home/henri/nixos-config/home/henri/common/optional/hyprland/tmux-hypr-nav.sh l"
+        # "CTRL, H, exec, /home/henri/nixos-config/home/henri/common/optional/hyprland/tmux-hypr-nav.sh l"
 
         "$mod, T, exec, $terminal"
         "$mod, B, exec, $webbrowser"

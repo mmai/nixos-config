@@ -48,10 +48,16 @@
       url = "github:hyprwm/hyprland-plugins";
       inputs.hyprland.follows = "hyprland";
     };
-    hyprswitch = {
-      url = "github:h3rmt/hyprswitch/release";
-      inputs.hyprswitch.follows = "nixpkgs";
+    hyprland-virtual-desktops = {
+      url = "github:levnikmyskin/hyprland-virtual-desktops";
+      inputs.hyprland.follows = "hyprland";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
+    # hyprswitch = {
+    #   url = "github:h3rmt/hyprswitch/release";
+    #   inputs.hyperland.follows = "hyprland";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     # mydist.url = "github:mmai/nixpkgs/mydist"; # my fork of nixpkgs /!\ on branch 'mydist'
 
