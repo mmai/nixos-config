@@ -10,7 +10,7 @@
 
   wayland.windowManager.hyprland = {
     enable = true;
-    # package = hyprland.packages."${pkgs.system}".hyprland;
+    package = inputs.hyprland.packages.x86_64-linux.hyprland;
     plugins = [
       inputs.hyprland-virtual-desktops.packages.x86_64-linux.virtual-desktops
     ];
@@ -163,8 +163,8 @@
 
         # logout
         wlogout;
-  } ++ [ 
-  # inputs.hyprswitch.packages.x86_64-linux.default 
+    } ++ [
+    # inputs.hyprswitch.packages.x86_64-linux.default 
   ];
 
   qt = {
