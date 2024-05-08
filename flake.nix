@@ -41,17 +41,12 @@
 
     # Windows management
     hyprland = {
-      # url = "github:hyprwm/Hyprland";
-      url = "git+https://github.com/hyprwm/Hyprland?submodules=1"; # needed fo hyprland-virtual-desktops module
+      url = "github:hyprwm/Hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
-      follows = "hyprland-virtual-desktops/hyprland";
     };
     hyprland-plugins = {
       url = "github:hyprwm/hyprland-plugins";
       inputs.hyprland.follows = "hyprland";
-    };
-    hyprland-virtual-desktops = {
-      url = "github:levnikmyskin/hyprland-virtual-desktops";
     };
     # hyprswitch = {
     #   url = "github:h3rmt/hyprswitch/release";

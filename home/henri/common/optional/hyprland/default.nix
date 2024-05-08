@@ -10,9 +10,9 @@
 
   wayland.windowManager.hyprland = {
     enable = true;
-    package = inputs.hyprland.packages.x86_64-linux.hyprland;
+    # package = inputs.hyprland.packages.x86_64-linux.hyprland;
     plugins = [
-      inputs.hyprland-virtual-desktops.packages.x86_64-linux.virtual-desktops
+      # inputs.hyprland-virtual-desktops.packages.x86_64-linux.virtual-desktops
     ];
 
     settings = {
@@ -20,16 +20,6 @@
         # "MOZ_WEBRENDER, 1" # for firefox to run on wayland
         # "WLR_RENDERER_ALLOW_SOFTWARE,1"
       ];
-
-      plugin = {
-        virtual-desktops = {
-          names = "1:coding, 2:internet, 3:mail and chats, 4: other";
-          cyleworkspaces = "1";
-          notifyinit = "0";
-          verbose_logging = "0";
-        };
-
-      };
 
       input = {
         kb_layout = "us";
@@ -169,7 +159,7 @@
 
   qt = {
     enable = true;
-    platformTheme = "gtk";
+    platformTheme.name = "gtk";
     style.name = "gtk2";
   };
 

@@ -9,6 +9,7 @@
   "modules-left" = [
     "hyprland/workspaces"
     "wlr/taskbar"
+    "mpris" # show music playing
     # "custom/appmenu"
     # "group/settings"
     # "custom/settings"
@@ -17,11 +18,11 @@
   ];
 
   "modules-center" = [
-    "clock"
     "hyprland/window"
   ];
 
   "modules-right" = [
+    "clock"
     # "custom/updates"
     "pulseaudio"
     "bluetooth"
