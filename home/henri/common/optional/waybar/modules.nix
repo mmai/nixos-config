@@ -35,6 +35,24 @@
       "Foot Server" = "Terminal";
     };
   };
+  # Currently playing
+  "mpris" = {
+    "format" = "{player_icon} {dynamic}";
+    "format-paused" = "{status_icon} <i>{dynamic}</i>";
+    "player-icons" = {
+      "default" = "▶";
+      "mpv" = "🎵";
+    };
+    "status-icons" = {
+      "paused" = "⏸";
+    };
+    "ignored-players" = [ "firefox" ];
+  };
+  # Empty
+  "custom/empty" = {
+    "format" = "";
+  };
+
   # Hyprland Window
   "hyprland/window" = {
     "rewrite" = {
@@ -47,31 +65,7 @@
     "separate-outputs" = true;
   };
 
-  "mpris" = {
-    "format" = "DEFAULT: {player_icon} {dynamic}";
-    "format-paused" = "DEFAULT: {status_icon} <i>{dynamic}</i>";
-    "player-icons" = {
-      "default" = "▶";
-      "mpv" = "🎵";
-    };
-    "status-icons" = {
-      "paused" = "⏸";
-    };
-    "ignored-players" = [ "firefox" ];
-  };
 
-  # Empty
-  "custom/empty" = {
-    "format" = "";
-  };
-  # Youtube Subscriber Count
-  "custom/youtube" = {
-    "format" = " {}";
-    "exec" = "python ~/private/youtube.py";
-    "restart-interval" = 600;
-    "on-click" = "chromium https:#studio.youtube.com";
-    "tooltip" = false;
-  };
   # Cliphist
   "custom/cliphist" = {
     "format" = "";
