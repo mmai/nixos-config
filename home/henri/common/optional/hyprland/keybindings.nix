@@ -52,9 +52,9 @@ in
         # "CTRL, K, exec, ${tmux-hypr-nav} u"
         # "CTRL, L, exec, ${tmux-hypr-nav} r"
         # "CTRL, H, exec, ${tmux-hypr-nav} l"
-        "CTRL, J, exec, /home/henri/nixos-config/home/henri/common/optional/hyprland/tmux-hypr-nav.sh d"
-        "CTRL, K, exec, /home/henri/nixos-config/home/henri/common/optional/hyprland/tmux-hypr-nav.sh u"
-        "CTRL, L, exec, /home/henri/nixos-config/home/henri/common/optional/hyprland/tmux-hypr-nav.sh r"
+        # "CTRL, J, exec, /home/henri/nixos-config/home/henri/common/optional/hyprland/tmux-hypr-nav.sh d"
+        # "CTRL, K, exec, /home/henri/nixos-config/home/henri/common/optional/hyprland/tmux-hypr-nav.sh u"
+        # "CTRL, L, exec, /home/henri/nixos-config/home/henri/common/optional/hyprland/tmux-hypr-nav.sh r"
         # "CTRL, H, exec, /home/henri/nixos-config/home/henri/common/optional/hyprland/tmux-hypr-nav.sh l"
 
         "$mod, T, exec, $terminal"
