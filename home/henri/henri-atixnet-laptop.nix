@@ -13,6 +13,8 @@
     common/optional/gnome
     common/optional/theme
 
+    common/optional/communication.nix
+
     #################### Host-specific Optional Configs ####################
   ];
 

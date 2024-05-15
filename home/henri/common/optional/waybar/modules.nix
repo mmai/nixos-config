@@ -5,6 +5,7 @@
   # Workspaces
   "hyprland/workspaces" = {
     "on-click" = "activate";
+    "move-to-monitor" = true;
     "active-only" = false;
     "all-outputs" = true;
     "format" = "{}";

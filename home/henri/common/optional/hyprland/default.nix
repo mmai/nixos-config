@@ -31,7 +31,8 @@
         "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP HYPRLAND_INSTANCE_SIGNATURE" # fix bug HYPRLAND_INSTANCE_SIGNATURE not set
         "${pkgs.hypridle}/bin/hypridle"
         "${pkgs.hyprpaper}/bin/hyprpaper"
-
+        "nm-applet --indicator" # network monitor FIXME : missing icons
+        "blueman-applet"
         (if config.programs.waybar.enable then
           "${pkgs.waybar}/bin/waybar"
         else
@@ -39,7 +40,6 @@
         # "hyprlock" # needed ??
         "alacritty -e tmux new-session -t main"
       ];
-      # networkmanagerapplet : nm-applet --indicator &
 
       general = {
         gaps_in = 5;
@@ -156,6 +156,11 @@
     } ++ [
     # inputs.hyprswitch.packages.x86_64-linux.default 
   ];
+
+  services = {
+    network-manager-applet.enable = true;
+    blueman-applet.enable = true;
+  };
 
   qt = {
     enable = true;
