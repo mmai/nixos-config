@@ -29,7 +29,7 @@
 
       exec-once = [
         "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP HYPRLAND_INSTANCE_SIGNATURE" # fix bug HYPRLAND_INSTANCE_SIGNATURE not set
-        "${pkgs.hypridle}/bin/hypridle"
+        # "${pkgs.hypridle}/bin/hypridle" # remplacé par service.hypridle.enable = true ?
         "${pkgs.hyprpaper}/bin/hyprpaper"
         "nm-applet --indicator" # network monitor FIXME : missing icons
         "blueman-applet"

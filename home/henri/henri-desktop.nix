@@ -14,6 +14,7 @@
     # common/optional/nwg-panel.nix # bar
 
     common/optional/communication.nix
+    common/optional/media-players.nix
 
     #################### Host-specific Optional Configs ####################
   ];

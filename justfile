@@ -56,7 +56,7 @@ home-update:
   just update
   just home
 
-# Run `home-manager news --flake .#henri@$(hostname)`
+# Get latest news from home-manager
 home-news:
   home-manager news --flake .#henri@$(hostname)
 #################### Secrets Management ####################

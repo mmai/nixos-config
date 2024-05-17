@@ -20,7 +20,6 @@
     python310Packages.deemix # for dlmusic.sh
     picard
     chromaprint # MusicBrainz tagger (picard) with fingerprint calculator (chromaprint)
-    feishin # subsonic client ( ie to listen from funkwhale or navidrome services )
 
     android-file-transfer # copy files on tablet
 

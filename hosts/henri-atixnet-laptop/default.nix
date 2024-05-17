@@ -39,6 +39,7 @@
     hostName = "henri-atixnet-laptop";
     networkmanager.enable = true;
   };
+  services.blueman.enable = true; # bluetooth mananager
 
   system.stateVersion = "23.11";
 }
