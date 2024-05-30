@@ -15,6 +15,7 @@
     ./hardware-configuration.nix # detected hardware-configuration
 
     #################### Host-specific Optional Configs ####################
+    ../common/optional/keyboard # ajout de la disposition Ergo-L
     ../common/optional/msmtp.nix # simple copie extraite de base_terminal.nix TODO
     ../common/optional/desktop
     ../common/optional/developpement.nix # copié de cfg/developpement.nix  TODO : diviser en fichiers logiques
