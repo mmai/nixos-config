@@ -5,22 +5,23 @@
     ./core.nix
 
     # ../services/greetd.nix # display manager (launch Hyprland session)
-    ./hyprland.nix # window manager
-    
+    # ./hyprland.nix # window manager
+
     ./gnome.nix # window manager
   ];
 
   # services.xserver.displayManager.lightdm.enable = true; # to use instead of gdm if computer freeze after login (ie on Lenovo 470s)
 
-  services.displayManager.defaultSession = "hyprland";
+  #services.displayManager.defaultSession = "hyprland";
   services.xserver = {
     enable = true;
 
     displayManager = {
       gdm = {
         enable = true;
-        wayland = true; # disable wayland in order to allow microsoft teams to share desktop ?
+        wayland = false; # disable wayland in order to allow microsoft teams to share desktop ?
       };
+      # displayManager.defaultSession = "gnome xorg";
       # sddm.enable = true;
     };
   };
@@ -38,7 +39,7 @@
     # evolution # frequently loose connection, copy sent mails twice in history
     # mailnag # don't work ? new mails on Maildir folders notification (for use with mbsync+mutt)
     # mailspring # mail client (custom package) (evolution trop buggé) # trop lourd
-    
+
     nerdfonts
 
     # pour X11

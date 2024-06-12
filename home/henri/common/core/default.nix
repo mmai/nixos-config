@@ -9,6 +9,12 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
+  programs.wezterm = {
+    enable = true;
+    enableZshIntegration = true;
+    enableBashIntegration = false;
+  };
+
   xdg.desktopEntries.nvim = {
     name = "WrappedNeovim";
     exec = "alacritty -e nvim %F";

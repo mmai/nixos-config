@@ -20,6 +20,7 @@ in
       "video"
       "plugdev"
       "input"
+      # "uinput" # pour kanata
     ] ++ ifTheyExist [
       "docker"
       "virtualbox"
