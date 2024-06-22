@@ -1,4 +1,4 @@
-{config, pkgs, lib, ...}: 
+{ config, pkgs, lib, ... }:
 let
   nvStable = config.boot.kernelPackages.nvidiaPackages.stable;
   nvBeta = config.boot.kernelPackages.nvidiaPackages.beta;
@@ -10,7 +10,7 @@ let
 in
 {
   services.xserver = {
-      videoDrivers = [ "nvidia" ];
+    videoDrivers = [ "nvidia" ];
   };
 
   environment.sessionVariables = {
@@ -56,7 +56,7 @@ in
     };
 
     opengl = {
-      extraPackages = with pkgs; [nvidia-vaapi-driver];
+      extraPackages = with pkgs; [ nvidia-vaapi-driver ];
     };
   };
 }
