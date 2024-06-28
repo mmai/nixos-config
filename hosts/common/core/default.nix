@@ -56,6 +56,7 @@
       # ---- nix related ----------------
       nix-index # nix packages database with command-not-found support : nix-locate 
       cachix # custom nix packages binaries cache management
+      nh # nix command helper
 
       # ------------ Common tools
       curl

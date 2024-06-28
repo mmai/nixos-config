@@ -1,15 +1,25 @@
 { config, lib, pkgs, ... }:
 {
+  programs.steam = {
+    enable = true;
+    # à utiliser si problème de résolution sur un jeu : `gamescope %command%` 
+    gamescopeSession.enable = true;
+  };
+  # enhance game perfs : `gamemoderun %command%`
+  # (comme gamescope, peut être indiqué dans Steam dans les paramètres de démarrage d'un jeu)
+  programs.gamemode.enable = true;
+
   environment.systemPackages = with pkgs; [
     # anki # 2.0.52
     # stellarium # planetarium (alternative: celestia which allows to move accross the universe)
+
+    mangohud # show stats like fps of current window : `mangohud %command%`
 
     calibre
     yacreader # comics viewer
     # zotero # bibliography manager
     stremio # popcorntime like
 
-    steam
     unnethack
     crawlTiles # some roguelike games
     # superTux
@@ -31,7 +41,7 @@
   ];
 
   # for steam
-  hardware.opengl.driSupport32Bit = true;
+  hardware.graphics.enable32Bit = true;
   hardware.pulseaudio.support32Bit = true;
 
   # gateway for irc 

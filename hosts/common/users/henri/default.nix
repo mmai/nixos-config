@@ -8,6 +8,10 @@ in
   # sops.secrets.ta-password.neededForUsers = true;
   # users.mutableUsers = false; # Required for password to be set via sops during system activation!
 
+  environment.sessionVariables = {
+    FLAKE = "/home/henri/nixos-config";
+  };
+
   users.users.henri = {
     isNormalUser = true;
     # TODO : sops

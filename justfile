@@ -48,7 +48,8 @@ diff:
 # Run `home-manager switch --flake .#henri@$(hostname)` and `just check-sops`
 home:
   git add .
-  home-manager switch --flake .#henri@$(hostname)
+  # home-manager switch --flake .#henri@$(hostname)
+  nh home switch
   # just check-sops
 
 # Run `just update` and `just home`

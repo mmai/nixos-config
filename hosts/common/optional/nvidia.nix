@@ -55,7 +55,7 @@ in
       powerManagement.enable = true; # fix suspend resume issues
     };
 
-    opengl = {
+    graphics = {
       extraPackages = with pkgs; [ nvidia-vaapi-driver ];
     };
   };
