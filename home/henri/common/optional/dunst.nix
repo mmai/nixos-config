@@ -7,7 +7,7 @@
     iconTheme = {
       # name = "Adwaita-Dark";
       name = "adwaita-icon-theme";
-      package = pkgs.gnome.adwaita-icon-theme;
+      package = pkgs.adwaita-icon-theme;
     };
     settings = {
       global = {
@@ -62,7 +62,7 @@
         show_indicators = "yes";
         shrink = "no";
         word_wrap = "yes";
-        browser = "${pkgs.qutebrowser}/bin/qutebrowser";
+        # browser = "${pkgs.qutebrowser}/bin/qutebrowser";
       };
 
       fullscreen_delay_everything = { fullscreen = "delay"; };

@@ -4,12 +4,12 @@
     common/core # required
 
     #################### Optional Configs ####################
-    common/optional/hyprland
-    common/optional/rofi
+    # common/optional/hyprland
+    # common/optional/rofi
 
-    common/optional/waybar # bar
+    # common/optional/waybar # bar
 
-    common/optional/dunst.nix # notifications
+    # common/optional/dunst.nix # notifications
     common/optional/gnome
     common/optional/theme
 
