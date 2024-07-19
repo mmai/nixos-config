@@ -101,7 +101,7 @@ in
 
       # Dev tools
       xsv # manipulation de .csv en ligne de commande
-      visidata # visualisation de .csv et autre en ligne de commande
+      #visidata # visualisation de .csv et autre en ligne de commande
       gettext # i18n
       direnv # auto set environnement when entering directories
       docker-compose

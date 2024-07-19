@@ -4,15 +4,18 @@
   services.pcscd.enable = true; # pour Yubikey : Middleware to access a smart card using SCard API (PC/SC)
   security.pam = {
     # yubico.enable = true; # enable users listed in ~/.yubico/authorized_yubikeys to log in
-    u2f.origin = "henri-deskop";
-    services = { # placer les  ~/.config/Yubico/u2f_keys
-        # login.u2fAuth = true;
-        # sudo.u2fAuth = true;
-      };
+    u2f.settings.origin = "henri-deskop";
+    services = {
+      # placer les  ~/.config/Yubico/u2f_keys
+      # login.u2fAuth = true;
+      # sudo.u2fAuth = true;
+    };
   };
 
   environment.systemPackages = with pkgs; [
-    yubikey-manager yubico-piv-tool pam_u2f
+    yubikey-manager
+    yubico-piv-tool
+    pam_u2f
   ];
 }
 

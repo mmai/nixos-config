@@ -17,15 +17,15 @@
 
     packages = with pkgs; [
       victor-mono
-        dejavu_fonts
-        meslo-lgs-nf
-        fantasque-sans-mono # `a tester
-        powerline-fonts
-        nerdfonts
-        noto-fonts
-        noto-fonts-extra
-        noto-fonts-cjk
-        noto-fonts-emoji
+      dejavu_fonts
+      meslo-lgs-nf
+      fantasque-sans-mono # `a tester
+      powerline-fonts
+      nerdfonts
+      noto-fonts
+      noto-fonts-extra
+      noto-fonts-cjk
+      noto-fonts-emoji
     ];
 
     fontconfig.defaultFonts = {
@@ -36,7 +36,9 @@
 
   # Chinese input
   i18n.inputMethod = {
-    enabled = "ibus";
+    type = "ibus";
+    enable = true;
+    # enabled = "ibus";
     ibus.engines = with pkgs.ibus-engines; [ libpinyin ];
   };
 

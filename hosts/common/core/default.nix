@@ -145,6 +145,8 @@
       file # Show file information. Usefull to debug 'zsh: no such file or directory' errors on binaries
       htop
       iotop
+      smartmontools # analyse de disque durs `smartctl /dev/sdb`
+      hdparm # `sudo hdparm -t /dev/sdb3`
       mtr # combine ping and traceroute
       ncdu # show disk usage
       psmisc # contains utilities like fuser (display process IDs currently using files or sockets), etc.

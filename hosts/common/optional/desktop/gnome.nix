@@ -5,11 +5,11 @@
     desktopManager.gnome = {
       enable = true;
       extraGSettingsOverrides = ''
-      [org.gnome.shell.app-switcher]
-      current-workspace-only=true
+        [org.gnome.shell.app-switcher]
+        current-workspace-only=true
 
-      [org.gnome.desktop.background]
-      show-desktop-icons=true
+        [org.gnome.desktop.background]
+        show-desktop-icons=true
       '';
     };
   };
@@ -52,17 +52,17 @@
     '';
   };
 
-  environment.gnome.excludePackages = with pkgs; [ gnome3.geary ];
+  environment.gnome.excludePackages = with pkgs; [ geary ];
   environment.systemPackages = with pkgs; [
-    gnome.gnome-tweaks
+    gnome-tweaks
     # gnomeExtensions.dash-to-panel # broken in nixos 20.09, enable it from https://extensions.gnome.org/extension/1160/dash-to-panel/ instead
     # gnomeExtensions.timepp # pomodoro, timetracker, etc. => marked broken in nixos 20.03
     # gnomeExtensions.gtk-title-bar # not yet packaged in nixos
     gnomeExtensions.system-monitor-2
 
-    gnome.cheese # take photos & videos with webcam (launch with sudo ?)
+    cheese # take photos & videos with webcam (launch with sudo ?)
     gcolor2 # simple color selector
-    gnome.seahorse # to get rid of the "gnome default keyring locked" prompt at startup
+    seahorse # to get rid of the "gnome default keyring locked" prompt at startup
   ];
 
 }

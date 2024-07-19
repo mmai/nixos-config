@@ -59,7 +59,7 @@
       commandLineArgs = "--load-media-router-component-extension=1"; # this allows to stream to chromecast devices from the browser
     })
     tor-browser-bundle-bin # TOR browser
-    transmission-gtk # transmission
+    transmission_3-gtk # transmission (transmission_4-gtk also available)
     hexchat # desktop chat client
     element-desktop # matrix client
 
