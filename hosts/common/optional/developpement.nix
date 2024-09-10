@@ -50,7 +50,6 @@ in
       # php-env-cli # for msgpack
       php'
       php'.packages.composer
-      php'.packages.psysh # 
       php'.packages.php-codesniffer # CodeSniffer (beautify)
       php'.packages.psalm # static analysis tool
       # php'.packages.phpstan # static analysis tools // fail to install on nixos 23.11
