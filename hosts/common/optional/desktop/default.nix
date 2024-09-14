@@ -26,6 +26,8 @@
     };
   };
 
+  services.teamviewer.enable = true;
+
   networking.firewall.allowedTCPPorts = [ 8010 ]; # allow streaming to chromecast devices (vlc)
 
   # Enable widevine on chromium: needed by spotify & netflix
@@ -79,7 +81,7 @@
     # unetbootin # live linux usb creator # not supported on aarch64/rapsberry pi (requires syslinux)
 
     wireshark
-    # missing : teamviewer, gpick
+    # missing : gpick
 
     # not used anymore
     #    kbfs keybase-gui
