@@ -61,7 +61,7 @@
     gnomeExtensions.system-monitor-2
 
     cheese # take photos & videos with webcam (launch with sudo ?)
-    gcolor2 # simple color selector
+    gcolor3 # simple color selector
     seahorse # to get rid of the "gnome default keyring locked" prompt at startup
   ];
 
