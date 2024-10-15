@@ -73,6 +73,7 @@
       xclip # manage clipboard (needed for neovim to not freeze using xsel : https://github.com/neovim/neovim/issues/9402)
 
       # ------------- coding related
+      devenv
       gitFull
       git-filter-repo # git-filter-repo used to group '~/think' commit history by day
       subversionClient # svn is used by zinit
@@ -99,6 +100,7 @@
       ripgrep # Faster than grep, ag, ..
 
       # ------------ Common tools
+      imagemagick
       ghostscript # manipulate pdfs
       zip
       unzip
