@@ -43,10 +43,13 @@ in
     vulkan-loader
     vulkan-validation-layers
     vulkan-tools
+
+    # pour utiliser le GPU dans escriptorium
+    nvidia-docker
   ];
 
-
   hardware = {
+    nvidia-container-toolkit.enable = true;
     nvidia = {
       package = nvidiaPkg;
       open = false; # x fails with : nvidia card does not support 'open'

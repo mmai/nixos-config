@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 # echo " > nix-collect-garbage -d"
 # nix-collect-garbage -d

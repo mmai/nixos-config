@@ -126,7 +126,7 @@
       sshfs # sftp
       surfraw # bookmarks & search engines client 
       weechat # irc,.. client
-      # zola # static website generator
+      zola # static website generator
       # unstable.offpunk # offline rss, gemini, ... reader (remplace newsboat)
 
       # -------- Cli tools

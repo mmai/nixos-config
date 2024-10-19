@@ -68,6 +68,7 @@
     # Included in gnome3
     #   pdf viewer : evince (alternatives : zathura, okular)
     xournalpp # manipulation de pdf : permet d'ajouter une signature png
+    pdfarranger # pour rotation des pages, retailler, etc.
 
     gimp
     inkscape
