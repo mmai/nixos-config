@@ -15,7 +15,7 @@
 
     mangohud # show stats like fps of current window : `mangohud %command%`
 
-    calibre
+    #calibre # compilation fails (2024-10-19)
     yacreader # comics viewer
     # zotero # bibliography manager
     stremio # popcorntime like

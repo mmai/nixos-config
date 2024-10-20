@@ -26,7 +26,7 @@
     ../common/optional/desktop
     ../common/optional/developpement.nix # copié de cfg/developpement.nix  TODO : diviser en fichiers logiques
     # ../common/optional/androidStudio.nix # copié de cfg/notRaspberry.nix
-    ../common/optional/virtualbox.nix # copié de cfg/notRaspberry.nix
+    # ../common/optional/virtualbox.nix # copié de cfg/notRaspberry.nix
     ../common/optional/leisure.nix # copié de cfg/leisure.nix  TODO : diviser en fichiers logiques
     ../common/optional/sync-notes.nix # copié de cfg/sync-notes.nix  TODO : diviser en fichiers logiques
     # ../common/optional/services/openssh.nix # allow remote SSH access

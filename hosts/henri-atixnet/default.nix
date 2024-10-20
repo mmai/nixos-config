@@ -18,7 +18,7 @@
     ../common/optional/desktop.nix # copié de cfg/base-desktop.nix  TODO : diviser en fichiers logiques
     ../common/optional/developpement.nix # copié de cfg/developpement.nix  TODO : diviser en fichiers logiques
     # ../common/optional/androidStudio.nix # copié de cfg/notRaspberry.nix
-    ../common/optional/virtualbox.nix # copié de cfg/notRaspberry.nix
+    #../common/optional/virtualbox.nix # copié de cfg/notRaspberry.nix -> installé via `nix profile`
     ../common/optional/sync-notes.nix # copié de cfg/sync-notes.nix  TODO : diviser en fichiers logiques
     # ../common/optional/services/openssh.nix # allow remote SSH access
     #
