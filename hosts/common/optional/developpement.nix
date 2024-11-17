@@ -51,7 +51,7 @@ in
       php'
       php'.packages.composer
       php'.packages.php-codesniffer # CodeSniffer (beautify)
-      php'.packages.psalm # static analysis tool
+      # php'.packages.psalm # static analysis tool // fail to install on nixos 24.11
       # php'.packages.phpstan # static analysis tools // fail to install on nixos 23.11
       # Drupal coding standards installation :
       #   composer global require drupal/coder # installs phpcs as well
