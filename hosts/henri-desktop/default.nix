@@ -18,7 +18,7 @@
     ../common/optional/nvidia.nix
 
     ../common/optional/keyboard # ajout de la disposition Qwerty-Lafayette
-    # ../common/optional/services/kanata # remapping claviers non programmables
+    ../common/optional/services/kanata # remapping claviers non programmables
     ../common/optional/services/printing.nix
     ../common/optional/home-network.nix # access local network services (synology, etc.)
     ../common/optional/msmtp.nix # simple copie TODO

@@ -9,10 +9,10 @@
         # config = builtins.readFile (./atomic + "/kanata.kbd"); # includes don't work
         config = builtins.readFile (./kanata.kbd);
       };
-      # msCurve = {
-      #   devices = [ "/dev/input/by-id/usb-Microsoft_Comfort_Curve_Keyboard_2000-event-kbd" ];
-      #   config = builtins.readFile (./atomic + "/kanata_merged.kbd");
-      # };
+      msCurve = {
+        devices = [ "/dev/input/by-id/usb-Microsoft_Comfort_Curve_Keyboard_2000-event-kbd" ];
+        config = builtins.readFile (./kanata.kbd);
+      };
     };
   };
 }
