@@ -27,7 +27,7 @@ in
       # "uinput" # pour kanata
     ] ++ ifTheyExist [
       "docker"
-      "virtualbox"
+      # "virtualbox"
       "network"
       "networkmanager"
     ];
