@@ -15,11 +15,13 @@
 
     mangohud # show stats like fps of current window : `mangohud %command%`
 
-    #calibre # compilation fails (2024-10-19)
+    calibre
     yacreader # comics viewer
     # zotero # bibliography manager
     stremio # popcorntime like
 
+    itch # itch.io games manager
+    renpy # play renpy visual novel games
     unnethack
     crawlTiles # some roguelike games
     # superTux
