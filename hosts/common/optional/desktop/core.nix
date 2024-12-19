@@ -21,7 +21,8 @@
       meslo-lgs-nf
       fantasque-sans-mono # `a tester
       powerline-fonts
-      nerdfonts
+      nerd-fonts.dejavu-sans-mono
+      nerd-fonts.victor-mono
       noto-fonts
       noto-fonts-extra
       noto-fonts-cjk-sans

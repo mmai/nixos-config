@@ -42,8 +42,6 @@
     # mailnag # don't work ? new mails on Maildir folders notification (for use with mbsync+mutt)
     # mailspring # mail client (custom package) (evolution trop buggé) # trop lourd
 
-    nerdfonts
-
     # pour X11
     xorg.xkill
     xdotool # manipulate gui windows from command line 
