@@ -37,6 +37,9 @@ in
       lua-language-server
       stylua # lua lsp for neovim (the version installed by lsp-installer fails to execute on nixos )
 
+      # markdown
+      marksman # markdown lsp (the version installed by mason fails to execute on nixos )
+
       # Scheme
       # guile_3_0
 
