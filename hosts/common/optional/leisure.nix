@@ -46,7 +46,7 @@
 
   # for steam
   hardware.graphics.enable32Bit = true;
-  hardware.pulseaudio.support32Bit = true;
+  services.pulseaudio.support32Bit = true;
 
   # gateway for irc 
   # services.bitlbee = {

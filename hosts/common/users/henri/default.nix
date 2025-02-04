@@ -36,7 +36,7 @@ in
     #   (builtins.readFile ./keys/id_meek.pub)
     # ];
 
-    packages = [ pkgs.home-manager ];
+    packages = [ pkgs.home-manager pkgs.qmk pkgs.gcc-arm-embedded pkgs.dfu-util ];
   };
 
   # Import this user's personal/home configurations

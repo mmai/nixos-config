@@ -21,7 +21,6 @@
 
   wayland.windowManager.hyprland.settings = {
     monitor = [
-      "HDMI-A-1, 2560x1440@75, 0x0, 1" # Acer incurvé Atixnet
         ", preferred, 0x0, 1" # réglage par défaut moniteurs inconnus
         "eDP-1, 1440x900@60, auto-right, 1" # moniteur intégré
     ]; 
