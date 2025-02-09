@@ -12,6 +12,7 @@
   environment.systemPackages = with pkgs; [
     # anki # 2.0.52
     # stellarium # planetarium (alternative: celestia which allows to move accross the universe)
+    gramps # genealogy tree management
 
     mangohud # show stats like fps of current window : `mangohud %command%`
 
@@ -20,6 +21,7 @@
     # zotero # bibliography manager
     stremio # popcorntime like
 
+    heroic # Native GOG, Epic, and Amazon Games Launcher
     itch # itch.io games manager
     renpy # play renpy visual novel games
     unnethack
