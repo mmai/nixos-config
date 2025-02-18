@@ -24,7 +24,7 @@
     heroic # Native GOG, Epic, and Amazon Games Launcher
     itch # itch.io games manager
     renpy # play renpy visual novel games
-    unnethack
+    # unnethack # build fails on nixos 25.05 (testé le 2025-02-09)
     crawlTiles # some roguelike games
     # superTux
     # leela-zero # go game engine (cmd = leelaz)=> additional steps : curl -O https://zero.sjeng.org/best-network && mv best-network ~/.local/share/leela-zero/
