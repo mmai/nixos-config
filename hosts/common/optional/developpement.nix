@@ -80,7 +80,7 @@ in
       pkg-config # rustup dependencies (cf. https://github.com/NixOS/nixpkgs/blob/master/doc/languages-frameworks/rust.section.md)
       rust-analyzer-unwrapped # used by lsp in neovim
       cargo-nextest # used by neotest-rust in neovim
-      lldb # debugger (used by rustaceanvim) XXX : build fails on unstable 2025-02-09
+      lldb # debugger (used by rustaceanvim)
 
       # multi platform dev, can be used with rust thanks to rinf
       # flutter # needs 3Go  # Flutter, uses android-studio, chromium,...
