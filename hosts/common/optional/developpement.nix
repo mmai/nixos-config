@@ -127,6 +127,7 @@ in
 
       # network
       openvpn
+      openfortivpn
 
     ];
 
