@@ -69,6 +69,7 @@
     pdfarranger # pour rotation des pages, retailler, etc.
 
     gimp
+    krita
     inkscape
 
     gitg
