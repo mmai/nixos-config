@@ -4,5 +4,6 @@
     discord
     signal-desktop
     whatsapp-for-linux
+    zoom-us
   ];
 }
