@@ -146,7 +146,7 @@
       # ----------- diagnostics
       lsof # show open ports, etc.
       file # Show file information. Usefull to debug 'zsh: no such file or directory' errors on binaries
-      htop
+      htop btop
       iotop
       smartmontools # analyse de disque durs `smartctl /dev/sdb`
       hdparm # `sudo hdparm -t /dev/sdb3`

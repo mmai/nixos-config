@@ -42,6 +42,7 @@ in
       # markdown
       marksman # markdown lsp (the version installed by mason fails to execute on nixos )
       markdownlint-cli2
+      mermaid-cli # Generation of diagrams from text in a similar manner as markdown
 
       nodePackages.prettier
 
