@@ -13,10 +13,8 @@
   # services.xserver.displayManager.lightdm.enable = true; # to use instead of gdm if computer freeze after login (ie on Lenovo 470s)
 
   #services.displayManager.defaultSession = "hyprland";
-  services.xserver = {
-    enable = true;
-
-    displayManager = {
+  services.xserver.enable = true;
+  services.displayManager = {
       gdm = {
         enable = true;
         wayland = false; # disable wayland in order to allow microsoft teams to share desktop ?
@@ -24,7 +22,6 @@
       # displayManager.defaultSession = "gnome xorg";
       # sddm.enable = true;
     };
-  };
 
   services.teamviewer.enable = true;
 

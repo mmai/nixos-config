@@ -108,6 +108,7 @@ in
       dbeaver-bin # mysql & posgresql, can do ssh tunneling
 
       # Dev tools
+      atac # tui curl / postman
       xan # manipulation de .csv en ligne de commande
       #visidata # visualisation de .csv et autre en ligne de commande
       gettext # i18n

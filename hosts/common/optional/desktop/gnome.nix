@@ -1,17 +1,15 @@
 { config, lib, pkgs, stdenv, ... }:
 
 {
-  services.xserver = {
-    desktopManager.gnome = {
-      enable = true;
-      extraGSettingsOverrides = ''
-        [org.gnome.shell.app-switcher]
-        current-workspace-only=true
+  services.desktopManager.gnome = {
+    enable = true;
+    extraGSettingsOverrides = ''
+      [org.gnome.shell.app-switcher]
+      current-workspace-only=true
 
-        [org.gnome.desktop.background]
-        show-desktop-icons=true
-      '';
-    };
+      [org.gnome.desktop.background]
+      show-desktop-icons=true
+    '';
   };
 
   # Gnome shell extensions with browsers
